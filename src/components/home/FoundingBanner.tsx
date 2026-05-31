@@ -23,8 +23,22 @@ export function FoundingBanner() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-60px' }}
-          className="rounded-2xl border border-gold/30 bg-carbon p-7 sm:p-10 md:p-12 text-center"
+          className="relative rounded-2xl border border-gold/30 bg-carbon p-7 sm:p-10 md:p-12 text-center overflow-hidden"
         >
+          {/* Gold shimmer border */}
+          <div className="absolute inset-0 rounded-2xl pointer-events-none overflow-hidden">
+            <div
+              className="absolute inset-0 opacity-25 animate-shimmer"
+              style={{
+                background: 'linear-gradient(90deg, transparent 0%, rgba(198,163,91,0.4) 50%, transparent 100%)',
+                backgroundSize: '200% 100%',
+              }}
+            />
+          </div>
+
+          {/* Bottom inner glow */}
+          <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-gold/5 to-transparent pointer-events-none" />
+
           <motion.div variants={fadeUp}>
             <span className="inline-block px-3 py-1 rounded-full border border-gold/30 bg-gold/10 text-gold text-[10px] font-mono tracking-widest uppercase mb-5">
               Limited Offer
@@ -47,7 +61,15 @@ export function FoundingBanner() {
           <motion.ul variants={staggerContainer} className="space-y-2 text-left max-w-xs mx-auto mb-8">
             {perks.map((perk, i) => (
               <motion.li key={i} variants={fadeUp} className="flex items-start gap-2.5">
-                <span className="text-gold text-sm mt-0.5 flex-shrink-0">✓</span>
+                <motion.span
+                  initial={{ scale: 0, rotate: -45 }}
+                  whileInView={{ scale: 1, rotate: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ type: 'spring', stiffness: 300, damping: 20, delay: 0.3 + i * 0.07 }}
+                  className="text-gold text-sm mt-0.5 flex-shrink-0 inline-block"
+                >
+                  ✓
+                </motion.span>
                 <span className="text-warm-white text-sm">{perk}</span>
               </motion.li>
             ))}
