@@ -1,16 +1,16 @@
 interface LogoProps {
   variant?: 'full' | 'compact'
   className?: string
+  width?: number
 }
 
 // full  → mortar + pestle + "RestOS" wordmark + "RESTAURANT OPERATING SYSTEM" tagline
 // compact → mortar + pestle + "RestOS" wordmark only (navbar use)
-export function Logo({ variant = 'full', className = '' }: LogoProps) {
+export function Logo({ variant = 'full', className = '', width }: LogoProps) {
   if (variant === 'compact') {
     return (
       <svg
-        width="180"
-        height="52"
+        width={width ?? 180}
         viewBox="0 0 310 104"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -49,8 +49,7 @@ export function Logo({ variant = 'full', className = '' }: LogoProps) {
 
   return (
     <svg
-      width="240"
-      height="80"
+      width={width ?? 240}
       viewBox="0 0 360 120"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

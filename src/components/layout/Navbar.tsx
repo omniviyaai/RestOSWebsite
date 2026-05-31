@@ -59,6 +59,8 @@ export function Navbar() {
             {/* layoutId="restos-logo" — FLIP target: loader logo animates here on exit */}
             <motion.div
               layoutId="restos-logo"
+              data-nav-logo
+              transition={{ type: 'spring', stiffness: 120, damping: 20, mass: 1.2 }}
               style={{ rotateX: logoRotateX, rotateY: logoRotateY }}
             >
               <Logo variant="compact" />
