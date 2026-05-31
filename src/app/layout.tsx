@@ -1,7 +1,8 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://restos.in'),
   title: 'RestOS — The Operating System For Restaurants',
   description:
     'RestOS is the complete operating system for Indian restaurants. QR ordering, kitchen display, waiter app, payments, and analytics. One screen. Everything connected.',
@@ -21,6 +22,12 @@ export const metadata: Metadata = {
     description: 'One screen. Every order. Every table. Every rupee.',
     images: ['/og-image.png'],
   },
+}
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
 }
 
 export default function RootLayout({
