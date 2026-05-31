@@ -1,5 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import './globals.css'
+import { LenisProvider } from '@/components/ui/LenisProvider'
+import { ScrollProgressBar } from '@/components/ui/ScrollProgress'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://restos.in'),
@@ -38,6 +40,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="bg-midnight text-warm-white antialiased">
+        <LenisProvider />
+        <ScrollProgressBar />
         {children}
       </body>
     </html>
