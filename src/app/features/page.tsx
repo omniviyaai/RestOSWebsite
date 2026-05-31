@@ -5,8 +5,23 @@ import { Button } from '@/components/ui/Button'
 import { DEMO_PAGE_URL, WHATSAPP_URL } from '@/lib/constants'
 
 export const metadata: Metadata = {
-  title: 'Features — RestOS',
-  description: 'Every RestOS feature translated into outcomes for your restaurant — QR ordering, kitchen display, payments, analytics, and more.',
+  title: 'Features',
+  description:
+    'Every RestOS feature translated into outcomes for your restaurant: QR code ordering, kitchen display system, UPI payments, waiter app, reservations, management dashboard, and real-time analytics.',
+  openGraph: {
+    title: 'RestOS Features — QR Ordering, KDS, Payments & Analytics',
+    description:
+      'QR code ordering, kitchen display system, waiter app, UPI payments, management dashboard, and real-time analytics — all connected.',
+    url: 'https://restos.in/features',
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'RestOS Features' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'RestOS Features — QR Ordering, KDS, Payments & Analytics',
+    description: 'Every RestOS feature explained: QR ordering, kitchen display, payments, management, and analytics.',
+    images: ['/og-image.png'],
+  },
+  alternates: { canonical: 'https://restos.in/features' },
 }
 
 const features = [
@@ -72,10 +87,20 @@ const features = [
   },
 ]
 
+const breadcrumbFeatures = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://restos.in/' },
+    { '@type': 'ListItem', position: 2, name: 'Features', item: 'https://restos.in/features' },
+  ],
+}
+
 export default function FeaturesPage() {
   return (
     <>
       <Navbar />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbFeatures) }} />
       <main className="bg-midnight min-h-screen">
         <div className="pt-28 pb-12 px-4 text-center max-w-2xl mx-auto">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-warm-white mb-4 text-balance">

@@ -5,8 +5,23 @@ import { SpotCounter } from '@/components/ui/SpotCounter'
 import { WHATSAPP_URL } from '@/lib/constants'
 
 export const metadata: Metadata = {
-  title: 'Founding Partner Program — RestOS',
-  description: 'Be one of the 10 restaurants that shapes how RestOS works. First 90 days completely free.',
+  title: 'Founding Partner Program — Be One of 10',
+  description:
+    'Be one of the 10 Indian restaurants that shapes how RestOS works. First 90 days completely free. Direct WhatsApp line to the founders. No credit card required.',
+  openGraph: {
+    title: 'RestOS Founding Partner Program — 10 Spots Only',
+    description:
+      'First 90 days free. Direct WhatsApp line to the founders. Shape the product roadmap. Permanent Founding Partner badge.',
+    url: 'https://restos.in/founding',
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'RestOS Founding Partner Program' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'RestOS Founding Partner Program — 10 Spots Only',
+    description: 'First 90 days free. Direct access to founders. Shape the product roadmap.',
+    images: ['/og-image.png'],
+  },
+  alternates: { canonical: 'https://restos.in/founding' },
 }
 
 const perks = [
@@ -23,10 +38,37 @@ const asks = [
   'Permission to mention your restaurant as a Founding Partner (optional)',
 ]
 
+const breadcrumbFounding = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://restos.in/' },
+    { '@type': 'ListItem', position: 2, name: 'Founding Partner Program', item: 'https://restos.in/founding' },
+  ],
+}
+
+const productSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: 'RestOS Founding Partner Program',
+  description: 'First 90 days completely free. Direct WhatsApp line to founders. Shape the product roadmap. Permanent Founding Partner badge.',
+  brand: { '@type': 'Brand', name: 'RestOS by Omniviya' },
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'INR',
+    availability: 'https://schema.org/LimitedAvailability',
+    url: 'https://restos.in/founding',
+    description: 'Free for first 90 days. Limited to 10 restaurants.',
+  },
+}
+
 export default function FoundingPage() {
   return (
     <>
       <Navbar />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbFounding) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }} />
       <main className="bg-midnight min-h-screen">
         <div className="max-w-xl mx-auto px-4 pt-28 pb-24">
           {/* Header */}

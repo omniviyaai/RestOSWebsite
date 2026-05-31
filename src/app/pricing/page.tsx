@@ -6,8 +6,23 @@ import { SpotCounter } from '@/components/ui/SpotCounter'
 import { FOUNDING_PAGE_URL } from '@/lib/constants'
 
 export const metadata: Metadata = {
-  title: 'Pricing — RestOS',
-  description: 'Simple, honest pricing. 10 Founding Partner spots — first 90 days completely free.',
+  title: 'Pricing',
+  description:
+    'Simple, honest pricing for Indian restaurants. 10 Founding Partner spots available — first 90 days completely free. No lock-in, no hidden fees, no hardware required.',
+  openGraph: {
+    title: 'RestOS Pricing — Simple, Honest, No Hidden Fees',
+    description:
+      '10 Founding Partner spots. First 90 days completely free. No lock-in, no hidden fees, no hardware required. Built for Indian restaurants.',
+    url: 'https://restos.in/pricing',
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'RestOS Pricing' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'RestOS Pricing — Simple, Honest, No Hidden Fees',
+    description: '10 Founding Partner spots. First 90 days free. No lock-in, no hardware needed.',
+    images: ['/og-image.png'],
+  },
+  alternates: { canonical: 'https://restos.in/pricing' },
 }
 
 const faqs = [
@@ -19,10 +34,34 @@ const faqs = [
   { q: 'What payment methods are supported?', a: 'UPI, credit/debit cards, netbanking, and wallets via Razorpay and Cashfree. Cash (pay at counter) also supported.' },
 ]
 
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    { '@type': 'Question', name: 'Is there a contract?', acceptedAnswer: { '@type': 'Answer', text: 'No. No lock-in, no minimum term. Stop at any time.' } },
+    { '@type': 'Question', name: 'Do I need to buy new hardware?', acceptedAnswer: { '@type': 'Answer', text: 'No. RestOS works on phones, tablets, and laptops you already own. Customers use their own phones.' } },
+    { '@type': 'Question', name: 'What happens after the 90 days?', acceptedAnswer: { '@type': 'Answer', text: 'You move to regular pricing, or you leave. No tricks. We tell you well in advance.' } },
+    { '@type': 'Question', name: 'Is my data safe?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. Your restaurant gets its own isolated database. No other restaurant can see your data. Everything is encrypted.' } },
+    { '@type': 'Question', name: 'Does it work for takeaway-only restaurants?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. Dine-in, takeaway, and cloud kitchen flows are all built in.' } },
+    { '@type': 'Question', name: 'What payment methods are supported?', acceptedAnswer: { '@type': 'Answer', text: 'UPI, credit/debit cards, netbanking, and wallets via Razorpay and Cashfree. Cash pay at counter also supported.' } },
+  ],
+}
+
+const breadcrumbPricing = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://restos.in/' },
+    { '@type': 'ListItem', position: 2, name: 'Pricing', item: 'https://restos.in/pricing' },
+  ],
+}
+
 export default function PricingPage() {
   return (
     <>
       <Navbar />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbPricing) }} />
       <main className="bg-midnight min-h-screen">
         <div className="pt-28 pb-12 px-4 text-center max-w-xl mx-auto">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-warm-white mb-3">

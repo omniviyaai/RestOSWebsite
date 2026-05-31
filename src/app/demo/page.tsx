@@ -4,14 +4,39 @@ import { Footer } from '@/components/layout/Footer'
 import { WHATSAPP_URL } from '@/lib/constants'
 
 export const metadata: Metadata = {
-  title: 'Book a Demo — RestOS',
-  description: 'See RestOS running in a real restaurant. Book a free 20-minute demo with the founding team.',
+  title: 'Book a Free Demo — RestOS',
+  description:
+    'See RestOS running in your restaurant. Book a free 20-minute demo with the founding team. QR ordering, kitchen display, payments, and analytics — live walkthrough.',
+  openGraph: {
+    title: 'Book a Free Demo — RestOS Restaurant Operating System',
+    description:
+      'Free 20-minute demo with the founding team. See QR ordering, kitchen display, payments, and analytics live.',
+    url: 'https://restos.in/demo',
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'RestOS Demo' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Book a Free Demo — RestOS Restaurant Operating System',
+    description: 'Free 20-minute demo. See RestOS live in your restaurant.',
+    images: ['/og-image.png'],
+  },
+  alternates: { canonical: 'https://restos.in/demo' },
+}
+
+const breadcrumbDemo = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://restos.in/' },
+    { '@type': 'ListItem', position: 2, name: 'Book a Demo', item: 'https://restos.in/demo' },
+  ],
 }
 
 export default function DemoPage() {
   return (
     <>
       <Navbar />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbDemo) }} />
       <main className="min-h-screen bg-midnight pt-28 pb-20 px-4">
         <div className="max-w-lg mx-auto">
           <div className="text-center mb-12">
