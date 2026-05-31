@@ -9,10 +9,11 @@ import { DemoVideo } from '@/components/home/DemoVideo'
 import { FoundingBanner } from '@/components/home/FoundingBanner'
 import { TrustSection } from '@/components/home/TrustSection'
 import { FinalCTA } from '@/components/home/FinalCTA'
+import { HomeWrapper } from '@/components/home/HomeWrapper'
 
 export default function HomePage() {
   return (
-    <>
+    <HomeWrapper>
       <Navbar />
       <main>
         <Hero />
@@ -26,6 +27,6 @@ export default function HomePage() {
         <FinalCTA />
       </main>
       <Footer />
-    </>
+    </HomeWrapper>
   )
 }

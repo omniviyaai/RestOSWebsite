@@ -44,9 +44,9 @@ export function Navbar() {
         className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
           scrolled ? 'bg-midnight/95 backdrop-blur-md border-b border-wire shadow-lg shadow-black/20' : 'bg-transparent'
         }`}
-        initial={{ y: -80, opacity: 0 }}
+        initial={{ y: -64, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ type: 'spring', stiffness: 200, damping: 25, delay: 1.4 }}
+        transition={{ type: 'spring', stiffness: 200, damping: 28 }}
       >
         <div className="max-w-7xl mx-auto px-4 md:px-8 h-16 flex items-center justify-between">
           <Link
@@ -56,7 +56,11 @@ export function Navbar() {
             onMouseLeave={handleLogoMouseLeave}
             style={{ display: 'inline-block', perspective: '400px' }}
           >
-            <motion.div style={{ rotateX: logoRotateX, rotateY: logoRotateY }}>
+            {/* layoutId="restos-logo" — FLIP target: loader logo animates here on exit */}
+            <motion.div
+              layoutId="restos-logo"
+              style={{ rotateX: logoRotateX, rotateY: logoRotateY }}
+            >
               <Logo variant="compact" />
             </motion.div>
           </Link>
@@ -67,7 +71,7 @@ export function Navbar() {
                 key={link.href}
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ type: 'spring', stiffness: 200, damping: 25, delay: 1.5 + i * 0.07 }}
+                transition={{ type: 'spring', stiffness: 200, damping: 25, delay: 0.1 + i * 0.07 }}
               >
                 <Link
                   href={link.href}
@@ -84,7 +88,7 @@ export function Navbar() {
             className="hidden md:flex items-center gap-3"
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ type: 'spring', stiffness: 200, damping: 25, delay: 1.8 }}
+            transition={{ type: 'spring', stiffness: 200, damping: 25, delay: 0.4 }}
           >
             <Button href={WHATSAPP_URL} variant="ghost" external>WhatsApp Us</Button>
             <Button href={DEMO_PAGE_URL} variant="primary">Book Demo</Button>
@@ -97,7 +101,7 @@ export function Navbar() {
             aria-expanded={mobileOpen}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 1.6 }}
+            transition={{ delay: 0.2 }}
           >
             <AnimatePresence mode="wait">
               {mobileOpen ? (
