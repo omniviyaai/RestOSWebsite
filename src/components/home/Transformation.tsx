@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { staggerContainer, fadeUp } from '@/lib/animations'
+import { transformBefore, transformAfter } from '@/lib/animations'
 
 const rows = [
   { before: 'Paper KOTs getting lost', after: 'Kitchen sees every order on screen, live' },
@@ -13,48 +13,68 @@ const rows = [
 
 export function Transformation() {
   return (
-    <section className="bg-midnight py-20 md:py-28 px-4">
+    <section className="bg-midnight py-20 md:py-28 px-4 overflow-hidden" style={{ perspective: '1200px' }}>
       <div className="max-w-4xl mx-auto">
         {/* Column headers */}
         <div className="grid grid-cols-2 gap-3 mb-4">
           <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.3 }}
-            className="text-center text-xs font-mono tracking-widest text-stone/50 uppercase"
+            transition={{ type: 'spring', stiffness: 200, damping: 25 }}
+            className="text-center text-xs font-mono tracking-widest text-stone/40 uppercase"
           >
             Before
           </motion.p>
           <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.3, delay: 0.1 }}
+            transition={{ type: 'spring', stiffness: 200, damping: 25, delay: 0.1 }}
             className="text-center text-xs font-mono tracking-widest text-teal uppercase"
           >
             After RestOS
           </motion.p>
         </div>
 
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-60px' }}
-          className="space-y-2"
-        >
+        <div className="space-y-2">
           {rows.map((row, i) => (
-            <motion.div key={i} variants={fadeUp} className="grid grid-cols-2 gap-2 sm:gap-3">
-              <div className="rounded-xl bg-carbon/40 border border-wire/30 p-3 sm:p-5">
-                <p className="text-stone/70 text-xs sm:text-sm leading-snug">{row.before}</p>
-              </div>
-              <div className="rounded-xl bg-teal/8 border border-teal/25 p-3 sm:p-5">
+            <div key={i} className="grid grid-cols-2 gap-2 sm:gap-3">
+              {/* Before card — slides from left, slightly recessed */}
+              <motion.div
+                variants={transformBefore}
+                custom={i}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: '-40px' }}
+                whileHover={{ scale: 1.01, x: 2, transition: { type: 'spring', stiffness: 400, damping: 30 } }}
+                className="rounded-xl bg-carbon/40 border border-wire/30 p-3 sm:p-5 cursor-default"
+                style={{ rotateY: -1, transformStyle: 'preserve-3d' }}
+              >
+                <p className="text-stone/60 text-xs sm:text-sm leading-snug">{row.before}</p>
+              </motion.div>
+
+              {/* After card — slides from right, slightly elevated with teal glow */}
+              <motion.div
+                variants={transformAfter}
+                custom={i}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: '-40px' }}
+                whileHover={{
+                  scale: 1.02,
+                  x: -2,
+                  boxShadow: '0 0 30px rgba(14,140,132,0.15)',
+                  transition: { type: 'spring', stiffness: 400, damping: 30 },
+                }}
+                className="rounded-xl bg-teal/8 border border-teal/25 p-3 sm:p-5 cursor-default"
+                style={{ rotateY: 1, transformStyle: 'preserve-3d' }}
+              >
                 <p className="text-warm-white text-xs sm:text-sm leading-snug">{row.after}</p>
-              </div>
-            </motion.div>
+              </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   )
