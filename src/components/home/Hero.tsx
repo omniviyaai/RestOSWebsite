@@ -69,7 +69,7 @@ export function Hero() {
 
         {/* Founding note */}
         <motion.p variants={fadeUp} className="mt-5 text-stone/70 text-xs font-mono tracking-wide">
-          {FOUNDING_SPOTS_TOTAL} Founding Partner spots &middot; First 3 months completely free
+          {FOUNDING_SPOTS_TOTAL}{' '}Founding Partner spots &middot; First 3 months completely free
         </motion.p>
 
         {/* Product preview window */}

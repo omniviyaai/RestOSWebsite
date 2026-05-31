@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { NAV_LINKS, WHATSAPP_URL } from '@/lib/constants'
+import { Logo } from '@/components/ui/Logo'
 
 export function Footer() {
   const year = new Date().getFullYear()
@@ -9,13 +10,10 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-4 md:px-8 py-12 md:py-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {/* Brand */}
-          <div className="flex flex-col gap-3">
-            <div>
-              <p className="font-display font-bold text-warm-white text-lg">RestOS</p>
-              <p className="text-stone text-xs tracking-wider">by Omniviya</p>
-            </div>
+          <div className="flex flex-col gap-4">
+            <Logo variant="full" />
             <p className="text-stone text-sm leading-relaxed max-w-xs">
-              The Operating System For Restaurants. Built for India.
+              Built for India. The complete operating system for restaurants of every size.
             </p>
           </div>
 

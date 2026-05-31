@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import { NAV_LINKS, WHATSAPP_URL, DEMO_PAGE_URL } from '@/lib/constants'
 import { Button } from '@/components/ui/Button'
+import { Logo } from '@/components/ui/Logo'
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false)
@@ -38,9 +39,8 @@ export function Navbar() {
       >
         <div className="max-w-7xl mx-auto px-4 md:px-8 h-16 flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex flex-col leading-none group">
-            <span className="font-display font-bold text-lg text-warm-white">RestOS</span>
-            <span className="text-stone text-[10px] tracking-wider">by Omniviya</span>
+          <Link href="/" aria-label="RestOS — Home">
+            <Logo variant="compact" />
           </Link>
 
           {/* Desktop Nav */}
@@ -86,7 +86,7 @@ export function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ type: 'spring', stiffness: 400, damping: 35 }}
-            className="fixed inset-0 z-40 bg-midnight flex flex-col pt-16"
+            className="fixed inset-0 z-40 bg-midnight flex flex-col pt-16 overflow-y-auto"
           >
             <nav className="flex flex-col p-6" aria-label="Mobile navigation">
               {NAV_LINKS.map((link, i) => (
