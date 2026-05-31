@@ -1,0 +1,2 @@
+[    1262ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/bundle.js:77766
+[    1673ms] [ERROR] Invalid DOM property `%s`. Did you mean `%s`? stroke-width strokeWidth @ http://localhost:3000/bundle.js:40778

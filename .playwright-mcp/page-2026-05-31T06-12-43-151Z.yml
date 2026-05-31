@@ -1,0 +1,67 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "RestOS by Omniviya" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e5]: RestOS
+        - generic [ref=e6]: by Omniviya
+      - navigation "Main navigation" [ref=e7]:
+        - link "Features" [ref=e8] [cursor=pointer]:
+          - /url: /features
+        - link "Pricing" [ref=e9] [cursor=pointer]:
+          - /url: /pricing
+        - link "Founding Partner" [ref=e10] [cursor=pointer]:
+          - /url: /founding
+        - link "About" [ref=e11] [cursor=pointer]:
+          - /url: /about
+      - generic [ref=e12]:
+        - link "WhatsApp Us" [ref=e13] [cursor=pointer]:
+          - /url: https://wa.me/919XXXXXXXXX?text=Hi%2C%20I%20want%20to%20know%20more%20about%20RestOS
+        - link "Book Demo" [ref=e15] [cursor=pointer]:
+          - /url: /demo
+  - main [ref=e16]:
+    - generic [ref=e17]:
+      - generic [ref=e18]:
+        - generic [ref=e19]: Free · 20 Minutes
+        - heading "Let's show you RestOS in your restaurant." [level=1] [ref=e20]
+        - paragraph [ref=e21]: Pick a time. We'll walk you through everything live — ordering, kitchen display, payments, analytics.
+      - generic [ref=e22]:
+        - generic [ref=e24]: 📅
+        - paragraph [ref=e25]: Calendar booking coming soon
+        - paragraph [ref=e26]: In the meantime, WhatsApp us directly and we'll schedule a demo within 24 hours.
+      - generic [ref=e27]:
+        - link "WhatsApp Us to Book a Demo" [ref=e28] [cursor=pointer]:
+          - /url: https://wa.me/919XXXXXXXXX?text=Hi%2C%20I%20want%20to%20know%20more%20about%20RestOS
+          - img [ref=e29]
+          - text: WhatsApp Us to Book a Demo
+        - paragraph [ref=e32]: Typically respond within 30 minutes during business hours.
+  - contentinfo [ref=e33]:
+    - generic [ref=e34]:
+      - generic [ref=e35]:
+        - generic [ref=e36]:
+          - generic [ref=e37]:
+            - paragraph [ref=e38]: RestOS
+            - paragraph [ref=e39]: by Omniviya
+          - paragraph [ref=e40]: The Operating System For Restaurants. Built for India.
+        - generic [ref=e41]:
+          - paragraph [ref=e42]: Navigation
+          - link "Features" [ref=e43] [cursor=pointer]:
+            - /url: /features
+          - link "Pricing" [ref=e44] [cursor=pointer]:
+            - /url: /pricing
+          - link "Founding Partner" [ref=e45] [cursor=pointer]:
+            - /url: /founding
+          - link "About" [ref=e46] [cursor=pointer]:
+            - /url: /about
+        - generic [ref=e47]:
+          - paragraph [ref=e48]: Contact
+          - link "WhatsApp Us" [ref=e49] [cursor=pointer]:
+            - /url: https://wa.me/919XXXXXXXXX?text=Hi%2C%20I%20want%20to%20know%20more%20about%20RestOS
+          - link "hello@omniviya.in" [ref=e50] [cursor=pointer]:
+            - /url: mailto:hello@omniviya.in
+      - generic [ref=e51]:
+        - paragraph [ref=e52]: © 2026 Omniviya. All rights reserved.
+        - paragraph [ref=e53]: RestOS is a product of Omniviya
+  - button "Open Next.js Dev Tools" [ref=e59] [cursor=pointer]:
+    - img [ref=e60]
+  - alert [ref=e63]

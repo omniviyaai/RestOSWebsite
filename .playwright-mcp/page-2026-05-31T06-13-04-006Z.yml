@@ -1,0 +1,198 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "RestOS by Omniviya" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e5]: RestOS
+        - generic [ref=e6]: by Omniviya
+      - button "Open menu" [ref=e7] [cursor=pointer]:
+        - img [ref=e8]
+  - main [ref=e9]:
+    - generic [ref=e12]:
+      - generic [ref=e14]: NOW LAUNCHING IN INDIA
+      - heading "Your Restaurant Is Running You." [level=1] [ref=e15]:
+        - text: Your Restaurant
+        - text: Is Running You.
+      - paragraph [ref=e16]: It's time to flip that.
+      - paragraph [ref=e17]: RestOS is the complete operating system for Indian restaurants. One screen. Every order. Every table. Every rupee.
+      - generic [ref=e18]:
+        - link "Book a Free Demo" [ref=e20] [cursor=pointer]:
+          - /url: /demo
+        - link "WhatsApp Us" [ref=e21] [cursor=pointer]:
+          - /url: https://wa.me/919XXXXXXXXX?text=Hi%2C%20I%20want%20to%20know%20more%20about%20RestOS
+      - paragraph [ref=e22]: 10Founding Partner spots · First 3 months completely free
+      - generic [ref=e33]:
+        - paragraph [ref=e35]: Admin Dashboard · Live
+        - paragraph [ref=e36]: Replace with actual screenshot
+    - generic [ref=e38]:
+      - paragraph [ref=e39]: “A customer complained their order never reached the kitchen.”
+      - paragraph [ref=e40]: “Your waiter wrote it down wrong. Again.”
+      - paragraph [ref=e41]: “You found out at closing that 3 tables had billing errors.”
+      - paragraph [ref=e42]: “You were at home and had no idea what was happening inside.”
+      - paragraph [ref=e43]: “You lost a regular because the queue was too long.”
+      - generic [ref=e44]:
+        - paragraph [ref=e45]: This is what running a restaurant feels like today.
+        - paragraph [ref=e46]: There is a better way.
+    - generic [ref=e48]:
+      - generic [ref=e49]:
+        - paragraph [ref=e50]: Before
+        - paragraph [ref=e51]: After RestOS
+      - generic [ref=e52]:
+        - generic [ref=e53]:
+          - paragraph [ref=e55]: Paper KOTs getting lost
+          - paragraph [ref=e57]: Kitchen sees every order on screen, live
+        - generic [ref=e58]:
+          - paragraph [ref=e60]: Waiter shouts across the floor
+          - paragraph [ref=e62]: Silent, digital, instant
+        - generic [ref=e63]:
+          - paragraph [ref=e65]: Owner finds out at closing
+          - paragraph [ref=e67]: Owner sees revenue live from anywhere
+        - generic [ref=e68]:
+          - paragraph [ref=e70]: Customer waits to flag a waiter
+          - paragraph [ref=e72]: Customer orders from their own phone
+        - generic [ref=e73]:
+          - paragraph [ref=e75]: Billing mistakes and arguments
+          - paragraph [ref=e77]: Every order tracked, every rupee accounted
+    - generic [ref=e79]:
+      - heading "Every Part of Your Restaurant. Finally Connected." [level=2] [ref=e81]:
+        - text: Every Part of Your Restaurant.
+        - text: Finally Connected.
+      - generic [ref=e82]:
+        - generic [ref=e84]:
+          - paragraph [ref=e85]: Customer Phone
+          - paragraph [ref=e86]: Scans QR, browses menu
+        - generic [ref=e89]:
+          - paragraph [ref=e90]: QR Menu
+          - paragraph [ref=e91]: Orders instantly, no app download
+        - generic [ref=e94]:
+          - paragraph [ref=e95]: Live Order
+          - paragraph [ref=e96]: Confirmed in real time
+        - generic [ref=e99]:
+          - paragraph [ref=e100]: Kitchen Display
+          - paragraph [ref=e101]: Kitchen sees it immediately
+        - generic [ref=e104]:
+          - paragraph [ref=e105]: Waiter App
+          - paragraph [ref=e106]: Floor team stays informed
+        - generic [ref=e109]:
+          - paragraph [ref=e110]: Payment
+          - paragraph [ref=e111]: UPI, card, or cash — all tracked
+        - generic [ref=e114]:
+          - paragraph [ref=e115]: Analytics
+          - paragraph [ref=e116]: Revenue and trends, live
+        - generic [ref=e119]:
+          - paragraph [ref=e120]: You — Admin
+          - paragraph [ref=e121]: Full control, from anywhere
+    - generic [ref=e123]:
+      - heading "One System. Everything Inside." [level=2] [ref=e125]
+      - generic [ref=e126]:
+        - generic [ref=e127]:
+          - generic [ref=e128]: 📱
+          - heading "Customers order themselves" [level=3] [ref=e129]
+          - paragraph [ref=e130]: Scan, browse, order, pay — all from their own phone. No waiter needed for every table.
+        - generic [ref=e131]:
+          - generic [ref=e132]: 🍳
+          - heading "Kitchen never misses an order" [level=3] [ref=e133]
+          - paragraph [ref=e134]: Every KOT is digital, timestamped, color-coded. Nothing gets lost.
+        - generic [ref=e135]:
+          - generic [ref=e136]: 🛎️
+          - heading "Your waiter always knows what's next" [level=3] [ref=e137]
+          - paragraph [ref=e138]: Table-by-table clarity. No shouting across the floor.
+        - generic [ref=e139]:
+          - generic [ref=e140]: 💰
+          - heading "Every rupee tracked automatically" [level=3] [ref=e141]
+          - paragraph [ref=e142]: UPI, card, and cash — all in one place, in real time.
+        - generic [ref=e143]:
+          - generic [ref=e144]: 📊
+          - heading "Manage from anywhere" [level=3] [ref=e145]
+          - paragraph [ref=e146]: Full admin dashboard on your phone or laptop. Check in from home.
+        - generic [ref=e147]:
+          - generic [ref=e148]: 📲
+          - heading "No new hardware needed" [level=3] [ref=e149]
+          - paragraph [ref=e150]: Works on any phone, tablet, or TV you already own.
+      - link "See the full product →" [ref=e152] [cursor=pointer]:
+        - /url: /features
+    - generic [ref=e154]:
+      - heading "See It Running In A Real Restaurant" [level=2] [ref=e156]
+      - button "Play RestOS Product Demo" [ref=e158] [cursor=pointer]:
+        - img "RestOS Product Demo" [ref=e159]
+        - img [ref=e163]
+      - generic [ref=e165]:
+        - paragraph [ref=e168]: QR ordering live in 60 seconds
+        - paragraph [ref=e171]: Kitchen display — no paper KOTs
+        - paragraph [ref=e174]: Admin dashboard — from anywhere
+    - generic [ref=e177]:
+      - generic [ref=e179]: Limited Offer
+      - heading "We're Looking For 10 Founding Partners" [level=2] [ref=e180]
+      - paragraph [ref=e181]: Not customers. Partners. The restaurants that shape how RestOS works get 3 months free — and direct access to the founders.
+      - list [ref=e182]:
+        - listitem [ref=e183]:
+          - generic [ref=e184]: ✓
+          - generic [ref=e185]: RestOS completely free for 90 days
+        - listitem [ref=e186]:
+          - generic [ref=e187]: ✓
+          - generic [ref=e188]: Direct WhatsApp line to the founding team
+        - listitem [ref=e189]:
+          - generic [ref=e190]: ✓
+          - generic [ref=e191]: Your feedback shapes the product roadmap
+        - listitem [ref=e192]:
+          - generic [ref=e193]: ✓
+          - generic [ref=e194]: Founding Partner badge on your restaurant profile
+        - listitem [ref=e195]:
+          - generic [ref=e196]: ✓
+          - generic [ref=e197]: First access to every new feature
+      - generic [ref=e198]:
+        - paragraph [ref=e211]: 10 of 10 spots remaining
+        - link "Apply To Be A Founding Partner" [ref=e213] [cursor=pointer]:
+          - /url: /founding
+    - generic [ref=e215]:
+      - heading "Built For India. Built To Last." [level=2] [ref=e217]
+      - generic [ref=e218]:
+        - generic [ref=e219]:
+          - heading "Your money, your account" [level=3] [ref=e220]
+          - paragraph [ref=e221]: Payments go directly to your Razorpay or Cashfree account. We never touch it.
+        - generic [ref=e222]:
+          - heading "Your data, completely isolated" [level=3] [ref=e223]
+          - paragraph [ref=e224]: No other restaurant can ever see your orders, customers, or revenue.
+        - generic [ref=e225]:
+          - heading "Works on devices you already own" [level=3] [ref=e226]
+          - paragraph [ref=e227]: Any phone, tablet, or laptop. No proprietary hardware to buy.
+        - generic [ref=e228]:
+          - heading "No app download needed" [level=3] [ref=e229]
+          - paragraph [ref=e230]: Customers scan a QR code. That is all. No sign-up. No install.
+    - generic [ref=e232]:
+      - heading "Ready to see RestOS in your restaurant?" [level=2] [ref=e233]
+      - paragraph [ref=e234]: No commitment. No credit card. Just a conversation.
+      - generic [ref=e235]:
+        - link "Book a 20-Minute Demo" [ref=e237] [cursor=pointer]:
+          - /url: /demo
+        - link "WhatsApp Us Now" [ref=e238] [cursor=pointer]:
+          - /url: https://wa.me/919XXXXXXXXX?text=Hi%2C%20I%20want%20to%20know%20more%20about%20RestOS
+  - contentinfo [ref=e239]:
+    - generic [ref=e240]:
+      - generic [ref=e241]:
+        - generic [ref=e242]:
+          - generic [ref=e243]:
+            - paragraph [ref=e244]: RestOS
+            - paragraph [ref=e245]: by Omniviya
+          - paragraph [ref=e246]: The Operating System For Restaurants. Built for India.
+        - generic [ref=e247]:
+          - paragraph [ref=e248]: Navigation
+          - link "Features" [ref=e249] [cursor=pointer]:
+            - /url: /features
+          - link "Pricing" [ref=e250] [cursor=pointer]:
+            - /url: /pricing
+          - link "Founding Partner" [ref=e251] [cursor=pointer]:
+            - /url: /founding
+          - link "About" [ref=e252] [cursor=pointer]:
+            - /url: /about
+        - generic [ref=e253]:
+          - paragraph [ref=e254]: Contact
+          - link "WhatsApp Us" [ref=e255] [cursor=pointer]:
+            - /url: https://wa.me/919XXXXXXXXX?text=Hi%2C%20I%20want%20to%20know%20more%20about%20RestOS
+          - link "hello@omniviya.in" [ref=e256] [cursor=pointer]:
+            - /url: mailto:hello@omniviya.in
+      - generic [ref=e257]:
+        - paragraph [ref=e258]: © 2026 Omniviya. All rights reserved.
+        - paragraph [ref=e259]: RestOS is a product of Omniviya
+  - button "Open Next.js Dev Tools" [ref=e265] [cursor=pointer]:
+    - img [ref=e266]

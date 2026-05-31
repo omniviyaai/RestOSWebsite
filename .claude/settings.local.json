@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "defaultMode": "bypassPermissions",
+    "allow": [
+      "PowerShell($env:PGPASSWORD = \"Omniviya@1709\"; & \"C:\\\\Program Files\\\\PostgreSQL\\\\18\\\\bin\\\\psql.exe\" -U postgres -c \"CREATE DATABASE restaurant;\" 2>&1)",
+      "Read(//c//**)",
+      "Bash(netstat -ano)",
+      "Bash(npx tsc *)",
+      "Read(//c/Users/sesha/Downloads/omniviya-video/out/**)",
+      "Read(//c/Users/sesha/Downloads/omniviya-video/**)",
+      "Bash(npx remotion *)",
+      "Bash(pg_isready -h localhost -p 5432)",
+      "Bash(*)",
+      "Read(*)",
+      "Write(*)",
+      "Edit(*)",
+      "Glob(*)",
+      "Grep(*)",
+      "mcp__plugin_playwright_playwright__*"
+    ]
+  }
+}
