@@ -2,12 +2,14 @@
 
 import { motion } from 'framer-motion'
 import { TRUST_SIGNALS } from '@/lib/constants'
+import { useRegion } from '@/lib/region-context'
 
 function getTrustDelay(index: number): number {
   return (Math.floor(index / 2) + (index % 2)) * 0.1
 }
 
 export function TrustSection() {
+  const region = useRegion()
   return (
     <section className="bg-carbon/15 py-16 md:py-20 px-4 relative overflow-hidden">
       {/* Geometric grid background */}
@@ -28,7 +30,7 @@ export function TrustSection() {
           className="text-center mb-10"
         >
           <h2 className="text-xl sm:text-2xl md:text-3xl font-display font-bold text-warm-white">
-            Built For India. Built To Last.
+            {region.tagline}
           </h2>
         </motion.div>
 
@@ -47,7 +49,11 @@ export function TrustSection() {
               <h3 className="font-display font-semibold text-warm-white text-sm mb-1.5 group-hover:text-ember transition-colors duration-200">
                 {signal.title}
               </h3>
-              <p className="text-stone text-xs leading-relaxed">{signal.description}</p>
+              <p className="text-stone text-xs leading-relaxed">
+                {i === 0
+                  ? `Payments go directly to your ${region.paymentGateways.join(' or ')} account. We never touch it.`
+                  : signal.description}
+              </p>
             </motion.div>
           ))}
         </div>
