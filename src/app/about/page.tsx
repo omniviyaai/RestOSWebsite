@@ -2,7 +2,8 @@ import type { Metadata } from 'next'
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
 import { Button } from '@/components/ui/Button'
-import { WHATSAPP_URL, DEMO_PAGE_URL } from '@/lib/constants'
+import { WhatsAppButton } from '@/components/ui/WhatsAppButton'
+import { DEMO_PAGE_URL } from '@/lib/constants'
 
 export const metadata: Metadata = {
   title: 'About — RestOS by Omniviya',
@@ -85,7 +86,7 @@ export default function AboutPage() {
             <h2 className="font-display font-bold text-warm-white text-lg sm:text-xl mb-6">Get In Touch</h2>
             <div className="space-y-4">
               {[
-                { label: 'WhatsApp', href: WHATSAPP_URL, text: 'Message us directly', external: true },
+                { label: 'WhatsApp', href: '#', text: 'Message us directly', external: true },
                 { label: 'Email', href: 'mailto:hello@omniviya.in', text: 'hello@omniviya.in', external: false },
                 { label: 'Website', href: 'https://omniviya.in', text: 'omniviya.in', external: true },
               ].map(({ label, href, text, external }) => (
@@ -108,9 +109,7 @@ export default function AboutPage() {
             <Button href={DEMO_PAGE_URL} variant="primary" className="w-full sm:w-auto justify-center py-4">
               Book a Demo
             </Button>
-            <Button href={WHATSAPP_URL} variant="ghost" external className="w-full sm:w-auto justify-center py-4">
-              WhatsApp Us
-            </Button>
+            <WhatsAppButton className="w-full sm:w-auto justify-center py-4" />
           </div>
         </div>
       </main>

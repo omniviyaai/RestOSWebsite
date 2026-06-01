@@ -2,7 +2,8 @@ import type { Metadata } from 'next'
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
 import { Button } from '@/components/ui/Button'
-import { DEMO_PAGE_URL, WHATSAPP_URL } from '@/lib/constants'
+import { WhatsAppButton } from '@/components/ui/WhatsAppButton'
+import { DEMO_PAGE_URL } from '@/lib/constants'
 
 export const metadata: Metadata = {
   title: 'Features',
@@ -152,9 +153,7 @@ export default function FeaturesPage() {
             <Button href={DEMO_PAGE_URL} variant="primary" className="w-full sm:w-auto justify-center py-4">
               Book a Free Demo
             </Button>
-            <Button href={WHATSAPP_URL} variant="ghost" external className="w-full sm:w-auto justify-center py-4">
-              WhatsApp Us
-            </Button>
+            <WhatsAppButton className="w-full sm:w-auto justify-center py-4" />
           </div>
         </div>
       </main>

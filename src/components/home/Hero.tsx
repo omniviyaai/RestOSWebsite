@@ -5,7 +5,7 @@ import { motion, useSpring } from 'framer-motion'
 import { Button } from '@/components/ui/Button'
 import { TiltedDevice } from '@/components/ui/TiltedDevice'
 import { useRegion } from '@/lib/region-context'
-import { WHATSAPP_URL, DEMO_PAGE_URL, FOUNDING_SPOTS_TOTAL } from '@/lib/constants'
+import { DEMO_PAGE_URL, FOUNDING_SPOTS_TOTAL } from '@/lib/constants'
 import { normaliseMousePos, mapMouseToRotation, mapMouseToOffset, springs } from '@/lib/parallax'
 import { heroLetter, heroEntry } from '@/lib/animations'
 
@@ -215,7 +215,7 @@ export function Hero() {
               <Button href={DEMO_PAGE_URL} variant="primary" className="text-base px-8 py-4 min-h-[52px] justify-center">
                 Book a Free Demo
               </Button>
-              <Button href={WHATSAPP_URL} variant="ghost" external className="text-base px-8 py-4 min-h-[52px] justify-center">
+              <Button href={`https://wa.me/${region.whatsappNumber}?text=${encodeURIComponent('Hi, I want to know more about RestOS')}`} variant="ghost" external className="text-base px-8 py-4 min-h-[52px] justify-center">
                 WhatsApp Us
               </Button>
             </motion.div>
