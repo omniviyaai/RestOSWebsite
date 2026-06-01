@@ -10,14 +10,14 @@ const jsonLd = {
       name: 'Omniviya',
       url: 'https://omniviya.in',
       logo: 'https://restos.in/og-image.png',
-      description: 'Building RestOS — the complete operating system for Indian restaurants.',
+      description: 'Building RestOS — the complete operating system for UK restaurants.',
       foundingDate: '2025',
-      location: { '@type': 'Place', address: { '@type': 'PostalAddress', addressCountry: 'IN' } },
+      location: { '@type': 'Place', address: { '@type': 'PostalAddress', addressCountry: 'GB' } },
       contactPoint: {
         '@type': 'ContactPoint',
         contactType: 'sales',
         email: 'hello@omniviya.in',
-        availableLanguage: ['English', 'Hindi'],
+        availableLanguage: ['English'],
       },
       sameAs: ['https://omniviya.in'],
     },
@@ -26,15 +26,14 @@ const jsonLd = {
       '@id': 'https://restos.in/#webapplication',
       name: 'RestOS',
       url: 'https://restos.in',
-      description:
-        'QR ordering, kitchen display system, waiter app, UPI payments, reservations, and real-time analytics for Indian restaurants.',
+      description: 'QR ordering, kitchen display system, waiter app, and real-time analytics for UK restaurants.',
       applicationCategory: 'BusinessApplication',
       operatingSystem: 'Cross-platform (web, iOS, Android)',
       browserRequirements: 'Requires modern browser on phone, tablet, or laptop',
       offers: {
         '@type': 'Offer',
         price: '0',
-        priceCurrency: 'INR',
+        priceCurrency: 'GBP',
         description: 'Free for 90 days for Founding Partners',
       },
       author: { '@type': 'Organization', '@id': 'https://restos.in/#organization' },
@@ -46,21 +45,19 @@ const jsonLd = {
 export const metadata: Metadata = {
   metadataBase: new URL('https://restos.in'),
   title: {
-    default: 'RestOS — The Operating System For Indian Restaurants',
+    default: 'RestOS — The Operating System For UK Restaurants',
     template: '%s — RestOS',
   },
-  description:
-    'RestOS is the complete operating system for Indian restaurants. QR code ordering, kitchen display system, waiter app, UPI payments, and real-time analytics.',
+  description: 'RestOS is the complete operating system for UK restaurants. QR code ordering, kitchen display system, waiter app, and real-time analytics.',
   keywords: [
-    'restaurant management software India',
+    'restaurant management software UK',
     'QR ordering system',
     'kitchen display system',
-    'restaurant POS India',
-    'Indian restaurant software',
+    'restaurant POS UK',
+    'UK restaurant software',
     'QR menu for restaurants',
     'online ordering system restaurant',
     'restaurant analytics platform',
-    'cloud kitchen software India',
     'restaurant operating system',
   ],
   authors: [{ name: 'Omniviya' }],
@@ -68,51 +65,39 @@ export const metadata: Metadata = {
   publisher: 'Omniviya',
   robots: { index: true, follow: true },
   alternates: {
-    canonical: 'https://restos.in/in',
+    canonical: 'https://restos.in/uk',
     languages: {
-      'en-in': 'https://restos.in/in',
       'en-gb': 'https://restos.in/uk',
+      'en-in': 'https://restos.in/in',
     },
   },
   openGraph: {
-    title: 'RestOS — The Operating System For Indian Restaurants',
-    description:
-      'QR ordering, kitchen display, waiter app, payments, and analytics — all connected, all in real time.',
-    url: 'https://restos.in/in',
-    siteName: 'RestOS by Omniviya',
-    images: [
-      {
-        url: '/og-image.png',
-        width: 1200,
-        height: 630,
-        alt: 'RestOS — Restaurant Operating System',
-      },
-    ],
-    locale: 'en_IN',
+    title: 'RestOS — The Operating System For UK Restaurants',
+    description: 'QR ordering, kitchen display, waiter app, payments, and analytics — all connected, all in real time.',
+    url: 'https://restos.in/uk',
+    siteName: 'RestOS UK',
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'RestOS — Restaurant Operating System' }],
+    locale: 'en_GB',
     type: 'website',
-    countryName: 'India',
+    countryName: 'United Kingdom',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'RestOS — The Operating System For Indian Restaurants',
-    description:
-      'QR ordering, kitchen display, waiter app, payments, and analytics — all in real time.',
+    title: 'RestOS — The Operating System For UK Restaurants',
+    description: 'QR ordering, kitchen display, waiter app, payments, and analytics — all in real time.',
     images: ['/og-image.png'],
   },
   other: {
-    'geo.region': 'IN',
-    'geo.placename': 'India',
+    'geo.region': 'GB',
+    'geo.placename': 'United Kingdom',
   },
 }
 
-export default function InLayout({ children }: { children: React.ReactNode }) {
+export default function UkLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-      <RegionProvider region="in">{children}</RegionProvider>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <RegionProvider region="uk">{children}</RegionProvider>
     </>
   )
 }

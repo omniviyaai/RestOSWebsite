@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-export { default } from '@/app/about/page'
+export { default } from '@/app/_about/page'
 
 export const metadata: Metadata = {
   title: 'About — RestOS by Omniviya',

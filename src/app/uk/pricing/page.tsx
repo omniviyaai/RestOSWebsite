@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-export { default } from '@/app/pricing/page'
+export { default } from '@/app/_pricing/page'
 
 export const metadata: Metadata = {
   title: 'Pricing',

@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-export { default } from '@/app/features/page'
+export { default } from '@/app/_features/page'
 
 export const metadata: Metadata = {
   title: 'Features',

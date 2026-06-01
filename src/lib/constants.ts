@@ -1,7 +1,7 @@
 // src/lib/constants.ts
 
-export const DEMO_PAGE_URL = '/demo'
-export const FOUNDING_PAGE_URL = '/founding'
+export const DEMO_PAGE_URL = '/in/demo'
+export const FOUNDING_PAGE_URL = '/in/founding'
 
 export const FOUNDING_SPOTS_TOTAL = 10
 export const FOUNDING_SPOTS_TAKEN = 0
@@ -9,10 +9,10 @@ export const FOUNDING_SPOTS_TAKEN = 0
 export const YOUTUBE_VIDEO_ID = 'REPLACE_WITH_YOUR_VIDEO_ID'
 
 export const NAV_LINKS = [
-  { label: 'Features', href: '/features' },
-  { label: 'Pricing', href: '/pricing' },
-  { label: 'Founding Partner', href: '/founding' },
-  { label: 'About', href: '/about' },
+  { label: 'Features', href: '/in/features' },
+  { label: 'Pricing', href: '/in/pricing' },
+  { label: 'Founding Partner', href: '/in/founding' },
+  { label: 'About', href: '/in/about' },
 ] as const
 
 export const PAIN_STATEMENTS = [
