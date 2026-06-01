@@ -50,58 +50,62 @@ export function TiltedDevice({ rotateX, rotateY, videoSrc = '/video/restos-flow.
           transformOrigin: 'center center',
         }}
       >
-        {/* Device body — laptop-like with depth */}
+        {/* Device body — mobile phone shape */}
         <div
-          className="relative rounded-2xl border border-wire/50 bg-carbon shadow-2xl shadow-ember/10 overflow-hidden"
+          className="relative rounded-3xl border border-wire/50 bg-carbon shadow-2xl shadow-ember/10 overflow-hidden w-3/5 mx-auto"
           style={{
             transform: 'translateZ(40px)',
             boxShadow: '0 40px 100px rgba(0,0,0,0.6), 0 0 0 1px rgba(232,116,42,0.08)',
           }}
         >
-          {/* Top bezel bar with camera dot */}
-          <div className="flex items-center justify-center h-8 bg-carbon border-b border-wire/30 relative">
-            <div className="w-2 h-2 rounded-full bg-wire/40" />
-            <div className="absolute left-4 flex items-center gap-1.5">
-              <div className="w-1.5 h-1.5 rounded-full bg-ember/40" />
-              <div className="w-1.5 h-1.5 rounded-full bg-teal/40" />
+          {/* Side padding for phone bezels */}
+          <div className="px-2 pt-1 pb-2">
+            {/* Dynamic Island */}
+            <div className="flex items-center justify-center h-6 relative mb-1">
+              <div className="w-24 h-[22px] rounded-full bg-black flex items-center justify-center gap-3">
+                <div className="w-1.5 h-1.5 rounded-full bg-wire/30" />
+                <div className="w-2 h-2 rounded-full bg-wire/20" />
+              </div>
+            </div>
+
+            {/* Screen area */}
+            <div className="relative aspect-[9/16] bg-midnight overflow-hidden rounded-sm">
+              <video
+                key={videoSrc}
+                ref={videoRef}
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="auto"
+                className="absolute inset-0 w-full h-full object-cover"
+                style={{
+                  filter: 'brightness(0.85) saturate(0.9)',
+                }}
+              >
+                <source src={videoSrc} type="video/mp4" />
+              </video>
+
+              {/* Screen glare overlay */}
+              <div
+                className="absolute inset-0 pointer-events-none"
+                style={{
+                  background:
+                    'linear-gradient(135deg, rgba(255,255,255,0.04) 0%, transparent 40%, rgba(0,0,0,0.08) 80%)',
+                }}
+              />
+            </div>
+
+            {/* Bottom bezel with home indicator */}
+            <div className="h-5 flex items-center justify-center">
+              <div className="w-28 h-[3px] rounded-full bg-wire/25" />
             </div>
           </div>
-
-          {/* Screen area — zoomed in so animations are clearly visible */}
-          <div className="relative aspect-video bg-midnight overflow-hidden">
-            <video
-              key={videoSrc}
-              ref={videoRef}
-              autoPlay
-              loop
-              muted
-              playsInline
-              preload="auto"
-              className="absolute inset-0 w-full h-full object-cover"
-              style={{
-                filter: 'brightness(0.85) saturate(0.9)',
-              }}
-            >
-              <source src={videoSrc} type="video/mp4" />
-            </video>
-
-            {/* Screen glare overlay */}
-            <div
-              className="absolute inset-0 pointer-events-none"
-              style={{
-                background:
-                  'linear-gradient(135deg, rgba(255,255,255,0.04) 0%, transparent 40%, rgba(0,0,0,0.08) 80%)',
-              }}
-            />
-          </div>
-
-          {/* Bottom chin */}
-          <div className="h-4 bg-carbon border-t border-wire/20" />
         </div>
 
         {/* 3D thickness strip on the bottom edge */}
         <div
-          className="absolute -bottom-2 left-0 right-0 h-2 rounded-b-2xl pointer-events-none"
+          className="absolute -bottom-2 left-0 right-0 h-2 rounded-b-3xl pointer-events-none"
           style={{
             background: 'linear-gradient(180deg, #151B2E 0%, #0B1020 100%)',
             transform: 'translateZ(20px) rotateX(-2deg)',
