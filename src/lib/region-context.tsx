@@ -4,7 +4,7 @@ import { createContext, useContext, type ReactNode } from 'react'
 import type { Region, RegionConfig } from './region-config'
 import { regionConfig } from './region-config'
 
-const RegionContext = createContext<RegionConfig>(regionConfig.in)
+const RegionContext = createContext<RegionConfig | null>(null)
 
 export function RegionProvider({
   region,
@@ -21,5 +21,7 @@ export function RegionProvider({
 }
 
 export function useRegion() {
-  return useContext(RegionContext)
+  const ctx = useContext(RegionContext)
+  if (!ctx) throw new Error('useRegion must be used within a RegionProvider')
+  return ctx
 }
