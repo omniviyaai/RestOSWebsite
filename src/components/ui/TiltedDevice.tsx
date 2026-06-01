@@ -6,9 +6,10 @@ import { motion, type MotionValue } from 'framer-motion'
 interface TiltedDeviceProps {
   rotateX: MotionValue<number>
   rotateY: MotionValue<number>
+  videoSrc?: string
 }
 
-export function TiltedDevice({ rotateX, rotateY }: TiltedDeviceProps) {
+export function TiltedDevice({ rotateX, rotateY, videoSrc = '/video/restos-flow.mp4' }: TiltedDeviceProps) {
   const videoRef = useRef<HTMLVideoElement>(null)
   const [reducedMotion, setReducedMotion] = useState(false)
 
@@ -69,6 +70,7 @@ export function TiltedDevice({ rotateX, rotateY }: TiltedDeviceProps) {
           {/* Screen area — zoomed in so animations are clearly visible */}
           <div className="relative aspect-video bg-midnight overflow-hidden">
             <video
+              key={videoSrc}
               ref={videoRef}
               autoPlay
               loop
@@ -80,8 +82,7 @@ export function TiltedDevice({ rotateX, rotateY }: TiltedDeviceProps) {
                 filter: 'brightness(0.85) saturate(0.9)',
               }}
             >
-              <source src="/video/restos-flow.mp4" type="video/mp4" />
-              <source src="/video/restos-flow.webm" type="video/webm" />
+              <source src={videoSrc} type="video/mp4" />
             </video>
 
             {/* Screen glare overlay */}

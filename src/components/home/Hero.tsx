@@ -4,6 +4,7 @@ import { useRef, useCallback } from 'react'
 import { motion, useSpring } from 'framer-motion'
 import { Button } from '@/components/ui/Button'
 import { TiltedDevice } from '@/components/ui/TiltedDevice'
+import { useRegion } from '@/lib/region-context'
 import { WHATSAPP_URL, DEMO_PAGE_URL, FOUNDING_SPOTS_TOTAL } from '@/lib/constants'
 import { normaliseMousePos, mapMouseToRotation, mapMouseToOffset, springs } from '@/lib/parallax'
 import { heroLetter, heroEntry } from '@/lib/animations'
@@ -19,6 +20,7 @@ const HEADLINE_LINE2 = [
 ]
 
 export function Hero() {
+  const region = useRegion()
   const containerRef = useRef<HTMLElement>(null)
 
   const contentRotateX = useSpring(0, springs.hero)
@@ -125,7 +127,7 @@ export function Hero() {
               className="inline-flex items-center gap-2 mb-6"
             >
               <span className="px-3 py-1.5 rounded-full border border-teal/30 bg-teal/10 text-teal text-xs font-mono tracking-wider animate-breathing">
-                NOW LAUNCHING IN INDIA
+                {region.badge}
               </span>
             </motion.div>
 
@@ -187,7 +189,7 @@ export function Hero() {
               animate="visible"
               className="text-lg sm:text-xl md:text-2xl font-display font-medium text-stone mb-6"
             >
-              It&apos;s time to flip that.
+              {region.tagline}
             </motion.p>
 
             {/* Description */}
@@ -241,6 +243,7 @@ export function Hero() {
             <TiltedDevice
               rotateX={deviceRotateX}
               rotateY={deviceRotateY}
+              videoSrc={region.heroVideo}
             />
           </motion.div>
         </div>
