@@ -4,12 +4,14 @@ import { useState, useEffect, useCallback } from 'react'
 import Link from 'next/link'
 import { motion, AnimatePresence, useSpring } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
-import { NAV_LINKS, WHATSAPP_URL, DEMO_PAGE_URL } from '@/lib/constants'
+import { NAV_LINKS, DEMO_PAGE_URL } from '@/lib/constants'
+import { useRegion } from '@/lib/region-context'
 import { Button } from '@/components/ui/Button'
 import { Logo } from '@/components/ui/Logo'
 import { normaliseMousePos, mapMouseToRotation, springs } from '@/lib/parallax'
 
 export function Navbar() {
+  const region = useRegion()
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
 
@@ -86,13 +88,28 @@ export function Navbar() {
             ))}
           </nav>
 
+          <div className="hidden md:flex items-center gap-1 mr-2 border-r border-wire/30 pr-3">
+            <a
+              href="/in"
+              className="px-2 py-1 text-[11px] font-mono rounded transition-colors text-stone hover:text-ember"
+            >
+              🇮🇳 IN
+            </a>
+            <a
+              href="/uk"
+              className="px-2 py-1 text-[11px] font-mono rounded transition-colors text-stone hover:text-ember"
+            >
+              🇬🇧 UK
+            </a>
+          </div>
+
           <motion.div
             className="hidden md:flex items-center gap-3"
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ type: 'spring', stiffness: 200, damping: 25, delay: 0.4 }}
           >
-            <Button href={WHATSAPP_URL} variant="ghost" external>WhatsApp Us</Button>
+            <Button href={`https://wa.me/${region.whatsappNumber}?text=${encodeURIComponent('Hi, I want to know more about RestOS')}`} variant="ghost" external>WhatsApp Us</Button>
             <Button href={DEMO_PAGE_URL} variant="primary">Book Demo</Button>
           </motion.div>
 
@@ -147,8 +164,13 @@ export function Navbar() {
                 </motion.div>
               ))}
             </nav>
+            <div className="flex gap-2 py-4 px-6 border-b border-wire/40">
+              <a href="/in" className="text-stone text-sm hover:text-ember transition-colors">🇮🇳 India</a>
+              <span className="text-wire">|</span>
+              <a href="/uk" className="text-stone text-sm hover:text-ember transition-colors">🇬🇧 UK</a>
+            </div>
             <div className="p-6 flex flex-col gap-3 mt-auto">
-              <Button href={WHATSAPP_URL} variant="ghost" external className="w-full justify-center text-base py-4">WhatsApp Us</Button>
+              <Button href={`https://wa.me/${region.whatsappNumber}?text=${encodeURIComponent('Hi, I want to know more about RestOS')}`} variant="ghost" external className="w-full justify-center text-base py-4">WhatsApp Us</Button>
               <Button href={DEMO_PAGE_URL} variant="primary" className="w-full justify-center text-base py-4">Book Demo</Button>
             </div>
           </motion.div>
