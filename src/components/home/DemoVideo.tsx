@@ -3,7 +3,7 @@
 import { useRef, useCallback } from 'react'
 import { motion, useSpring } from 'framer-motion'
 import { LiteYoutube } from '@/components/ui/LiteYoutube'
-import { YOUTUBE_VIDEO_ID } from '@/lib/constants'
+import { useRegion } from '@/lib/region-context'
 import { normaliseMousePos, mapMouseToRotation, springs } from '@/lib/parallax'
 
 const callouts = [
@@ -13,6 +13,7 @@ const callouts = [
 ]
 
 export function DemoVideo() {
+  const region = useRegion()
   const playerRef = useRef<HTMLDivElement>(null)
   const rotateX = useSpring(0, springs.hero)
   const rotateY = useSpring(0, springs.hero)
@@ -59,7 +60,7 @@ export function DemoVideo() {
             style={{ rotateX, rotateY, transformStyle: 'preserve-3d' }}
             className="rounded-xl overflow-hidden shadow-2xl shadow-black/50"
           >
-            <LiteYoutube videoId={YOUTUBE_VIDEO_ID} title="RestOS Product Demo" />
+            <LiteYoutube videoId={region.youtubeVideoId} title="RestOS Product Demo" />
           </motion.div>
         </motion.div>
 

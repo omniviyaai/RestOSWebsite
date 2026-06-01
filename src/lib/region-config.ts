@@ -20,6 +20,7 @@ export interface RegionConfig {
   ogDescription: string
   twitterTitle: string
   twitterDescription: string
+  youtubeVideoId: string
 }
 
 export const regionConfig: Record<Region, RegionConfig> = {
@@ -45,6 +46,7 @@ export const regionConfig: Record<Region, RegionConfig> = {
     twitterTitle: 'RestOS \u2014 The Operating System For Indian Restaurants',
     twitterDescription:
       'QR ordering, kitchen display, waiter app, payments, and analytics \u2014 all in real time.',
+    youtubeVideoId: 'REPLACE_WITH_YOUR_VIDEO_ID',
   },
   uk: {
     currency: '\u00A3',
@@ -68,5 +70,6 @@ export const regionConfig: Record<Region, RegionConfig> = {
     twitterTitle: 'RestOS \u2014 The Operating System For UK Restaurants',
     twitterDescription:
       'QR ordering, kitchen display, waiter app, payments, and analytics \u2014 all in real time.',
+    youtubeVideoId: 'REPLACE_WITH_UK_VIDEO_ID',
   },
 }
