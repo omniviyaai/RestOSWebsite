@@ -1,12 +1,8 @@
-// Update WHATSAPP_NUMBER with your actual WhatsApp Business number
-export const WHATSAPP_NUMBER = '919XXXXXXXXX'
-export const WHATSAPP_MESSAGE = 'Hi, I want to know more about RestOS'
-export const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`
+// src/lib/constants.ts
 
 export const DEMO_PAGE_URL = '/demo'
 export const FOUNDING_PAGE_URL = '/founding'
 
-// Update SPOTS_TAKEN manually as restaurants onboard
 export const FOUNDING_SPOTS_TOTAL = 10
 export const FOUNDING_SPOTS_TAKEN = 0
 
@@ -30,7 +26,7 @@ export const PAIN_STATEMENTS = [
 export const TRUST_SIGNALS = [
   {
     title: 'Your money, your account',
-    description: 'Payments go directly to your Razorpay or Cashfree account. We never touch it.',
+    description: 'Payments go directly to your account. We never touch it.',
   },
   {
     title: 'Your data, completely isolated',
