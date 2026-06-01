@@ -2,6 +2,7 @@ import type { Viewport } from 'next'
 import './globals.css'
 import { LenisProvider } from '@/components/ui/LenisProvider'
 import { ScrollProgressBar } from '@/components/ui/ScrollProgress'
+import { RegionProvider } from '@/lib/region-context'
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -19,7 +20,7 @@ export default function RootLayout({
       <body className="bg-midnight text-warm-white antialiased">
         <LenisProvider />
         <ScrollProgressBar />
-        {children}
+        <RegionProvider region="in">{children}</RegionProvider>
       </body>
     </html>
   )
