@@ -1,5 +1,5 @@
 [build]
-  command = "npx next build && npx next export"
+  command = "npx next build"
   publish = "out/"
 
 [[edge_functions]]
