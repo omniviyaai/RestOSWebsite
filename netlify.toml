@@ -1,9 +1,10 @@
 [build]
-  command = "npm run build"
+  command = "npx next build && npx next export"
   publish = "out/"
 
-[build.environment]
-  NODE_VERSION = "22"
+[[edge_functions]]
+  function = "geo-route"
+  path = "/*"
 
 [[headers]]
   for = "/*"
