@@ -2,16 +2,21 @@
 
 import { motion } from 'framer-motion'
 import { transformBefore, transformAfter } from '@/lib/animations'
+import { useRegion } from '@/lib/region-context'
 
-const rows = [
+const BASE_ROWS = [
   { before: 'Paper KOTs getting lost', after: 'Kitchen sees every order on screen, live' },
   { before: 'Waiter shouts across the floor', after: 'Silent, digital, instant' },
   { before: 'Owner finds out at closing', after: 'Owner sees revenue live from anywhere' },
   { before: 'Customer waits to flag a waiter', after: 'Customer orders from their own phone' },
-  { before: 'Billing mistakes and arguments', after: 'Every order tracked, every rupee accounted' },
 ]
 
 export function Transformation() {
+  const region = useRegion()
+  const rows = [
+    ...BASE_ROWS,
+    { before: 'Billing mistakes and arguments', after: region.billingAfterText },
+  ]
   return (
     <section className="bg-midnight py-20 md:py-28 px-4 overflow-hidden" style={{ perspective: '1200px' }}>
       <div className="max-w-4xl mx-auto">
@@ -22,7 +27,7 @@ export function Transformation() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ type: 'spring', stiffness: 200, damping: 25 }}
-            className="text-center text-xs font-mono tracking-widest text-stone/40 uppercase"
+            className="text-center text-xs font-mono tracking-widest text-stone/70 uppercase"
           >
             Before
           </motion.p>
@@ -51,7 +56,7 @@ export function Transformation() {
                 className="rounded-xl bg-carbon/40 border border-wire/30 p-3 sm:p-5 cursor-default"
                 style={{ rotateY: -1, transformStyle: 'preserve-3d' }}
               >
-                <p className="text-stone/60 text-xs sm:text-sm leading-snug">{row.before}</p>
+                <p className="text-stone/80 text-xs sm:text-sm leading-snug">{row.before}</p>
               </motion.div>
 
               {/* After card — slides from right, slightly elevated with teal glow */}

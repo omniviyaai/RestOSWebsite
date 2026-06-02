@@ -3,7 +3,6 @@
 import { useRef, useCallback } from 'react'
 import { motion, useSpring } from 'framer-motion'
 import { Button } from '@/components/ui/Button'
-import { DEMO_PAGE_URL } from '@/lib/constants'
 import { useRegion } from '@/lib/region-context'
 import { ctaEntry } from '@/lib/animations'
 import { normaliseMousePos } from '@/lib/parallax'
@@ -95,7 +94,7 @@ export function FinalCTA() {
           viewport={{ once: true }}
           className="flex flex-col sm:flex-row gap-3 justify-center"
         >
-          <Button href={DEMO_PAGE_URL} variant="primary" className="w-full sm:w-auto text-base px-8 py-4 min-h-[52px] justify-center">
+          <Button href={`/${region.key}/demo/`} variant="primary" className="w-full sm:w-auto text-base px-8 py-4 min-h-[52px] justify-center">
             Book a 20-Minute Demo
           </Button>
           <Button href={`https://wa.me/${region.whatsappNumber}?text=${encodeURIComponent('Hi, I want to know more about RestOS')}`} variant="ghost" external className="w-full sm:w-auto text-base px-8 py-4 min-h-[52px] justify-center">

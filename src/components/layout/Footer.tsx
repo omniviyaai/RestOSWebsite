@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { NAV_LINKS } from '@/lib/constants'
+import { NAV_SLUGS } from '@/lib/constants'
 import { Logo } from '@/components/ui/Logo'
 import { useRegion } from '@/lib/region-context'
 
@@ -25,13 +25,13 @@ export function Footer() {
           {/* Navigation */}
           <div className="flex flex-col gap-3">
             <p className="text-warm-white text-sm font-semibold font-display">Navigation</p>
-            {NAV_LINKS.map((link) => (
+            {NAV_SLUGS.map(({ label, slug }) => (
               <Link
-                key={link.href}
-                href={link.href}
+                key={slug}
+                href={`/${region.key}/${slug}/`}
                 className="text-stone text-sm hover:text-warm-white transition-colors duration-150 w-fit"
               >
-                {link.label}
+                {label}
               </Link>
             ))}
           </div>

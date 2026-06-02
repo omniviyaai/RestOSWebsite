@@ -4,6 +4,8 @@ export default async (req: Request, ctx: Context) => {
   const url = new URL(req.url)
 
   if (
+    url.pathname === '/in' ||
+    url.pathname === '/uk' ||
     url.pathname.startsWith('/in/') ||
     url.pathname.startsWith('/uk/') ||
     url.pathname.startsWith('/_next/') ||

@@ -5,17 +5,19 @@ import { motion, useSpring } from 'framer-motion'
 import Link from 'next/link'
 import { staggerContainer, fadeUp } from '@/lib/animations'
 import { normaliseMousePos } from '@/lib/parallax'
+import { useRegion } from '@/lib/region-context'
 
-const cards = [
+const BASE_CARDS = [
   { icon: '📱', headline: 'Customers order themselves', subtext: 'Scan, browse, order, pay — all from their own phone. No waiter needed for every table.' },
   { icon: '🍳', headline: 'Kitchen never misses an order', subtext: 'Every KOT is digital, timestamped, color-coded. Nothing gets lost.' },
   { icon: '🛎️', headline: "Your waiter always knows what's next", subtext: 'Table-by-table clarity. No shouting across the floor.' },
-  { icon: '💰', headline: 'Every rupee tracked automatically', subtext: 'UPI, card, and cash — all in one place, in real time.' },
   { icon: '📊', headline: 'Manage from anywhere', subtext: 'Full admin dashboard on your phone or laptop. Check in from home.' },
   { icon: '📲', headline: 'No new hardware needed', subtext: 'Works on any phone, tablet, or TV you already own.' },
 ]
 
-function SpotlightCard({ card }: { card: typeof cards[0] }) {
+type Card = { icon: string; headline: string; subtext: string }
+
+function SpotlightCard({ card }: { card: Card }) {
   const cardRef = useRef<HTMLDivElement>(null)
   const rotateX = useSpring(0, { stiffness: 80, damping: 15 })
   const rotateY = useSpring(0, { stiffness: 80, damping: 15 })
@@ -61,6 +63,12 @@ function SpotlightCard({ card }: { card: typeof cards[0] }) {
 }
 
 export function ProductHighlights() {
+  const region = useRegion()
+  const cards = [
+    ...BASE_CARDS.slice(0, 3),
+    { icon: '💰', headline: region.paymentHighlightHeadline, subtext: region.paymentHighlightSubtext },
+    ...BASE_CARDS.slice(3),
+  ]
   return (
     <section className="bg-midnight py-20 md:py-28 px-4" style={{ perspective: '1200px' }}>
       <div className="max-w-5xl mx-auto">
@@ -96,7 +104,7 @@ export function ProductHighlights() {
           className="text-center mt-8"
         >
           <Link
-            href="/features"
+            href={`/${region.key}/features/`}
             className="text-teal text-sm hover:text-teal/70 transition-colors duration-150 font-medium"
           >
             See the full product →

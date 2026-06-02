@@ -1,9 +1,9 @@
 import type { Metadata } from 'next'
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
-import { Button } from '@/components/ui/Button'
 import { SpotCounter } from '@/components/ui/SpotCounter'
-import { FOUNDING_PAGE_URL } from '@/lib/constants'
+import { RegionLinkButton } from '@/components/ui/RegionLinkButton'
+import { RegionPaymentFaqAnswer } from '@/components/ui/RegionContent'
 
 export const metadata: Metadata = {
   title: 'Pricing',
@@ -31,7 +31,7 @@ const faqs = [
   { q: 'What happens after the 90 days?', a: 'You move to regular pricing, or you leave. No tricks. We tell you well in advance.' },
   { q: 'Is my data safe?', a: 'Yes. Your restaurant gets its own isolated database. No other restaurant can see your data. Everything is encrypted.' },
   { q: 'Does it work for takeaway-only restaurants?', a: 'Yes. Dine-in, takeaway, and cloud kitchen flows are all built in.' },
-  { q: 'What payment methods are supported?', a: 'UPI, credit/debit cards, netbanking, and wallets via Razorpay and Cashfree. Cash (pay at counter) also supported.' },
+  { q: 'What payment methods are supported?', a: null },
 ]
 
 const faqSchema = {
@@ -89,9 +89,9 @@ export default function PricingPage() {
               <div className="mb-7">
                 <SpotCounter />
               </div>
-              <Button href={FOUNDING_PAGE_URL} variant="primary" className="w-full justify-center py-3.5">
+              <RegionLinkButton slug="founding" className="w-full justify-center py-3.5">
                 Claim Your Spot
-              </Button>
+              </RegionLinkButton>
             </div>
 
             {/* Regular */}
@@ -127,7 +127,9 @@ export default function PricingPage() {
             {faqs.map((faq, i) => (
               <div key={i} className="border-b border-wire/50 pb-6">
                 <p className="font-display font-semibold text-warm-white text-sm mb-2">{faq.q}</p>
-                <p className="text-stone text-sm leading-relaxed">{faq.a}</p>
+                <p className="text-stone text-sm leading-relaxed">
+                  {faq.a ?? <RegionPaymentFaqAnswer />}
+                </p>
               </div>
             ))}
           </div>

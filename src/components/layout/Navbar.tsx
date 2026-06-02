@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback } from 'react'
 import Link from 'next/link'
 import { motion, AnimatePresence, useSpring } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
-import { NAV_LINKS, DEMO_PAGE_URL } from '@/lib/constants'
+import { NAV_SLUGS } from '@/lib/constants'
 import { useRegion } from '@/lib/region-context'
 import { Button } from '@/components/ui/Button'
 import { Logo } from '@/components/ui/Logo'
@@ -70,18 +70,18 @@ export function Navbar() {
           </Link>
 
           <nav className="hidden md:flex items-center gap-8" aria-label="Main navigation">
-            {NAV_LINKS.map((link, i) => (
+            {NAV_SLUGS.map(({ label, slug }, i) => (
               <motion.div
-                key={link.href}
+                key={slug}
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ type: 'spring', stiffness: 200, damping: 25, delay: 0.1 + i * 0.07 }}
               >
                 <Link
-                  href={link.href}
+                  href={`/${region.key}/${slug}/`}
                   className="relative text-stone text-sm hover:text-warm-white transition-colors duration-150 group"
                 >
-                  {link.label}
+                  {label}
                   <span className="absolute -bottom-0.5 left-0 w-full h-px bg-ember scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
                 </Link>
               </motion.div>
@@ -90,13 +90,13 @@ export function Navbar() {
 
           <div className="hidden md:flex items-center gap-1 mr-2 border-r border-wire/30 pr-3">
             <a
-              href="/in"
+              href="/in/"
               className="px-2 py-1 text-[11px] font-mono rounded transition-colors text-stone hover:text-ember"
             >
               🇮🇳 IN
             </a>
             <a
-              href="/uk"
+              href="/uk/"
               className="px-2 py-1 text-[11px] font-mono rounded transition-colors text-stone hover:text-ember"
             >
               🇬🇧 UK
@@ -110,7 +110,7 @@ export function Navbar() {
             transition={{ type: 'spring', stiffness: 200, damping: 25, delay: 0.4 }}
           >
             <Button href={`https://wa.me/${region.whatsappNumber}?text=${encodeURIComponent('Hi, I want to know more about RestOS')}`} variant="ghost" external>WhatsApp Us</Button>
-            <Button href={DEMO_PAGE_URL} variant="primary">Book Demo</Button>
+            <Button href={`/${region.key}/demo/`} variant="primary">Book Demo</Button>
           </motion.div>
 
           <motion.button
@@ -147,31 +147,31 @@ export function Navbar() {
             className="fixed inset-0 z-40 bg-midnight flex flex-col pt-16 overflow-y-auto"
           >
             <nav className="flex flex-col p-6" aria-label="Mobile navigation">
-              {NAV_LINKS.map((link, i) => (
+              {NAV_SLUGS.map(({ label, slug }, i) => (
                 <motion.div
-                  key={link.href}
+                  key={slug}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ type: 'spring', stiffness: 300, damping: 30, delay: i * 0.06 }}
                 >
                   <Link
-                    href={link.href}
+                    href={`/${region.key}/${slug}/`}
                     onClick={() => setMobileOpen(false)}
                     className="text-warm-white text-2xl font-display font-semibold py-4 border-b border-wire/40 block hover:text-ember transition-colors"
                   >
-                    {link.label}
+                    {label}
                   </Link>
                 </motion.div>
               ))}
             </nav>
             <div className="flex gap-2 py-4 px-6 border-b border-wire/40">
-              <a href="/in" className="text-stone text-sm hover:text-ember transition-colors">🇮🇳 India</a>
+              <a href="/in/" className="text-stone text-sm hover:text-ember transition-colors">🇮🇳 India</a>
               <span className="text-wire">|</span>
-              <a href="/uk" className="text-stone text-sm hover:text-ember transition-colors">🇬🇧 UK</a>
+              <a href="/uk/" className="text-stone text-sm hover:text-ember transition-colors">🇬🇧 UK</a>
             </div>
             <div className="p-6 flex flex-col gap-3 mt-auto">
               <Button href={`https://wa.me/${region.whatsappNumber}?text=${encodeURIComponent('Hi, I want to know more about RestOS')}`} variant="ghost" external className="w-full justify-center text-base py-4">WhatsApp Us</Button>
-              <Button href={DEMO_PAGE_URL} variant="primary" className="w-full justify-center text-base py-4">Book Demo</Button>
+              <Button href={`/${region.key}/demo/`} variant="primary" className="w-full justify-center text-base py-4">Book Demo</Button>
             </div>
           </motion.div>
         )}

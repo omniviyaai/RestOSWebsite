@@ -3,8 +3,8 @@
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/Button'
 import { SpotCounter } from '@/components/ui/SpotCounter'
-import { FOUNDING_PAGE_URL } from '@/lib/constants'
 import { staggerContainer, fadeUp } from '@/lib/animations'
+import { useRegion } from '@/lib/region-context'
 
 const perks = [
   'RestOS completely free for 90 days',
@@ -15,6 +15,7 @@ const perks = [
 ]
 
 export function FoundingBanner() {
+  const region = useRegion()
   return (
     <section className="bg-midnight py-20 md:py-28 px-4">
       <div className="max-w-2xl mx-auto">
@@ -77,7 +78,7 @@ export function FoundingBanner() {
 
           <motion.div variants={fadeUp} className="flex flex-col items-center gap-5">
             <SpotCounter />
-            <Button href={FOUNDING_PAGE_URL} variant="primary" className="w-full sm:w-auto px-8 py-4 text-base justify-center">
+            <Button href={`/${region.key}/founding/`} variant="primary" className="w-full sm:w-auto px-8 py-4 text-base justify-center">
               Apply To Be A Founding Partner
             </Button>
           </motion.div>

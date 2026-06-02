@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { RegionProvider } from '@/lib/region-context'
+import { RegionCookieSetter } from '@/components/ui/RegionCookieSetter'
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -97,6 +98,7 @@ export default function UkLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <RegionCookieSetter region="uk" />
       <RegionProvider region="uk">{children}</RegionProvider>
     </>
   )

@@ -113,7 +113,7 @@ function PainStatement({
     <div className="relative">
       <motion.p
         style={{ opacity, y, rotateY }}
-        className="text-lg sm:text-xl md:text-2xl text-stone/80 font-display font-medium leading-relaxed py-10 text-balance"
+        className="text-lg sm:text-xl md:text-2xl text-warm-white font-display font-medium leading-relaxed py-10 text-balance"
       >
         &ldquo;{text}&rdquo;
       </motion.p>

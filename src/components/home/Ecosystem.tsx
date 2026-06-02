@@ -4,19 +4,25 @@ import { useRef, useCallback } from 'react'
 import { motion, useSpring, useScroll, useTransform } from 'framer-motion'
 import { ecosystemNode, ecosystemLine } from '@/lib/animations'
 import { normaliseMousePos, mapMouseToRotation, springs } from '@/lib/parallax'
+import { useRegion } from '@/lib/region-context'
 
-const nodes = [
+const BASE_NODES = [
   { id: 'customer', label: 'Customer Phone', desc: 'Scans QR, browses menu', accent: 'border-stone/40 bg-stone/5', labelColor: 'text-stone', zDepth: 0 },
   { id: 'menu', label: 'QR Menu', desc: 'Orders instantly, no app', accent: 'border-ember/40 bg-ember/5', labelColor: 'text-ember', zDepth: 2 },
   { id: 'order', label: 'Live Order', desc: 'Confirmed in real time', accent: 'border-warm-white/30 bg-warm-white/5', labelColor: 'text-warm-white', zDepth: 4 },
   { id: 'kitchen', label: 'Kitchen Display', desc: 'Kitchen sees it immediately', accent: 'border-teal/40 bg-teal/5', labelColor: 'text-teal', zDepth: 3 },
   { id: 'waiter', label: 'Waiter App', desc: 'Floor team stays informed', accent: 'border-teal/30 bg-teal/5', labelColor: 'text-teal', zDepth: 2 },
-  { id: 'payment', label: 'Payment', desc: 'UPI, card, or cash — all tracked', accent: 'border-gold/40 bg-gold/5', labelColor: 'text-gold', zDepth: 3 },
   { id: 'analytics', label: 'Analytics', desc: 'Revenue and trends, live', accent: 'border-ember/30 bg-ember/5', labelColor: 'text-ember', zDepth: 2 },
   { id: 'admin', label: 'You — Admin', desc: 'Full control, from anywhere', accent: 'border-warm-white/30 bg-warm-white/5', labelColor: 'text-warm-white', zDepth: 5 },
 ]
 
 export function Ecosystem() {
+  const region = useRegion()
+  const nodes = [
+    ...BASE_NODES.slice(0, 5),
+    { id: 'payment', label: 'Payment', desc: region.paymentEcosystemDesc, accent: 'border-gold/40 bg-gold/5', labelColor: 'text-gold', zDepth: 3 },
+    ...BASE_NODES.slice(5),
+  ]
   const sectionRef = useRef<HTMLElement>(null)
   const rotateX = useSpring(0, springs.ecosystem)
   const rotateY = useSpring(0, springs.ecosystem)
@@ -104,7 +110,7 @@ export function Ecosystem() {
                 <p className={`font-display font-semibold text-sm sm:text-base ${node.labelColor}`}>
                   {node.label}
                 </p>
-                <p className="text-stone/60 text-xs mt-0.5">{node.desc}</p>
+                <p className="text-stone text-xs mt-0.5">{node.desc}</p>
 
                 {/* Activation indicator */}
                 <motion.div

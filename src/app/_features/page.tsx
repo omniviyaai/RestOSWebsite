@@ -1,9 +1,9 @@
 import type { Metadata } from 'next'
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
-import { Button } from '@/components/ui/Button'
 import { WhatsAppButton } from '@/components/ui/WhatsAppButton'
-import { DEMO_PAGE_URL } from '@/lib/constants'
+import { RegionLinkButton } from '@/components/ui/RegionLinkButton'
+import { RegionPaymentFeature, RegionAnalyticsDescription } from '@/components/ui/RegionContent'
 
 export const metadata: Metadata = {
   title: 'Features',
@@ -52,15 +52,9 @@ const features = [
   },
   {
     category: 'Payments',
-    headline: 'Every rupee goes directly to your account',
-    description: 'Accept UPI, cards, netbanking, and wallets through Razorpay or Cashfree. Money goes directly to your bank — we never hold it. Credentials are encrypted. Webhooks are verified.',
-    bullets: [
-      'Razorpay and Cashfree both supported',
-      'UPI payments in seconds',
-      'Pay at counter for cash customers',
-      'No double charges — duplicate webhooks deduplicated automatically',
-      'AES-256-GCM encrypted payment credentials',
-    ],
+    headline: '',
+    description: '',
+    bullets: [] as string[],
   },
   {
     category: 'Management',
@@ -77,7 +71,7 @@ const features = [
   {
     category: 'Analytics',
     headline: 'Finally know what is working',
-    description: 'RestOS tracks every order, every rupee, every item sold. See your best sellers, peak hours, and revenue by source — automatically, in real time.',
+    description: '',
     bullets: [
       'Daily, weekly, and monthly revenue reports',
       'Revenue by source — dine-in vs takeaway vs QR',
@@ -122,20 +116,26 @@ export default function FeaturesPage() {
                 <span className="text-[10px] font-mono tracking-widest text-teal uppercase mb-3 block">
                   {feature.category}
                 </span>
-                <h2 className="text-2xl sm:text-3xl font-display font-bold text-warm-white mb-4 text-balance">
-                  {feature.headline}
-                </h2>
-                <p className="text-stone text-sm sm:text-base leading-relaxed mb-6">
-                  {feature.description}
-                </p>
-                <ul className="space-y-2">
-                  {feature.bullets.map((bullet, j) => (
-                    <li key={j} className="flex items-start gap-3">
-                      <span className="text-teal text-sm mt-0.5 flex-shrink-0" aria-hidden="true">✓</span>
-                      <span className="text-warm-white/90 text-sm">{bullet}</span>
-                    </li>
-                  ))}
-                </ul>
+                {feature.category === 'Payments' ? (
+                  <RegionPaymentFeature />
+                ) : (
+                  <>
+                    <h2 className="text-2xl sm:text-3xl font-display font-bold text-warm-white mb-4 text-balance">
+                      {feature.headline}
+                    </h2>
+                    <p className="text-stone text-sm sm:text-base leading-relaxed mb-6">
+                      {feature.category === 'Analytics' ? <RegionAnalyticsDescription /> : feature.description}
+                    </p>
+                    <ul className="space-y-2">
+                      {feature.bullets.map((bullet, j) => (
+                        <li key={j} className="flex items-start gap-3">
+                          <span className="text-teal text-sm mt-0.5 flex-shrink-0" aria-hidden="true">✓</span>
+                          <span className="text-warm-white/90 text-sm">{bullet}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </>
+                )}
               </div>
 
               <div className="flex-1 w-full rounded-xl border border-wire bg-carbon h-48 sm:h-64 flex items-center justify-center">
@@ -150,9 +150,9 @@ export default function FeaturesPage() {
             See all of this in your restaurant.
           </h2>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <Button href={DEMO_PAGE_URL} variant="primary" className="w-full sm:w-auto justify-center py-4">
+            <RegionLinkButton slug="demo" className="w-full sm:w-auto justify-center py-4">
               Book a Free Demo
-            </Button>
+            </RegionLinkButton>
             <WhatsAppButton className="w-full sm:w-auto justify-center py-4" />
           </div>
         </div>

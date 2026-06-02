@@ -79,9 +79,6 @@ export function TiltedDevice({ rotateX, rotateY, videoSrc = '/video/restos-flow.
                 playsInline
                 preload="auto"
                 className="absolute inset-0 w-full h-full object-cover"
-                style={{
-                  filter: 'brightness(0.85) saturate(0.9)',
-                }}
               >
                 <source src={videoSrc} type="video/mp4" />
               </video>

@@ -3,6 +3,7 @@ import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
 import { SpotCounter } from '@/components/ui/SpotCounter'
 import { WhatsAppButton } from '@/components/ui/WhatsAppButton'
+import { RegionFoundingMission } from '@/components/ui/RegionContent'
 
 export const metadata: Metadata = {
   title: 'Founding Partner Program — Be One of 10',
@@ -82,8 +83,8 @@ export default function FoundingPage() {
               <span className="text-gold">You&apos;re a Founder.</span>
             </h1>
             <p className="text-stone text-sm sm:text-base leading-relaxed max-w-md mx-auto">
-              We are building the operating system that Indian restaurants deserve.
-              We want to build it with you — not just for you.
+              <RegionFoundingMission />
+              {' We want to build it with you — not just for you.'}
             </p>
           </div>
 
