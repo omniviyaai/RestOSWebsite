@@ -191,8 +191,8 @@ export const ctaEntry: Variants = {
 // ─── Feature section "Scroll-Reveal" ──────────────────────────────────────────
 
 export const problemFade: Variants = {
-  visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: 'easeOut' } },
   hidden: { opacity: 0, y: -12, transition: { duration: 0.3, ease: 'easeIn' } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: 'easeOut' } },
 }
 
 export const solutionSlide: Variants = {
