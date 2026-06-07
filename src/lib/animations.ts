@@ -187,3 +187,33 @@ export const ctaEntry: Variants = {
     },
   }),
 }
+
+// ─── Feature section "Scroll-Reveal" ──────────────────────────────────────────
+
+export const problemFade: Variants = {
+  visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: 'easeOut' } },
+  hidden: { opacity: 0, y: -12, transition: { duration: 0.3, ease: 'easeIn' } },
+}
+
+export const solutionSlide: Variants = {
+  hidden: { opacity: 0, y: 24 },
+  visible: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 300, damping: 30 } },
+}
+
+export const counterUp: Variants = {
+  hidden: { opacity: 0, scale: 0.8 },
+  visible: (i: number) => ({
+    opacity: 1,
+    scale: 1,
+    transition: { type: 'spring', stiffness: 150, damping: 20, delay: i * 0.08 },
+  }),
+}
+
+export const deviceFloat: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { type: 'spring', stiffness: 100, damping: 15, delay: i * 0.15 },
+  }),
+}
