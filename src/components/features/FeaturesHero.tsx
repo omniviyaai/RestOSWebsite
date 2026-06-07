@@ -1,7 +1,7 @@
 'use client'
 
 import { useRef, useCallback } from 'react'
-import { motion, useSpring } from 'framer-motion'
+import { motion, useSpring, useReducedMotion } from 'framer-motion'
 import { Button } from '@/components/ui/Button'
 import { useRegion } from '@/lib/region-context'
 import { normaliseMousePos, mapMouseToRotation, mapMouseToOffset, springs } from '@/lib/parallax'
@@ -37,8 +37,10 @@ export function FeaturesHero() {
   const orb2X = useSpring(0, { stiffness: 30, damping: 18 })
   const orb2Y = useSpring(0, { stiffness: 30, damping: 18 })
 
+  const reduceMotion = useReducedMotion()
+
   const handleMouseMove = useCallback((e: React.MouseEvent<HTMLElement>) => {
-    if (!containerRef.current) return
+    if (reduceMotion || !containerRef.current) return
     const rect = containerRef.current.getBoundingClientRect()
     const pos = normaliseMousePos(e.clientX - rect.left, e.clientY - rect.top, rect.width, rect.height)
     contentRotateX.set(mapMouseToRotation(-pos.y, 1.2))

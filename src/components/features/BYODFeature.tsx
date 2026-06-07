@@ -1,10 +1,11 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 import { deviceFloat, staggerContainer, fadeUp } from '@/lib/animations'
 import { BYOD_CONTENT } from '@/lib/features-content'
 
 export function BYODFeature() {
+  const reduceMotion = useReducedMotion()
   const devices = [
     { emoji: '📱', label: 'Phone', delay: 0, x: -80, y: -40 },
     { emoji: '📟', label: 'Tablet', delay: 0.3, x: 80, y: 20 },
@@ -28,7 +29,7 @@ export function BYODFeature() {
               style={{
                 transform: `translate(calc(-50% + ${device.x}px), calc(-50% + ${device.y}px))`,
               }}
-              animate={{
+              animate={reduceMotion ? undefined : {
                 y: [device.y, device.y - 10, device.y],
                 x: [device.x, device.x + 5, device.x],
               }}

@@ -1,18 +1,19 @@
 'use client'
 
 import { useRef, useCallback } from 'react'
-import { motion, useSpring } from 'framer-motion'
+import { motion, useSpring, useReducedMotion } from 'framer-motion'
 import { ecosystemNode, ecosystemLine } from '@/lib/animations'
 import { normaliseMousePos, springs } from '@/lib/parallax'
 import { TIMELINE_CONTENT } from '@/lib/features-content'
 
 export function TimelineOverview() {
   const sectionRef = useRef<HTMLElement>(null)
+  const reduceMotion = useReducedMotion()
   const rotateX = useSpring(0, springs.ecosystem)
   const rotateY = useSpring(0, springs.ecosystem)
 
   const handleMouseMove = useCallback((e: React.MouseEvent<HTMLElement>) => {
-    if (!sectionRef.current) return
+    if (reduceMotion || !sectionRef.current) return
     const rect = sectionRef.current.getBoundingClientRect()
     const pos = normaliseMousePos(e.clientX - rect.left, e.clientY - rect.top, rect.width, rect.height)
     rotateX.set(pos.y * -2)
@@ -80,7 +81,7 @@ export function TimelineOverview() {
                 <motion.div
                   className="absolute -right-1 -top-1 w-2 h-2 rounded-full bg-current"
                   style={{ color: 'inherit' }}
-                  animate={{ scale: [1, 1.3, 1], opacity: [0.6, 1, 0.6] }}
+                  animate={reduceMotion ? undefined : { scale: [1, 1.3, 1], opacity: [0.6, 1, 0.6] }}
                   transition={{ repeat: Infinity, duration: 2 + i * 0.3, delay: i * 0.15 }}
                 />
               </motion.button>
@@ -96,7 +97,7 @@ export function TimelineOverview() {
                 >
                   <motion.div
                     className="absolute w-full h-1.5 bg-teal/60 rounded-full"
-                    animate={{ y: [-6, 28] }}
+                    animate={reduceMotion ? undefined : { y: [-6, 28] }}
                     transition={{ repeat: Infinity, duration: 1.2, delay: i * 0.2, ease: 'easeInOut' }}
                   />
                 </motion.div>
