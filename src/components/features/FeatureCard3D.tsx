@@ -31,7 +31,7 @@ export function FeatureCard3D({
   })
 
   const _scrollRotateX = useTransform(scrollYProgress, [0, 0.5, 1], [2, 0, -2])
-  const scrollOpacity = useTransform(scrollYProgress, [0, 0.15, 0.85, 1], [0.4, 1, 1, 0.4])
+  const scrollOpacity = useTransform(scrollYProgress, [0, 0.85, 1], [1, 1, 0.4])
   const scrollScale = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.92, 1, 1, 0.92])
 
   const handleMouseMove = useCallback((e: React.MouseEvent<HTMLElement>) => {

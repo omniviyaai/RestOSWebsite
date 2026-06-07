@@ -4,12 +4,13 @@ import { motion } from 'framer-motion'
 
 const spring = { type: 'spring' as const, stiffness: 200, damping: 20 }
 const ember = '#c46b51'
-const emberDim = '#a3553e'
+const emberAccent = '#e8896e'
 const teal = '#4a9e8e'
-const tealBright = '#6bbaa8'
+const tealAccent = '#6cc8b5'
 const stone = '#8a8a8a'
 const carbon = '#2a2a2a'
 const warmWhite = '#f0efe7'
+const warmWhiteDim = '#c8c5ba'
 
 // ─── Ordering ──────────────────────────────────────────────────────────────────
 
@@ -18,14 +19,14 @@ export function OrderingProblemIllus() {
     <svg viewBox="0 0 160 160" className="w-28 h-28 md:w-36 md:h-36">
       <motion.rect
         x="42" y="18" width="76" height="124" rx="14"
-        fill="none" stroke={ember} strokeWidth="2"
+        fill="none" stroke={warmWhite} strokeWidth="2"
         initial={{ opacity: 0, scale: 0.85 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={spring}
       />
       <motion.circle
         cx="80" cy="62" r="18"
-        fill="none" stroke={emberDim} strokeWidth="2"
+        fill="none" stroke={ember} strokeWidth="2"
         strokeDasharray="100 20"
         animate={{ rotate: 360 }}
         transition={{ repeat: Infinity, duration: 2.5, ease: 'linear' }}
@@ -35,7 +36,7 @@ export function OrderingProblemIllus() {
         <motion.circle
           key={i}
           cx={66 + i * 14} cy="102" r="3.5"
-          fill={emberDim}
+          fill={emberAccent}
           animate={{ y: [0, -6, 0], opacity: [0.4, 1, 0.4] }}
           transition={{ repeat: Infinity, duration: 1.2, delay: i * 0.2 }}
         />
@@ -52,45 +53,37 @@ export function OrderingSolutionIllus() {
         animate={{ opacity: 1, scale: 1 }}
         transition={spring}
       >
-        <rect x="10" y="38" width="48" height="48" rx="4" fill="none" stroke={teal} strokeWidth="1.5" />
-        <rect x="16" y="44" width="8" height="8" rx="1" fill={teal} opacity={0.6} />
-        <rect x="32" y="44" width="8" height="8" rx="1" fill={teal} opacity={0.6} />
-        <rect x="24" y="56" width="8" height="8" rx="1" fill={teal} opacity={0.6} />
-        <rect x="40" y="56" width="8" height="8" rx="1" fill={teal} opacity={0.6} />
-        <rect x="16" y="68" width="8" height="8" rx="1" fill={teal} opacity={0.6} />
-        <rect x="32" y="68" width="8" height="8" rx="1" fill={teal} opacity={0.6} />
+        <rect x="10" y="38" width="48" height="48" rx="4" fill="none" stroke={warmWhite} strokeWidth="1.5" />
+        <rect x="16" y="44" width="8" height="8" rx="1" fill={warmWhiteDim} />
+        <rect x="32" y="44" width="8" height="8" rx="1" fill={warmWhiteDim} />
+        <rect x="24" y="56" width="8" height="8" rx="1" fill={warmWhiteDim} />
+        <rect x="40" y="56" width="8" height="8" rx="1" fill={warmWhiteDim} />
+        <rect x="16" y="68" width="8" height="8" rx="1" fill={warmWhiteDim} />
+        <rect x="32" y="68" width="8" height="8" rx="1" fill={warmWhiteDim} />
         <motion.rect
           x="10" y="38" width="48" height="2" rx="1"
-          fill={tealBright} opacity={0.7}
+          fill={tealAccent}
           animate={{ y: [0, 46, 0] }}
           transition={{ repeat: Infinity, duration: 2.5, ease: 'easeInOut' }}
         />
       </motion.g>
       <motion.path
         d="M62 62 L82 62"
-        stroke={teal} strokeWidth="2" strokeDasharray="4 3"
+        stroke={warmWhite} strokeWidth="2" strokeDasharray="4 3"
         initial={{ pathLength: 0 }}
         animate={{ pathLength: 1 }}
         transition={{ delay: 0.4, duration: 0.6 }}
       />
       <motion.rect
         x="82" y="18" width="60" height="96" rx="12"
-        fill="none" stroke={teal} strokeWidth="2"
+        fill="none" stroke={warmWhite} strokeWidth="2"
         initial={{ opacity: 0, x: 20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ delay: 0.2, ...spring }}
       />
-      <motion.circle
-        cx="112" cy="125" r="5"
-        fill={carbon} stroke={teal} strokeWidth="1.5"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.5 }}
-      />
-      <motion.line x1="108" y1="125" x2="116" y2="125" stroke={teal} strokeWidth="1.5" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6 }} />
       <motion.path
         d="M94 64 l8 8 l14 -16"
-        fill="none" stroke={tealBright} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
+        fill="none" stroke={tealAccent} strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"
         initial={{ pathLength: 0 }}
         animate={{ pathLength: 1 }}
         transition={{ delay: 0.8, duration: 0.5 }}
@@ -123,16 +116,16 @@ export function KitchenProblemIllus() {
           transition={{ repeat: Infinity, duration: 3 + i * 0.5, ease: 'easeInOut' }}
           style={{ originX: `${t.x + 20}px`, originY: `${t.y + 14}px` }}
         >
-          <rect x={t.x} y={t.y} width="40" height="28" rx="2" fill="none" stroke={emberDim} strokeWidth="1.5" opacity={0.8} />
-          <line x1={t.x + 6} y1={t.y + 8} x2={t.x + 34} y2={t.y + 8} stroke={emberDim} strokeWidth="1" opacity={0.4} />
-          <line x1={t.x + 6} y1={t.y + 14} x2={t.x + 30} y2={t.y + 14} stroke={emberDim} strokeWidth="1" opacity={0.4} />
+          <rect x={t.x} y={t.y} width="40" height="28" rx="2" fill="none" stroke={warmWhite} strokeWidth="1.5" />
+          <line x1={t.x + 6} y1={t.y + 8} x2={t.x + 34} y2={t.y + 8} stroke={warmWhite} strokeWidth="1" opacity={0.5} />
+          <line x1={t.x + 6} y1={t.y + 14} x2={t.x + 30} y2={t.y + 14} stroke={warmWhite} strokeWidth="1" opacity={0.5} />
           {i % 2 === 0 && (
             <motion.g
-              animate={{ opacity: [0, 0.6, 0] }}
+              animate={{ opacity: [0, 1, 0] }}
               transition={{ repeat: Infinity, duration: 1.5, delay: i * 0.3 }}
             >
-              <line x1={t.x + 12} y1={t.y + 6} x2={t.x + 28} y2={t.y + 22} stroke={ember} strokeWidth="2" strokeLinecap="round" />
-              <line x1={t.x + 28} y1={t.y + 6} x2={t.x + 12} y2={t.y + 22} stroke={ember} strokeWidth="2" strokeLinecap="round" />
+              <line x1={t.x + 12} y1={t.y + 6} x2={t.x + 28} y2={t.y + 22} stroke={emberAccent} strokeWidth="2" strokeLinecap="round" />
+              <line x1={t.x + 28} y1={t.y + 6} x2={t.x + 12} y2={t.y + 22} stroke={emberAccent} strokeWidth="2" strokeLinecap="round" />
             </motion.g>
           )}
         </motion.g>
@@ -146,12 +139,12 @@ export function KitchenSolutionIllus() {
     <svg viewBox="0 0 160 160" className="w-28 h-28 md:w-36 md:h-36">
       <motion.rect
         x="20" y="15" width="120" height="130" rx="8"
-        fill="none" stroke={teal} strokeWidth="2"
+        fill="none" stroke={warmWhite} strokeWidth="2"
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={spring}
       />
-      <motion.line x1="32" y1="45" x2="128" y2="45" stroke={teal} strokeWidth="1" opacity={0.3} />
+      <motion.line x1="32" y1="45" x2="128" y2="45" stroke={warmWhite} strokeWidth="1" opacity={0.3} />
       {[
         { label: '#1242 · Table 4', status: 'Confirmed' },
         { label: '#1243 · Table 7', status: 'Preparing' },
@@ -163,20 +156,17 @@ export function KitchenSolutionIllus() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.3 + i * 0.2, ...spring }}
         >
-          <rect x="32" y={52 + i * 24} width="96" height="20" rx="4" fill={carbon} opacity={0.8} />
+          <rect x="32" y={52 + i * 24} width="96" height="20" rx="4" fill={warmWhite} opacity={0.08} />
           <text x="40" y={65 + i * 24} fill={warmWhite} fontSize="8" fontFamily="monospace">{order.label}</text>
           <motion.circle
             cx={118} cy={62 + i * 24} r="4"
-            fill={i === 2 ? tealBright : teal}
+            fill={tealAccent}
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ delay: 0.6 + i * 0.2, type: 'spring', stiffness: 300, damping: 15 }}
           />
         </motion.g>
       ))}
-      <motion.div
-        className="absolute bottom-4 left-1/2 -translate-x-1/2"
-      />
     </svg>
   )
 }
@@ -188,25 +178,25 @@ export function PaymentProblemIllus() {
     <svg viewBox="0 0 160 160" className="w-28 h-28 md:w-36 md:h-36">
       <motion.rect
         x="25" y="40" width="110" height="80" rx="10"
-        fill="none" stroke={ember} strokeWidth="2"
+        fill="none" stroke={warmWhite} strokeWidth="2"
         animate={{ x: [-2, 2, -2] }}
         transition={{ repeat: Infinity, duration: 1.8, ease: 'easeInOut' }}
       />
       <motion.rect
         x="90" y="65" width="35" height="20" rx="3"
-        fill="none" stroke={emberDim} strokeWidth="1.5"
+        fill="none" stroke={warmWhite} strokeWidth="1.5"
         animate={{ x: [-2, 2, -2] }}
         transition={{ repeat: Infinity, duration: 1.8, ease: 'easeInOut' }}
       />
       <motion.rect
         x="30" y="44" width="50" height="8" rx="2"
-        fill={emberDim} opacity={0.15}
+        fill={ember} opacity={0.2}
         animate={{ x: [-2, 2, -2] }}
         transition={{ repeat: Infinity, duration: 1.8, ease: 'easeInOut' }}
       />
       <motion.path
         d="M45 140 Q80 130 115 140"
-        fill="none" stroke={emberDim} strokeWidth="1.5"
+        fill="none" stroke={emberAccent} strokeWidth="1.5"
         strokeDasharray="4 3"
         animate={{ pathLength: [0.3, 0.8, 0.3] }}
         transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}
@@ -215,8 +205,8 @@ export function PaymentProblemIllus() {
         <motion.circle
           key={i}
           cx={60 + i * 20} cy="152" r="1.5"
-          fill={emberDim}
-          animate={{ opacity: [0, 0.5, 0] }}
+          fill={emberAccent}
+          animate={{ opacity: [0, 1, 0] }}
           transition={{ repeat: Infinity, duration: 1.5, delay: i * 0.3 }}
         />
       ))}
@@ -229,21 +219,21 @@ export function PaymentSolutionIllus() {
     <svg viewBox="0 0 160 160" className="w-28 h-28 md:w-36 md:h-36">
       <motion.rect
         x="35" y="25" width="90" height="110" rx="12"
-        fill="none" stroke={teal} strokeWidth="2"
+        fill="none" stroke={warmWhite} strokeWidth="2"
         initial={{ opacity: 0, scale: 0.85 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={spring}
       />
       <motion.circle
         cx="75" cy="60" r="18"
-        fill="none" stroke={teal} strokeWidth="2"
+        fill="none" stroke={tealAccent} strokeWidth="2"
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
         transition={{ delay: 0.3, type: 'spring', stiffness: 200, damping: 15 }}
       />
       <motion.path
         d="M64 60 l8 8 l14 -14"
-        fill="none" stroke={tealBright} strokeWidth="2.5"
+        fill="none" stroke={tealAccent} strokeWidth="3"
         strokeLinecap="round" strokeLinejoin="round"
         initial={{ pathLength: 0 }}
         animate={{ pathLength: 1 }}
@@ -251,20 +241,13 @@ export function PaymentSolutionIllus() {
       />
       <motion.text
         x="75" y="110" textAnchor="middle"
-        fill={teal} fontSize="9" fontFamily="monospace" fontWeight="bold"
+        fill={tealAccent} fontSize="9" fontFamily="monospace" fontWeight="bold"
         initial={{ opacity: 0, y: 5 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.8, ...spring }}
       >
         PAID
       </motion.text>
-      <motion.circle
-        cx="75" cy="145" r="4"
-        fill={carbon} stroke={teal} strokeWidth="1.5"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.5 }}
-      />
     </svg>
   )
 }
@@ -288,12 +271,12 @@ export function ManagementProblemIllus() {
           transition={{ repeat: Infinity, duration: 4 + i, ease: 'easeInOut' }}
           style={{ originX: `${win.x + 45}px`, originY: `${win.y + 35}px` }}
         >
-          <rect x={win.x} y={win.y} width="90" height="70" rx="6" fill="none" stroke={emberDim} strokeWidth="1.5" opacity={0.7 - i * 0.15} />
-          <rect x={win.x + 4} y={win.y + 4} width="82" height="8" rx="2" fill={emberDim} opacity={0.1} />
-          <line x1={win.x + 10} y1={win.y + 20} x2={win.x + 80} y2={win.y + 20} stroke={emberDim} strokeWidth="1" opacity={0.3} />
-          <line x1={win.x + 10} y1={win.y + 28} x2={win.x + 65} y2={win.y + 28} stroke={emberDim} strokeWidth="1" opacity={0.3} />
-          <line x1={win.x + 10} y1={win.y + 36} x2={win.x + 70} y2={win.y + 36} stroke={emberDim} strokeWidth="1" opacity={0.3} />
-          <line x1={win.x + 10} y1={win.y + 44} x2={win.x + 55} y2={win.y + 44} stroke={emberDim} strokeWidth="1" opacity={0.3} />
+          <rect x={win.x} y={win.y} width="90" height="70" rx="6" fill="none" stroke={warmWhite} strokeWidth="1.5" opacity={0.6 - i * 0.15} />
+          <rect x={win.x + 4} y={win.y + 4} width="82" height="8" rx="2" fill={warmWhite} opacity={0.1} />
+          <line x1={win.x + 10} y1={win.y + 20} x2={win.x + 80} y2={win.y + 20} stroke={warmWhite} strokeWidth="1" opacity={0.4} />
+          <line x1={win.x + 10} y1={win.y + 28} x2={win.x + 65} y2={win.y + 28} stroke={warmWhite} strokeWidth="1" opacity={0.4} />
+          <line x1={win.x + 10} y1={win.y + 36} x2={win.x + 70} y2={win.y + 36} stroke={warmWhite} strokeWidth="1" opacity={0.4} />
+          <line x1={win.x + 10} y1={win.y + 44} x2={win.x + 55} y2={win.y + 44} stroke={warmWhite} strokeWidth="1" opacity={0.4} />
         </motion.g>
       ))}
     </svg>
@@ -305,17 +288,17 @@ export function ManagementSolutionIllus() {
     <svg viewBox="0 0 160 160" className="w-28 h-28 md:w-36 md:h-36">
       <motion.rect
         x="20" y="15" width="120" height="130" rx="8"
-        fill="none" stroke={teal} strokeWidth="2"
+        fill="none" stroke={warmWhite} strokeWidth="2"
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={spring}
       />
-      <rect x="28" y="22" width="104" height="10" rx="3" fill={teal} opacity={0.1} />
-      <circle cx="36" cy="27" r="3" fill={tealBright} opacity={0.5} />
-      <circle cx="46" cy="27" r="3" fill={teal} opacity={0.5} />
+      <rect x="28" y="22" width="104" height="10" rx="3" fill={warmWhite} opacity={0.08} />
+      <circle cx="36" cy="27" r="3" fill={tealAccent} />
+      <circle cx="46" cy="27" r="3" fill={teal} />
       <motion.rect
         x="28" y="42" width="48" height="16" rx="3"
-        fill={teal} opacity={0.08}
+        fill={warmWhite} opacity={0.1}
         initial={{ scaleX: 0 }}
         animate={{ scaleX: 1 }}
         transition={{ delay: 0.3, duration: 0.6, ease: 'easeOut' }}
@@ -323,7 +306,7 @@ export function ManagementSolutionIllus() {
       />
       <motion.rect
         x="28" y="62" width="64" height="16" rx="3"
-        fill={teal} opacity={0.08}
+        fill={warmWhite} opacity={0.1}
         initial={{ scaleX: 0 }}
         animate={{ scaleX: 1 }}
         transition={{ delay: 0.4, duration: 0.6, ease: 'easeOut' }}
@@ -331,7 +314,7 @@ export function ManagementSolutionIllus() {
       />
       <motion.rect
         x="28" y="82" width="40" height="16" rx="3"
-        fill={teal} opacity={0.08}
+        fill={warmWhite} opacity={0.1}
         initial={{ scaleX: 0 }}
         animate={{ scaleX: 1 }}
         transition={{ delay: 0.5, duration: 0.6, ease: 'easeOut' }}
@@ -347,7 +330,7 @@ export function ManagementSolutionIllus() {
           key={i}
           x={bar.x} y={bar.y + (40 - bar.v)}
           width="12" height={bar.v} rx="2"
-          fill={teal} opacity={0.15 + i * 0.08}
+          fill={tealAccent} opacity={0.3 + i * 0.12}
           initial={{ scaleY: 0 }}
           animate={{ scaleY: 1 }}
           transition={{ delay: 0.5 + i * 0.1, duration: 0.5, ease: 'easeOut' }}
@@ -371,9 +354,9 @@ export function AnalyticsProblemIllus() {
         <motion.text
           key={i}
           x={q.x} y={q.y}
-          fill={emberDim} opacity={0.7 - i * 0.15}
-          fontSize={22 + (i === 1 ? 6 : 0)}
-          fontFamily="serif"
+          fill={warmWhite} opacity={0.7 - i * 0.15}
+          fontSize={24 + (i === 1 ? 8 : 0)}
+          fontFamily="sans-serif"
           textAnchor="middle"
           fontWeight="bold"
           animate={{
@@ -388,7 +371,7 @@ export function AnalyticsProblemIllus() {
       ))}
       <motion.path
         d="M30 120 Q80 100 130 120"
-        fill="none" stroke={emberDim} strokeWidth="1.5" opacity={0.3}
+        fill="none" stroke={emberAccent} strokeWidth="2"
         animate={{ d: ['M30 120 Q80 100 130 120', 'M30 120 Q80 130 130 120'] }}
         transition={{ repeat: Infinity, duration: 2.5, ease: 'easeInOut' }}
       />
@@ -399,6 +382,13 @@ export function AnalyticsProblemIllus() {
 export function AnalyticsSolutionIllus() {
   return (
     <svg viewBox="0 0 160 160" className="w-28 h-28 md:w-36 md:h-36">
+      <motion.line
+        x1="20" y1="100" x2="140" y2="100"
+        stroke={warmWhite} strokeWidth="1" opacity={0.2}
+        initial={{ pathLength: 0 }}
+        animate={{ pathLength: 1 }}
+        transition={{ delay: 0.2, duration: 0.4 }}
+      />
       {[
         { x: 25, h: 48 },
         { x: 50, h: 72 },
@@ -410,7 +400,7 @@ export function AnalyticsSolutionIllus() {
           key={i}
           x={bar.x} y={100 - bar.h}
           width="18" height={bar.h} rx="3"
-          fill={teal} opacity={0.2 + i * 0.1}
+          fill={tealAccent} opacity={0.3 + i * 0.12}
           initial={{ scaleY: 0 }}
           animate={{ scaleY: 1 }}
           transition={{ delay: 0.3 + i * 0.1, duration: 0.6, ease: 'easeOut' }}
@@ -422,26 +412,12 @@ export function AnalyticsSolutionIllus() {
           key={i}
           cx={28 + i * 52} cy={108 + i * 8}
           r="3"
-          fill={tealBright}
+          fill={tealAccent}
           initial={{ opacity: 0, scale: 0 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.8 + i * 0.15, type: 'spring', stiffness: 300, damping: 15 }}
         />
       ))}
-      <motion.line
-        x1="20" y1="100" x2="140" y2="100"
-        stroke={teal} strokeWidth="1" opacity={0.2}
-        initial={{ pathLength: 0 }}
-        animate={{ pathLength: 1 }}
-        transition={{ delay: 0.2, duration: 0.4 }}
-      />
-      <motion.line
-        x1="20" y1="74" x2="140" y2="74"
-        stroke={teal} strokeWidth="1" opacity={0.1}
-        initial={{ pathLength: 0 }}
-        animate={{ pathLength: 1 }}
-        transition={{ delay: 0.2, duration: 0.4 }}
-      />
     </svg>
   )
 }
