@@ -1,5 +1,9 @@
 import type { Metadata } from 'next'
-export { default } from '@/app/_founding/page'
+import { FoundingPageContent } from '@/app/_founding/page'
+
+export default function Page() {
+  return <FoundingPageContent region="in" />
+}
 
 export const metadata: Metadata = {
   title: 'Founding Partner Program — Be One of 10',

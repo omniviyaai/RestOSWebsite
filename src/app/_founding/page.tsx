@@ -1,29 +1,10 @@
-import type { Metadata } from 'next'
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
 import { SpotCounter } from '@/components/ui/SpotCounter'
 import { WhatsAppButton } from '@/components/ui/WhatsAppButton'
 import { RegionFoundingMission } from '@/components/ui/RegionContent'
-
-export const metadata: Metadata = {
-  title: 'Founding Partner Program — Be One of 10',
-  description:
-    'Be one of the 10 Indian restaurants that shapes how RestOS works. First 90 days completely free. Direct WhatsApp line to the founders. No credit card required.',
-  openGraph: {
-    title: 'RestOS Founding Partner Program — 10 Spots Only',
-    description:
-      'First 90 days free. Direct WhatsApp line to the founders. Shape the product roadmap. Permanent Founding Partner badge.',
-    url: 'https://restos.in/founding',
-    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'RestOS Founding Partner Program' }],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'RestOS Founding Partner Program — 10 Spots Only',
-    description: 'First 90 days free. Direct access to founders. Shape the product roadmap.',
-    images: ['/og-image.png'],
-  },
-  alternates: { canonical: 'https://restos.in/founding' },
-}
+import type { Region } from '@/lib/region-config'
+import { regionConfig } from '@/lib/region-config'
 
 const perks = [
   { title: 'RestOS completely free for 90 days', desc: 'Every feature. No restrictions. No credit card required.' },
@@ -39,32 +20,36 @@ const asks = [
   'Permission to mention your restaurant as a Founding Partner (optional)',
 ]
 
-const breadcrumbFounding = {
-  '@context': 'https://schema.org',
-  '@type': 'BreadcrumbList',
-  itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://restos.in/' },
-    { '@type': 'ListItem', position: 2, name: 'Founding Partner Program', item: 'https://restos.in/founding' },
-  ],
-}
+/** Shared founding-partner content rendered by /in and /uk wrappers with region-correct schema. */
+export function FoundingPageContent({ region }: { region: Region }) {
+  const cfg = regionConfig[region]
+  const base = `https://restos.in/${region}`
 
-const productSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Product',
-  name: 'RestOS Founding Partner Program',
-  description: 'First 90 days completely free. Direct WhatsApp line to founders. Shape the product roadmap. Permanent Founding Partner badge.',
-  brand: { '@type': 'Brand', name: 'RestOS by Omniviya' },
-  offers: {
-    '@type': 'Offer',
-    price: '0',
-    priceCurrency: 'INR',
-    availability: 'https://schema.org/LimitedAvailability',
-    url: 'https://restos.in/founding',
-    description: 'Free for first 90 days. Limited to 10 restaurants.',
-  },
-}
+  const breadcrumbFounding = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${base}/` },
+      { '@type': 'ListItem', position: 2, name: 'Founding Partner Program', item: `${base}/founding` },
+    ],
+  }
 
-export default function FoundingPage() {
+  const productSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: 'RestOS Founding Partner Program',
+    description: 'First 90 days completely free. Direct WhatsApp line to founders. Shape the product roadmap. Permanent Founding Partner badge.',
+    brand: { '@type': 'Brand', name: cfg.siteName },
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: cfg.currencyCode,
+      availability: 'https://schema.org/LimitedAvailability',
+      url: `${base}/founding`,
+      description: 'Free for first 90 days. Limited to 10 restaurants.',
+    },
+  }
+
   return (
     <>
       <Navbar />

@@ -1,6 +1,9 @@
 import type { Metadata } from 'next'
 import { RegionProvider } from '@/lib/region-context'
 import { RegionCookieSetter } from '@/components/ui/RegionCookieSetter'
+import { CookieConsentBanner } from '@/components/features/CookieConsentBanner'
+import { WhatsAppFloatingBadge } from '@/components/ui/WhatsAppFloatingBadge'
+import { regionConfig } from '@/lib/region-config'
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -50,18 +53,7 @@ export const metadata: Metadata = {
     template: '%s — RestOS',
   },
   description: 'RestOS is the complete operating system for Indian restaurants. QR code ordering, kitchen display system, waiter app, UPI payments, and real-time analytics.',
-  keywords: [
-    'restaurant management software India',
-    'QR ordering system',
-    'kitchen display system',
-    'restaurant POS India',
-    'Indian restaurant software',
-    'QR menu for restaurants',
-    'online ordering system restaurant',
-    'restaurant analytics platform',
-    'cloud kitchen software India',
-    'restaurant operating system',
-  ],
+  keywords: [...regionConfig.in.seoKeywords],
   authors: [{ name: 'Omniviya' }],
   creator: 'Omniviya',
   publisher: 'Omniviya',
@@ -71,6 +63,7 @@ export const metadata: Metadata = {
     languages: {
       'en-in': 'https://restos.in/in',
       'en-gb': 'https://restos.in/uk',
+      'x-default': 'https://restos.in/in',
     },
   },
   openGraph: {
@@ -100,7 +93,11 @@ export default function InLayout({ children }: { children: React.ReactNode }) {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <RegionCookieSetter region="in" />
-      <RegionProvider region="in">{children}</RegionProvider>
+      <RegionProvider region="in">
+        {children}
+        <CookieConsentBanner />
+        <WhatsAppFloatingBadge />
+      </RegionProvider>
     </>
   )
 }

@@ -1,5 +1,9 @@
 import type { Metadata } from 'next'
-export { default } from '@/app/_features/page'
+import { FeaturesPageContent } from '@/app/_features/page'
+
+export default function Page() {
+  return <FeaturesPageContent region="in" />
+}
 
 export const metadata: Metadata = {
   title: 'Features',

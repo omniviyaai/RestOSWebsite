@@ -1,5 +1,9 @@
 import type { Metadata } from 'next'
-export { default } from '@/app/_pricing/page'
+import { PricingPageContent } from '@/app/_pricing/page'
+
+export default function Page() {
+  return <PricingPageContent region="uk" />
+}
 
 export const metadata: Metadata = {
   title: 'Pricing',

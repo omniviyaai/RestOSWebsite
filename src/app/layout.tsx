@@ -20,6 +20,9 @@ export default function RootLayout({
       <body className="bg-midnight text-warm-white antialiased">
         <LenisProvider />
         <ScrollProgressBar />
+        {/* Default provider for the rare bare "/" hit; the edge function rewrites real
+            traffic to /in or /uk, whose layouts supply the correct region provider and
+            render the cookie banner + WhatsApp badge inside it. */}
         <RegionProvider region="in">{children}</RegionProvider>
       </body>
     </html>
