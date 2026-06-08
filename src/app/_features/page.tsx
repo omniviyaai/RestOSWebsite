@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
 import { FeaturesClient } from '@/components/features'
+import { FAQ_CONTENT } from '@/lib/features-content'
 
 export const metadata: Metadata = {
   title: 'Features',
@@ -40,6 +41,54 @@ export default function FeaturesPage() {
           }),
         }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'SoftwareApplication',
+            name: 'RestOS',
+            applicationCategory: 'BusinessApplication',
+            operatingSystem: 'Web',
+            description: 'Cloud-based restaurant management platform with QR code ordering, kitchen display system, digital payments, real-time analytics, and table management.',
+            applicationSubCategory: 'RestaurantManagement',
+            offers: {
+              '@type': 'Offer',
+              price: '0',
+              priceCurrency: 'INR',
+              description: 'Pay per use, no minimum commitment. Hardware not required.',
+            },
+            featureList: [
+              'QR code ordering',
+              'Kitchen display system',
+              'Digital payments with UPI',
+              'Real-time revenue analytics',
+              'Table and floor management',
+              'Menu management',
+              'Staff access controls',
+              'GST-ready reports',
+            ],
+          }),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: FAQ_CONTENT.questions.map((faq) => ({
+              '@type': 'Question',
+              name: faq.q,
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: faq.a,
+              },
+            })),
+          }),
+        }}
+      />
+
       <main className="bg-midnight min-h-screen">
         <FeaturesClient />
       </main>

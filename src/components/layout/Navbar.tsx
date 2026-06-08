@@ -70,6 +70,13 @@ export function Navbar() {
           </Link>
 
           <nav className="hidden md:flex items-center gap-8" aria-label="Main navigation">
+            <Link
+              href={`/${region.key}/`}
+              className="relative text-stone text-sm hover:text-warm-white transition-colors duration-150 group"
+            >
+              Home
+              <span className="absolute -bottom-0.5 left-0 w-full h-px bg-ember scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+            </Link>
             {NAV_SLUGS.map(({ label, slug }, i) => (
               <motion.div
                 key={slug}
@@ -147,6 +154,19 @@ export function Navbar() {
             className="fixed inset-0 z-40 bg-midnight flex flex-col pt-16 overflow-y-auto"
           >
             <nav className="flex flex-col p-6" aria-label="Mobile navigation">
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ type: 'spring', stiffness: 300, damping: 30, delay: 0 }}
+              >
+                <Link
+                  href={`/${region.key}/`}
+                  onClick={() => setMobileOpen(false)}
+                  className="text-warm-white text-2xl font-display font-semibold py-4 border-b border-wire/40 block hover:text-ember transition-colors"
+                >
+                  Home
+                </Link>
+              </motion.div>
               {NAV_SLUGS.map(({ label, slug }, i) => (
                 <motion.div
                   key={slug}

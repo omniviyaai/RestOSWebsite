@@ -1,102 +1,87 @@
 'use client'
 
-import { useRef } from 'react'
-import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { FeatureCard3D } from './FeatureCard3D'
 import { KitchenProblemIllus, KitchenSolutionIllus } from './FeatureIllustrations'
 import { FEATURE_SECTIONS } from '@/lib/features-content'
-import { staggerContainer, fadeUp } from '@/lib/animations'
+import { SequentialBulletHighlight } from './SequentialBulletHighlight'
 
 export function KitchenFeature() {
-  const sectionRef = useRef<HTMLDivElement>(null)
-  const reduceMotion = useReducedMotion()
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ['start end', 'end start'],
-  })
-
   const feature = FEATURE_SECTIONS[1]
-  const problemOpacity = useTransform(scrollYProgress, [0, 0.55], [1, 0])
-  const problemX = useTransform(scrollYProgress, [0, 0.55], [0, reduceMotion ? 0 : -30])
-  const solutionOpacity = useTransform(scrollYProgress, [0.6, 0.9], [0, 1])
-  const solutionX = useTransform(scrollYProgress, [0.6, 0.9], [reduceMotion ? 0 : 30, 0])
 
   return (
-    <FeatureCard3D id="kitchen" perspective="deep" className="bg-carbon/10">
-      <div ref={sectionRef} className="relative min-h-[75dvh] md:min-h-[60dvh] flex items-center">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 w-full items-center">
-          <motion.div
-            style={{ opacity: problemOpacity, x: problemX }}
-            className="text-center lg:text-right"
-          >
-            <div className="flex flex-col items-center lg:items-end gap-4">
-              <KitchenProblemIllus />
-              <div>
-                <span className="text-[10px] font-mono tracking-widest text-ember/60 uppercase mb-2 block">
-                  Before RestOS
-                </span>
-                <h3 className="text-xl sm:text-2xl font-display font-bold text-ember mb-3 text-balance">
-                  {feature.problem.headline}
-                </h3>
-                <ul className="space-y-2 inline-block text-left">
-                  {feature.problem.bullets.map((bullet, j) => (
-                    <li key={j} className="flex items-start gap-2 text-stone text-sm">
-                      <span className="text-ember/50 mt-0.5 flex-shrink-0">&#10007;</span>
-                      {bullet}
-                    </li>
-                  ))}
-                </ul>
+    <FeatureCard3D id="kitchen" className="bg-carbon/10">
+      <div className="py-14 md:py-20">
+        <div className="max-w-5xl mx-auto px-4">
+          <div className="text-center mb-8">
+            <span className="text-xs font-mono uppercase tracking-widest text-teal/80">KITCHEN</span>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-warm-white mt-2 text-balance leading-tight">
+              {feature.solution.headline}
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-0 md:gap-6">
+            {/* OLD WAY — static */}
+            <div className="rounded-xl border border-ember/20 bg-ember/[0.04] p-5 md:p-6 flex flex-col">
+              <div className="flex items-center gap-2 mb-4">
+                <span className="inline-block w-5 h-5 rounded-full bg-ember/80 text-midnight text-[11px] font-bold flex items-center justify-center flex-shrink-0">&#10007;</span>
+                <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-ember/70">Old Way</span>
               </div>
+              <div className="mb-4 opacity-50 flex justify-center md:justify-start">
+                <KitchenProblemIllus />
+              </div>
+              <h3 className="text-base sm:text-lg font-display font-semibold text-ember/90 mb-3 text-balance">
+                {feature.problem.headline}
+              </h3>
+              <ul className="space-y-2">
+                {feature.problem.bullets.map((bullet, j) => (
+                  <li key={j} className="flex items-start gap-2 text-stone/70 text-xs sm:text-sm">
+                    <span className="text-ember/30 mt-0.5 flex-shrink-0">&#10007;</span>
+                    {bullet}
+                  </li>
+                ))}
+              </ul>
             </div>
-          </motion.div>
 
-          <motion.div
-            style={{ opacity: solutionOpacity, x: solutionX }}
-          >
+            {/* NEW WAY with RestOS — animated */}
             <motion.div
-              variants={reduceMotion ? {} : staggerContainer}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: '-80px' }}
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ type: 'spring', stiffness: 200, damping: 25, delay: 0.1 }}
+              className="rounded-xl border border-teal/20 bg-teal/[0.03] p-5 md:p-6 flex flex-col"
             >
-              <div className="flex flex-col items-center lg:items-start gap-4">
-                <KitchenSolutionIllus />
-                <div>
-                  <span className="text-[10px] font-mono tracking-widest text-teal uppercase mb-2 block">
-                    After RestOS
-                  </span>
-                  <h3 className="text-xl sm:text-2xl font-display font-bold text-teal mb-2 text-balance">
-                    {feature.solution.headline}
-                  </h3>
-                  <p className="text-stone text-sm sm:text-base leading-relaxed mb-4">
-                    {feature.solution.description}
-                  </p>
-                  <motion.ul variants={staggerContainer} className="space-y-1.5">
-                    {feature.solution.bullets.map((bullet, j) => (
-                      <motion.li key={j} variants={fadeUp} className="flex items-start gap-2 text-stone text-sm">
-                        <span className="text-teal mt-0.5 flex-shrink-0">&#10003;</span>
-                        {bullet}
-                      </motion.li>
-                    ))}
-                  </motion.ul>
-                </div>
+              <div className="flex items-center gap-2 mb-4">
+                <span className="inline-block w-5 h-5 rounded-full bg-teal text-midnight text-[11px] font-bold flex items-center justify-center flex-shrink-0">&#10003;</span>
+                <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-teal/70">New Way with RestOS</span>
               </div>
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.3, type: 'spring', stiffness: 200, damping: 20 }}
+                className="mb-4 flex justify-center md:justify-start"
+              >
+                <KitchenSolutionIllus />
+              </motion.div>
+              <h3 className="text-base sm:text-lg font-display font-semibold text-teal mb-2 text-balance">
+                No more lost tickets, ever
+              </h3>
+              <p className="text-stone/80 text-xs sm:text-sm leading-relaxed mb-3">
+                {feature.solution.description}
+              </p>
+              <SequentialBulletHighlight
+                bullets={feature.solution.bullets}
+                intervalMs={1000}
+                className="space-y-2"
+                activeClassName="text-warm-white"
+                inactiveClassName="text-stone/70"
+                bulletIconActive="&#10003;"
+                bulletIconInactive="&#10003;"
+              />
             </motion.div>
-          </motion.div>
+          </div>
         </div>
-
-        <motion.div
-          className="absolute top-4 right-4 lg:right-8 px-3 py-1 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-300 text-xs font-mono"
-          style={{ opacity: useTransform(scrollYProgress, [0.15, 0.4], [1, 0]) }}
-        >
-          Order #1042 · 12 min
-        </motion.div>
-        <motion.div
-          className="absolute top-4 left-4 lg:left-8 px-3 py-1 rounded-full border border-teal/30 bg-teal/10 text-teal text-xs font-mono"
-          style={{ opacity: useTransform(scrollYProgress, [0.65, 0.85], [0, 1]) }}
-        >
-          Order #1042 · Confirmed
-        </motion.div>
       </div>
     </FeatureCard3D>
   )

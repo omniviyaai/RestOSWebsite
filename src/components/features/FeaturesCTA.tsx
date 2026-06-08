@@ -11,8 +11,7 @@ export function FeaturesCTA() {
   const region = useRegion()
 
   return (
-    <section className="relative py-20 sm:py-28 px-4 overflow-hidden">
-      {/* Gradient background */}
+    <section aria-label="Call to action" className="relative py-14 sm:py-24 px-4 overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-midnight via-carbon/80 to-midnight pointer-events-none" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(232,116,42,0.06)_0%,_transparent_60%)] pointer-events-none" />
 
@@ -23,10 +22,20 @@ export function FeaturesCTA() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-warm-white mb-8 text-balance leading-tight"
+          className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-warm-white mb-3 text-balance leading-tight"
         >
           {CTA_CONTENT.headline}
         </motion.h2>
+        <motion.p
+          variants={ctaEntry}
+          custom={0.5}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="text-stone/70 text-sm sm:text-base mb-8"
+        >
+          Zero hardware. Zero hassle. See what RestOS can do for your restaurant.
+        </motion.p>
         <motion.div
           variants={ctaEntry}
           custom={1}

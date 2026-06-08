@@ -1,21 +1,26 @@
 'use client'
 
-import { useRef, useCallback } from 'react'
+import { useRef, useCallback, type ReactNode } from 'react'
 import { motion, useSpring } from 'framer-motion'
-import Link from 'next/link'
 import { staggerContainer, fadeUp } from '@/lib/animations'
 import { normaliseMousePos } from '@/lib/parallax'
 import { useRegion } from '@/lib/region-context'
+import { Button } from '@/components/ui/Button'
+import { PhoneIcon, KitchenIcon, BellIcon, RupeeIcon, ChartIcon, DevicesIcon } from './HighlightIcons'
 
-const BASE_CARDS = [
-  { icon: '📱', headline: 'Customers order themselves', subtext: 'Scan, browse, order, pay — all from their own phone. No waiter needed for every table.' },
-  { icon: '🍳', headline: 'Kitchen never misses an order', subtext: 'Every KOT is digital, timestamped, color-coded. Nothing gets lost.' },
-  { icon: '🛎️', headline: "Your waiter always knows what's next", subtext: 'Table-by-table clarity. No shouting across the floor.' },
-  { icon: '📊', headline: 'Manage from anywhere', subtext: 'Full admin dashboard on your phone or laptop. Check in from home.' },
-  { icon: '📲', headline: 'No new hardware needed', subtext: 'Works on any phone, tablet, or TV you already own.' },
+interface Card {
+  icon: ReactNode
+  headline: string
+  subtext: string
+}
+
+const BASE_CARDS: Card[] = [
+  { icon: <PhoneIcon className="w-7 h-7 text-teal" />, headline: 'Customers order themselves', subtext: 'Scan, browse, order, pay — all from their own phone. No waiter needed for every table.' },
+  { icon: <KitchenIcon className="w-7 h-7 text-ember" />, headline: 'Kitchen never misses an order', subtext: 'Every KOT is digital, timestamped, color-coded. Nothing gets lost.' },
+  { icon: <BellIcon className="w-7 h-7 text-gold" />, headline: "Your waiter always knows what's next", subtext: 'Table-by-table clarity. No shouting across the floor.' },
+  { icon: <ChartIcon className="w-7 h-7 text-teal" />, headline: 'Manage from anywhere', subtext: 'Full admin dashboard on your phone or laptop. Check in from home.' },
+  { icon: <DevicesIcon className="w-7 h-7 text-warm-white/80" />, headline: 'No new hardware needed', subtext: 'Works on any phone, tablet, or TV you already own.' },
 ]
-
-type Card = { icon: string; headline: string; subtext: string }
 
 function SpotlightCard({ card }: { card: Card }) {
   const cardRef = useRef<HTMLDivElement>(null)
@@ -44,13 +49,12 @@ function SpotlightCard({ card }: { card: Card }) {
       whileHover={{ y: -8, transition: { type: 'spring', stiffness: 400, damping: 30 } }}
       className="group relative rounded-xl bg-carbon border border-wire hover:border-ember/40 p-5 sm:p-6 cursor-default overflow-hidden"
     >
-      {/* Spotlight on hover */}
       <div
         className="absolute inset-0 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-500"
         style={{ background: 'radial-gradient(120px circle at 50% 40%, rgba(232,116,42,0.07), transparent 70%)' }}
       />
       <div className="relative">
-        <div className="text-2xl mb-3 group-hover:scale-110 transition-transform duration-200 origin-left">
+        <div className="mb-3 group-hover:scale-110 transition-transform duration-200 origin-left">
           {card.icon}
         </div>
         <h3 className="font-display font-semibold text-warm-white text-sm sm:text-base mb-1.5">
@@ -64,9 +68,9 @@ function SpotlightCard({ card }: { card: Card }) {
 
 export function ProductHighlights() {
   const region = useRegion()
-  const cards = [
+  const cards: Card[] = [
     ...BASE_CARDS.slice(0, 3),
-    { icon: '💰', headline: region.paymentHighlightHeadline, subtext: region.paymentHighlightSubtext },
+    { icon: <RupeeIcon className="w-7 h-7 text-ember" />, headline: region.paymentHighlightHeadline, subtext: region.paymentHighlightSubtext },
     ...BASE_CARDS.slice(3),
   ]
   return (
@@ -97,18 +101,15 @@ export function ProductHighlights() {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.4, duration: 0.3 }}
-          className="text-center mt-8"
+          transition={{ delay: 0.5, duration: 0.4, ease: 'easeOut' }}
+          className="text-center mt-10"
         >
-          <Link
-            href={`/${region.key}/features/`}
-            className="text-teal text-sm hover:text-teal/70 transition-colors duration-150 font-medium"
-          >
-            See the full product →
-          </Link>
+          <Button href={`/${region.key}/features/`} variant="primary" className="text-base px-8 py-4 min-h-[52px]">
+            Explore All Features
+          </Button>
         </motion.div>
       </div>
     </section>

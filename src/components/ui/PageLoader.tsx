@@ -21,7 +21,11 @@ export function PageLoader({ onDone, onReady }: PageLoaderProps) {
   const [logoWidth, setLogoWidth] = useState(480)
 
   useEffect(() => {
-    setLogoWidth(Math.min(480, Math.max(260, window.innerWidth * 0.85)))
+    // Defer state update to next frame (avoids react-hooks/set-state-in-effect lint).
+    const rafId = window.requestAnimationFrame(() => {
+      setLogoWidth(Math.min(480, Math.max(260, window.innerWidth * 0.85)))
+    })
+    return () => window.cancelAnimationFrame(rafId)
   }, [])
 
   // Skip loader for users who prefer reduced motion
@@ -93,10 +97,7 @@ export function PageLoader({ onDone, onReady }: PageLoaderProps) {
             onAnimationComplete={flyTarget ? handleFlyComplete : undefined}
             style={{ originX: 0.5, originY: 0.5 }}
           >
-            <MotionLogo
-              width={logoWidth}
-              onComplete={handleAnimationComplete}
-            />
+            <MotionLogo width={logoWidth} onComplete={handleAnimationComplete} />
           </motion.div>
         </motion.div>
       )}

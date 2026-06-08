@@ -1,110 +1,113 @@
 'use client'
 
-import { useRef, useCallback } from 'react'
-import { motion, useSpring, useReducedMotion } from 'framer-motion'
-import { ecosystemNode, ecosystemLine } from '@/lib/animations'
-import { normaliseMousePos, springs } from '@/lib/parallax'
+import { motion } from 'framer-motion'
 import { TIMELINE_CONTENT } from '@/lib/features-content'
 
+function PhoneIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className={className}>
+      <rect x="5" y="2" width="14" height="20" rx="2" />
+      <line x1="12" y1="18" x2="12.01" y2="18" />
+    </svg>
+  )
+}
+
+function WaiterIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className={className}>
+      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+      <circle cx="9" cy="7" r="4" />
+      <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+      <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+    </svg>
+  )
+}
+
+function MonitorIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className={className}>
+      <rect x="2" y="3" width="20" height="14" rx="2" />
+      <line x1="8" y1="21" x2="16" y2="21" />
+      <line x1="12" y1="17" x2="12" y2="21" />
+    </svg>
+  )
+}
+
+function ChartIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className={className}>
+      <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+    </svg>
+  )
+}
+
+const icons: Record<string, typeof PhoneIcon> = {
+  phone: PhoneIcon,
+  waiter: WaiterIcon,
+  monitor: MonitorIcon,
+  chart: ChartIcon,
+}
+
+const bgColors = [
+  'bg-stone/10 text-stone',
+  'bg-ember/10 text-ember',
+  'bg-teal/10 text-teal',
+  'bg-gold/10 text-gold',
+]
+
 export function TimelineOverview() {
-  const sectionRef = useRef<HTMLElement>(null)
-  const reduceMotion = useReducedMotion()
-  const rotateX = useSpring(0, springs.ecosystem)
-  const rotateY = useSpring(0, springs.ecosystem)
-
-  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLElement>) => {
-    if (reduceMotion || !sectionRef.current) return
-    const rect = sectionRef.current.getBoundingClientRect()
-    const pos = normaliseMousePos(e.clientX - rect.left, e.clientY - rect.top, rect.width, rect.height)
-    rotateX.set(pos.y * -2)
-    rotateY.set(pos.x * 2)
-  }, [rotateX, rotateY])
-
-  const handleMouseLeave = useCallback(() => {
-    rotateX.set(0); rotateY.set(0)
-  }, [rotateX, rotateY])
-
   const scrollToSection = (id: string) => {
     const el = document.getElementById(id)
     el?.scrollIntoView({ behavior: 'smooth' })
   }
 
   return (
-    <section
-      ref={sectionRef}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      className="bg-carbon/15 py-20 md:py-28 px-4 overflow-hidden"
-      style={{ perspective: '1200px' }}
-    >
-      <div className="max-w-lg mx-auto">
+    <section aria-label="How RestOS connects your team" className="bg-carbon/15 py-14 md:py-20 px-4 overflow-hidden">
+      <div className="max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ type: 'spring', stiffness: 200, damping: 25 }}
-          className="text-center mb-14"
+          className="text-center mb-12"
         >
-          <span className="text-[10px] font-mono tracking-widest text-teal uppercase mb-3 block">
-            How It Works
-          </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-warm-white text-balance leading-tight">
             {TIMELINE_CONTENT.headline}
           </h2>
-          <p className="text-stone text-sm sm:text-base mt-4 max-w-md mx-auto">
+          <p className="text-stone text-sm sm:text-base mt-4 max-w-lg mx-auto">
             {TIMELINE_CONTENT.subtext}
           </p>
         </motion.div>
 
-        <motion.div
-          style={{ rotateX, rotateY, transformStyle: 'preserve-3d' }}
-          className="flex flex-col items-center"
-        >
-          {TIMELINE_CONTENT.nodes.map((node, i) => (
-            <div key={i} className="flex flex-col items-center w-full">
-              <motion.button
-                variants={ecosystemNode}
-                custom={i}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: '-40px' }}
-                whileHover={{ scale: 1.04, transition: { type: 'spring', stiffness: 300, damping: 20 } }}
-                whileFocus={{ scale: 1.04 }}
-                onClick={() => scrollToSection(node.id)}
-                className={`w-full rounded-xl border ${node.accent} bg-carbon px-5 py-4 text-center cursor-pointer relative`}
-                style={{ transformStyle: 'preserve-3d', translateZ: `${(i + 1) * 4}px` }}
-              >
-                <p className={`font-display font-semibold text-sm sm:text-base ${node.color}`}>
-                  {node.label}
-                </p>
-                <p className="text-stone text-xs mt-0.5">{node.desc}</p>
-                <motion.div
-                  className="absolute -right-1 -top-1 w-2 h-2 rounded-full bg-current"
-                  style={{ color: 'inherit' }}
-                  animate={reduceMotion ? undefined : { scale: [1, 1.3, 1], opacity: [0.6, 1, 0.6] }}
-                  transition={{ repeat: Infinity, duration: 2 + i * 0.3, delay: i * 0.15 }}
-                />
-              </motion.button>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {TIMELINE_CONTENT.nodes.map((node, i) => {
+            const IconComponent = icons[node.icon]
 
-              {i < TIMELINE_CONTENT.nodes.length - 1 && (
-                <motion.div
-                  variants={ecosystemLine}
-                  custom={i}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true, margin: '-40px' }}
-                  className="w-px h-7 bg-gradient-to-b from-teal/50 to-teal/0 origin-top flex-shrink-0 relative overflow-hidden"
-                >
-                  <motion.div
-                    className="absolute w-full h-1.5 bg-teal/60 rounded-full"
-                    animate={reduceMotion ? undefined : { y: [-6, 28] }}
-                    transition={{ repeat: Infinity, duration: 1.2, delay: i * 0.2, ease: 'easeInOut' }}
-                  />
-                </motion.div>
-              )}
-            </div>
-          ))}
-        </motion.div>
+            return (
+              <motion.button
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-40px' }}
+                transition={{ delay: i * 0.1, type: 'spring', stiffness: 200, damping: 20 }}
+                whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 300, damping: 20 } }}
+                whileFocus={{ scale: 1.03 }}
+                onClick={() => scrollToSection(node.id)}
+                className="rounded-xl border border-wire/40 bg-carbon px-5 py-6 text-left cursor-pointer flex flex-col gap-3"
+              >
+                <span className={`w-10 h-10 rounded-lg flex items-center justify-center ${bgColors[i]}`}>
+                  <IconComponent className="w-5 h-5" />
+                </span>
+                <div>
+                  <p className={`font-display font-semibold text-sm sm:text-base ${node.color}`}>
+                    {node.label}
+                  </p>
+                  <p className="text-stone/60 text-xs mt-1">{node.desc}</p>
+                </div>
+              </motion.button>
+            )
+          })}
+        </div>
       </div>
     </section>
   )

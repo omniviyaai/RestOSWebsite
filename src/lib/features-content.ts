@@ -24,23 +24,23 @@ export const FEATURE_SECTIONS: FeatureSection[] = [
     category: 'Ordering',
     problem: {
       icon: '⏳',
-      headline: 'Customers wait for a waiter just to place an order',
+      headline: 'Wrong orders cost you money. Slow service costs you customers.',
       bullets: [
-        'Customers feeling rushed into ordering quickly',
-        'Wrong orders caused by miscommunication',
-        'Staff spending valuable time writing down orders',
-        'Long queues at counters during busy hours',
+        'Customers wait for a waiter just to place an order',
+        'Orders get misheard, then remade — wasting food',
+        'Staff writes orders instead of serving or hosting',
+        'Rush hour becomes chaos instead of profit',
       ],
     },
     solution: {
       icon: '📱',
-      headline: 'Customers order when they are ready',
-      description: 'Every table gets its own QR code. Customers scan, browse your menu, customize their order, and pay from their own phone.',
+      headline: 'Customers order from their phone. Your kitchen gets it instantly.',
+      description: 'Every table gets a QR code. Customers scan, browse your menu, customise, and order. No waiter needed for the first step.',
       bullets: [
-        'Customers order immediately when they are ready',
-        'Customers see exactly what they are ordering before confirming',
-        'Fewer ordering mistakes and fewer disputes',
-        'Staff focus on hospitality instead of data entry',
+        'Customers order at their own pace, no pressure',
+        'They see exactly what they ordered before confirming',
+        'Fewer mistakes, fewer remakes, less waste',
+        'Staff focuses on hospitality, not data entry',
         'Works for dine-in, takeaway, and staff-assisted orders',
       ],
     },
@@ -50,24 +50,76 @@ export const FEATURE_SECTIONS: FeatureSection[] = [
     category: 'Kitchen',
     problem: {
       icon: '📝',
-      headline: 'Lost paper tickets, illegible handwriting, frustrated kitchen',
+      headline: 'Lost tickets. Burnt dishes. Furious customers.',
       bullets: [
-        'Lost paper KOTs that never reach the kitchen',
-        'Illegible handwriting causing wrong dishes',
-        'Waiters repeatedly asking the kitchen for updates',
-        'Customers constantly asking "Where is my order?"',
+        'Paper KOTs get lost or thrown away by mistake',
+        'Handwriting is illegible — wrong dishes go out',
+        'Kitchen has no idea which order is urgent',
+        'Waiters keep walking back to ask "Is it ready?"',
       ],
     },
     solution: {
       icon: '🖥️',
-      headline: 'Kitchen never misses an order',
-      description: 'Every order appears on the kitchen display the moment it is placed. Color-coded by status. Timer shows how long each order has been waiting.',
+      headline: 'Every order reaches the kitchen. Instantly.',
+      description: 'Orders appear on the kitchen display the moment they are placed. Colour-coded by status. Timer shows how long each order has been waiting.',
       bullets: [
-        'Orders arrive instantly in the kitchen with audio alert',
-        'No paper tickets to lose ever again',
-        'Orders over 10 minutes pulse amber, over 20 pulse red',
-        'Special instructions highlighted so nothing gets missed',
+        'Orders arrive with an audio alert — no checking required',
+        'Timer turns amber at 10 minutes, red at 20',
+        'Special instructions highlighted so nothing is missed',
+        'No paper tickets to lose, ever',
         'Works on any tablet or TV you already own',
+      ],
+    },
+  },
+  {
+    id: 'payment',
+    category: 'Payments',
+    problem: {
+      icon: '💳',
+      headline: 'Customers wait for the bill. You run card machines. Revenue walks out.',
+      bullets: [
+        'Customers sit idle waiting for the bill after their meal',
+        'Staff runs between tables with card machines',
+        'Queues form at the counter during peak hours',
+        'Some customers leave without paying — lost revenue',
+      ],
+    },
+    solution: {
+      icon: '📱',
+      headline: 'Customers pay from their phone. Tables turn faster.',
+      description: 'Every bill is digital. Customers see their bill on their phone, split it with their group, and pay with any method — UPI, card, or cash.',
+      bullets: [
+        'Customers pay themselves using QR/UPI from their phone',
+        'No card machines need to reach their table',
+        'Split bills between friends, no mental math',
+        'Fast, secure settlements tracked in real time',
+        'Every rupee is accounted for',
+      ],
+    },
+  },
+  {
+    id: 'analytics',
+    category: 'Analytics',
+    problem: {
+      icon: '📉',
+      headline: 'You guess what sells. You staff blind. You lose money.',
+      bullets: [
+        'You guess which dishes are actually profitable',
+        'You overstaff on slow days and understaff during rushes',
+        "You don't know where your revenue comes from",
+        'Business decisions made on vibes, not data',
+      ],
+    },
+    solution: {
+      icon: '📊',
+      headline: 'Know exactly what makes money. And what does not.',
+      description: 'Live revenue tracking, best-seller reports, peak hour patterns, and profit per dish. Real data you can act on.',
+      bullets: [
+        'See which dishes earn the most, in real time',
+        'Know your peak hours so you staff perfectly',
+        'Revenue breakdown: dine-in vs takeaway vs delivery',
+        'Export-ready reports for accounting and GST',
+        'Data refreshes live — no waiting for end of day',
       ],
     },
   },
@@ -76,60 +128,111 @@ export const FEATURE_SECTIONS: FeatureSection[] = [
     category: 'Management',
     problem: {
       icon: '🔄',
-      headline: 'Jumping between multiple systems, guessing what is happening',
+      headline: 'Costly hardware. Vendor lock-in. Painful switching.',
       bullets: [
-        'Not knowing what is happening on the floor right now',
-        'Time wasted updating menus manually across platforms',
-        'Limited visibility into daily operations and staff performance',
-        'No single source of truth for table status or reservations',
+        'POS terminals cost ₹30,000–₹1,00,000 each',
+        'Self-ordering kiosks cost lakhs to install',
+        'Vibrating pagers break and need replacing',
+        'Once you buy in, switching is impossible',
       ],
     },
     solution: {
       icon: '📊',
-      headline: 'Run your entire restaurant from one screen',
-      description: 'Orders, tables, revenue, staff, menus, reservations, and customer activity all managed from a single dashboard. Accessible from any device.',
+      headline: 'Run your whole restaurant from any device you already own.',
+      description: 'Orders, tables, revenue, staff, and menu — all managed from a single dashboard on any phone, tablet, or laptop.',
       bullets: [
-        'Full operational visibility from any phone, tablet, or laptop',
-        'Menu updates go live instantly across all tables and online',
-        'Better table management with open/close session control',
-        'Staff management with role-based access controls',
-        'Less manual work, more time focused on customers',
+        'Full control from any device, anywhere',
+        'Menu changes go live instantly at every table',
+        'Open and close tables with one tap',
+        'Staff access controls for different roles',
+        'Zero hardware to buy, install, or maintain',
       ],
     },
   },
 ]
 
 export const HERO_CONTENT = {
-  headline: 'Everything Your Restaurant Needs',
+  headline: 'Everything Your Restaurant Needs. In One System.',
   tagline: 'Less Waiting. Less Confusion. Less Hardware. More Revenue.',
+  description: 'RestOS connects customers, waiters, kitchen staff, and management on a single platform. From the moment a guest walks in to the moment they leave, every step is faster, clearer, and more profitable.',
 }
 
 export const TIMELINE_CONTENT = {
-  headline: 'One Order. One Timeline. Visible To Everyone.',
-  subtext: 'From customer phone to your dashboard, every step is connected.',
+  headline: 'One Order. Visible To Everyone.',
+  subtext: 'Four touchpoints. One connected system. Your whole team stays in sync.',
   nodes: [
-    { id: 'ordering', label: 'Customer Phone', desc: 'Scans QR, browses menu', color: 'text-stone', accent: 'border-stone/40 bg-stone/5' },
-    { id: 'ordering', label: 'QR Menu', desc: 'Orders instantly, no app', color: 'text-ember', accent: 'border-ember/40 bg-ember/5' },
-    { id: 'ordering', label: 'Live Order', desc: 'Confirmed in real time', color: 'text-warm-white', accent: 'border-warm-white/30 bg-warm-white/5' },
-    { id: 'kitchen', label: 'Kitchen Display', desc: 'Kitchen sees it immediately', color: 'text-teal', accent: 'border-teal/40 bg-teal/5' },
-    { id: 'payment', label: 'Payment', desc: 'Settled from the table', color: 'text-gold', accent: 'border-gold/40 bg-gold/5' },
-    { id: 'management', label: 'Admin Dashboard', desc: 'Full control, from anywhere', color: 'text-ember', accent: 'border-ember/30 bg-ember/5' },
-    { id: 'analytics', label: 'Analytics', desc: 'Revenue and trends, live', color: 'text-teal', accent: 'border-teal/30 bg-teal/5' },
+    { id: 'ordering', label: 'Customer Phone', icon: 'phone', desc: 'Scan QR, browse menu, order, pay', color: 'text-warm-white' },
+    { id: 'management', label: 'Waiter App', icon: 'waiter', desc: 'Live order updates, table status, floor alerts', color: 'text-ember' },
+    { id: 'kitchen', label: 'Kitchen Display', icon: 'monitor', desc: 'Orders appear instantly, colour-coded, timed', color: 'text-teal' },
+    { id: 'analytics', label: 'Analytics & Dashboard', icon: 'chart', desc: 'Revenue, orders, tables, trends — all live', color: 'text-gold' },
   ],
 }
 
 export const BYOD_CONTENT = {
-  headline: 'The restaurant software that does not force you to buy hardware',
-  subtext: 'Most restaurant systems want you to buy POS terminals, self-ordering kiosks, kitchen printers, and pager devices. RestOS works with what you already own.',
-  bullets: [
-    'Customers use their own phones to order and pay',
-    'Staff use existing phones, tablets, or computers',
-    'Kitchen uses existing tablets or TVs you already have',
-    'No hardware lock-ins. No expensive setup costs.',
-    'Easier staff training. Faster rollout.',
+  headline: 'No hardware to buy. No installation fees. No lock-in.',
+  subtext: 'RestOS works on devices you already own — phones, tablets, laptops, and TVs. Everything a POS system does, without the POS system cost.',
+  comparisons: [
+    { item: 'POS terminals', oldWay: '₹30,000 – ₹1,00,000 each', newWay: 'Not needed' },
+    { item: 'Self-ordering kiosks', oldWay: '₹1,50,000 – ₹5,00,000 each', newWay: 'Not needed' },
+    { item: 'Kitchen printers', oldWay: '₹15,000 – ₹40,000 each', newWay: 'Not needed' },
+    { item: 'Vibrating pagers', oldWay: '₹5,000 – ₹15,000 each', newWay: 'Not needed' },
+    { item: 'Setup & training', oldWay: 'Weeks of installation and training', newWay: 'Hours, not days' },
   ],
 }
 
 export const CTA_CONTENT = {
-  headline: 'See all of this in your restaurant.',
+  headline: 'Built For Modern Restaurants',
 }
+
+export interface FAQItem {
+  q: string
+  a: string
+}
+
+export const FAQ_CONTENT = {
+  headline: 'Restaurant tech questions, answered in plain English',
+  questions: [
+    {
+      q: 'What is RestOS?',
+      a: 'RestOS is restaurant management software that runs in a browser. It replaces traditional POS hardware with QR code ordering, a kitchen display system, digital payments, and real-time analytics. Everything works on devices your restaurant already owns — phones, tablets, laptops, and TVs. There is no hardware to buy, no complex installation, and no long-term contract.',
+    },
+    {
+      q: 'Do I need to buy any hardware?',
+      a: 'No. RestOS works on any device with a browser — your existing smartphones, tablets, laptops, and TVs. There are no POS terminals to buy, no self-ordering kiosks to install, and no kitchen printers to maintain. Restaurants typically already have everything they need to get started.',
+    },
+    {
+      q: 'How does QR code ordering actually work?',
+      a: 'Each table in your restaurant gets a unique QR code. When a customer scans it with their phone camera, they see your full menu. They can browse items, customise their order, and send it directly to the kitchen — all without waiting for a waiter. The kitchen receives the order instantly on its display screen.',
+    },
+    {
+      q: 'Can customers pay from their phone?',
+      a: 'Yes. Customers can view their bill, split it with their group, and pay using UPI, credit or debit card. The payment is processed directly from their phone — no card machine needs to reach their table. Cash payments are also supported and tracked in the system.',
+    },
+    {
+      q: 'Is RestOS suitable for small restaurants?',
+      a: 'Yes. RestOS works for restaurants of any size — from a 10-table cafe to a 100-table fine dining restaurant. There are no minimum commitments, and you only pay for what you use. Small restaurants benefit the most because RestOS eliminates the hardware costs that make traditional POS systems unaffordable.',
+    },
+    {
+      q: 'How long does setup take?',
+      a: 'Most restaurants go live within 48 hours. Upload your menu (or we can do it for you), print QR codes for your tables, connect a display in the kitchen — and you are ready to take orders. No onsite installation or training sessions are required.',
+    },
+    {
+      q: 'What analytics does RestOS provide?',
+      a: 'RestOS tracks everything that matters: real-time revenue, best-selling dishes, profit per dish, peak hour patterns, dine-in vs takeaway split, and staffing needs. All data updates live and can be exported for accounting and GST filing. You get reports you can act on, not just charts to look at.',
+    },
+    {
+      q: 'How do I update my menu?',
+      a: 'Menu changes are made from the RestOS dashboard. Add, remove, or change prices on any item, and the update goes live instantly across all QR codes — every table sees the new menu immediately. No reprinting of physical menus required.',
+    },
+    {
+      q: 'Does RestOS support table management?',
+      a: 'Yes. RestOS tracks every table in your restaurant — open, occupied, or reserved. You can see table status at a glance from the dashboard, open and close sessions, and manage floor layout. The waiter app shows real-time table status so staff always knows which tables need attention.',
+    },
+    {
+      q: 'How is RestOS different from a traditional POS system?',
+      a: 'Traditional POS systems require expensive hardware, onsite installation, and long-term contracts. RestOS runs entirely on devices you already own. There is no hardware to buy, no software to install, and no lengthy training required. Updates and maintenance are handled automatically — nothing for you to manage.',
+    },
+  ],
+}
+
+

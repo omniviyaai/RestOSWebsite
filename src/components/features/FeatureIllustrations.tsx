@@ -88,6 +88,12 @@ export function OrderingSolutionIllus() {
         animate={{ pathLength: 1 }}
         transition={{ delay: 0.8, duration: 0.5 }}
       />
+      <motion.circle
+        cx="94" cy="72" r="2"
+        fill={tealAccent}
+        animate={{ scale: [1, 1.6, 1], opacity: [0.6, 1, 0.6] }}
+        transition={{ repeat: Infinity, duration: 1.5, delay: 1.2 }}
+      />
     </svg>
   )
 }
@@ -162,11 +168,24 @@ export function KitchenSolutionIllus() {
             cx={118} cy={62 + i * 24} r="4"
             fill={tealAccent}
             initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{ delay: 0.6 + i * 0.2, type: 'spring', stiffness: 300, damping: 15 }}
+            animate={{ scale: [0, 1, 1.2, 1] }}
+            transition={{ delay: 0.6 + i * 0.2, duration: 0.6, ease: [0.34, 1.56, 0.64, 1] }}
+          />
+          <motion.circle
+            cx={118} cy={62 + i * 24} r="4"
+            fill={tealAccent}
+            animate={{ opacity: [0, 0.4, 0] }}
+            transition={{ repeat: Infinity, duration: 2, delay: 1 + i * 0.3, ease: 'easeInOut' }}
+            style={{ transformOrigin: 'center' }}
           />
         </motion.g>
       ))}
+      <motion.rect
+        x="32" y="124" width="96" height="10" rx="3"
+        fill={teal} opacity={0.15}
+        animate={{ opacity: [0.1, 0.25, 0.1] }}
+        transition={{ repeat: Infinity, duration: 3, ease: 'easeInOut' }}
+      />
     </svg>
   )
 }
@@ -228,8 +247,8 @@ export function PaymentSolutionIllus() {
         cx="75" cy="60" r="18"
         fill="none" stroke={tealAccent} strokeWidth="2"
         initial={{ scale: 0 }}
-        animate={{ scale: 1 }}
-        transition={{ delay: 0.3, type: 'spring', stiffness: 200, damping: 15 }}
+        animate={{ scale: 1, opacity: [1, 0.8, 1] }}
+        transition={{ delay: 0.3, duration: 0.5, ease: [0.34, 1.56, 0.64, 1] }}
       />
       <motion.path
         d="M64 60 l8 8 l14 -14"
@@ -248,6 +267,13 @@ export function PaymentSolutionIllus() {
       >
         PAID
       </motion.text>
+      <motion.circle
+        cx="75" cy="60" r="22"
+        fill="none" stroke={tealAccent} strokeWidth="1"
+        animate={{ scale: [1, 1.15, 1], opacity: [0.3, 0, 0.3] }}
+        transition={{ repeat: Infinity, duration: 2, delay: 1.2, ease: 'easeInOut' }}
+        style={{ originX: '75px', originY: '60px' }}
+      />
     </svg>
   )
 }
@@ -337,6 +363,12 @@ export function ManagementSolutionIllus() {
           style={{ originY: `${bar.y + 40}px` }}
         />
       ))}
+      <motion.rect
+        x="100" y="105" width="30" height="4" rx="2"
+        fill={tealAccent} opacity={0.3}
+        animate={{ opacity: [0.2, 0.5, 0.2] }}
+        transition={{ repeat: Infinity, duration: 2.5, ease: 'easeInOut' }}
+      />
     </svg>
   )
 }
@@ -407,6 +439,22 @@ export function AnalyticsSolutionIllus() {
           style={{ originY: '100px' }}
         />
       ))}
+      {[
+        { x: 25, h: 48 },
+        { x: 50, h: 72 },
+        { x: 75, h: 40 },
+        { x: 100, h: 60 },
+        { x: 125, h: 32 },
+      ].map((bar, i) => (
+        <motion.rect
+          key={`pulse-${i}`}
+          x={bar.x} y={100 - bar.h}
+          width="18" height={bar.h} rx="3"
+          fill={tealAccent}
+          animate={{ opacity: [0.1, 0.35, 0.1] }}
+          transition={{ repeat: Infinity, duration: 2.5, delay: 0.8 + i * 0.15, ease: 'easeInOut' }}
+        />
+      ))}
       {[0, 1, 2].map(i => (
         <motion.circle
           key={i}
@@ -414,10 +462,17 @@ export function AnalyticsSolutionIllus() {
           r="3"
           fill={tealAccent}
           initial={{ opacity: 0, scale: 0 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.8 + i * 0.15, type: 'spring', stiffness: 300, damping: 15 }}
+          animate={{ opacity: 1, scale: [1, 1.4, 1] }}
+          transition={{ delay: 0.8 + i * 0.15, duration: 0.5, ease: [0.34, 1.56, 0.64, 1] }}
         />
       ))}
+      <motion.path
+        d="M25 90 Q50 85 75 95 Q100 80 125 90"
+        fill="none" stroke={tealAccent} strokeWidth="1.5"
+        strokeDasharray="4 3"
+        animate={{ pathLength: [0.4, 0.8, 0.4] }}
+        transition={{ repeat: Infinity, duration: 3, ease: 'easeInOut' }}
+      />
     </svg>
   )
 }

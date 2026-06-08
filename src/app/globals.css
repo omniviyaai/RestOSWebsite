@@ -26,3 +26,16 @@
     text-wrap: balance;
   }
 }
+
+:root {
+  --color-ember: #E8742A;
+  --color-ember-accent: #e8896e;
+  --color-teal: #0E8C84;
+  --color-teal-accent: #6cc8b5;
+  --color-gold: #C6A35B;
+  --color-warm-white: #F3EFE7;
+  --color-warm-white-dim: #c8c5ba;
+  --color-stone: #9CA3AF;
+  --color-carbon: #151B2E;
+  --color-wire: #1E2640;
+}

@@ -19,8 +19,18 @@ const config: Config = {
         display: ['Space Grotesk', 'sans-serif'],
         mono: ['Space Mono', 'monospace'],
       },
+      perspective: {
+        'hero': '1200px',
+        'feature': '1200px',
+        'deep': '1600px',
+        'shallow': '800px',
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+        'dot-grid': 'radial-gradient(circle, currentColor 1px, transparent 1px)',
+      },
+      backgroundSize: {
+        'dot-grid': '32px 32px',
       },
       animation: {
         'float': 'float 4s ease-in-out infinite',

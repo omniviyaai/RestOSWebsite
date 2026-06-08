@@ -25,15 +25,6 @@ export function FeatureCard3D({
   const rotateX = useSpring(0, springs.ecosystem)
   const rotateY = useSpring(0, springs.ecosystem)
 
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ['start end', 'end start'],
-  })
-
-  const _scrollRotateX = useTransform(scrollYProgress, [0, 0.5, 1], [2, 0, -2])
-  const scrollOpacity = useTransform(scrollYProgress, [0, 0.85, 1], [1, 1, 0.4])
-  const scrollScale = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.92, 1, 1, 0.92])
-
   const handleMouseMove = useCallback((e: React.MouseEvent<HTMLElement>) => {
     if (reduceMotion || !sectionRef.current) return
     const rect = sectionRef.current.getBoundingClientRect()
@@ -53,7 +44,7 @@ export function FeatureCard3D({
     rotateY.set(0)
   }, [rotateX, rotateY, reduceMotion])
 
-  const perspectivePx = perspective === 'deep' ? '1600px' : '1200px'
+  const perspectiveClass = perspective === 'deep' ? 'perspective-deep' : 'perspective-feature'
 
   return (
     <section
@@ -61,18 +52,14 @@ export function FeatureCard3D({
       id={id}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className={`relative py-20 md:py-28 px-4 overflow-hidden ${className}`}
-      style={{ perspective: perspectivePx }}
+      className={`relative overflow-hidden ${perspectiveClass} ${className}`}
     >
       <motion.div
         style={{
           rotateX: reduceMotion ? 0 : rotateX,
           rotateY: reduceMotion ? 0 : rotateY,
-          scale: reduceMotion ? 1 : scrollScale,
-          opacity: scrollOpacity,
           transformStyle: 'preserve-3d',
         }}
-        className="max-w-5xl mx-auto"
       >
         {children}
       </motion.div>

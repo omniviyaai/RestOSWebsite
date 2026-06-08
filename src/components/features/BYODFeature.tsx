@@ -1,70 +1,139 @@
 'use client'
 
-import { motion, useReducedMotion } from 'framer-motion'
-import { deviceFloat, staggerContainer, fadeUp } from '@/lib/animations'
+import { motion } from 'framer-motion'
+import { staggerContainer, fadeUp } from '@/lib/animations'
 import { BYOD_CONTENT } from '@/lib/features-content'
+import { useRef } from 'react'
+
+function PhoneDevice({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 32 56" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className={className}>
+      <rect x="3" y="2" width="26" height="52" rx="8" />
+      <circle cx="16" cy="50" r="3" />
+      <path d="M16 8v4" stroke="var(--color-teal)" />
+    </svg>
+  )
+}
+
+function TabletDevice({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 56 40" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className={className}>
+      <rect x="2" y="2" width="52" height="36" rx="4" />
+      <circle cx="28" cy="34" r="3" />
+      <path d="M28 6v4" stroke="var(--color-ember)" />
+    </svg>
+  )
+}
+
+function MonitorDevice({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 56 40" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className={className}>
+      <rect x="2" y="2" width="52" height="30" rx="2" />
+      <rect x="24" y="32" width="8" height="6" rx="1" />
+      <path d="M28 6v4" stroke="var(--color-ember)" />
+    </svg>
+  )
+}
 
 export function BYODFeature() {
-  const reduceMotion = useReducedMotion()
+  const sectionRef = useRef<HTMLElement>(null)
+
   const devices = [
-    { emoji: '📱', label: 'Phone', delay: 0, x: -80, y: -40 },
-    { emoji: '📟', label: 'Tablet', delay: 0.3, x: 80, y: 20 },
-    { emoji: '🖥️', label: 'TV/Monitor', delay: 0.6, x: 0, y: 60 },
+    { Icon: PhoneDevice, label: 'Phone', delay: 0 },
+    { Icon: TabletDevice, label: 'Tablet', delay: 0.2 },
+    { Icon: MonitorDevice, label: 'TV / Monitor', delay: 0.4 },
   ]
 
   return (
-    <section className="bg-midnight py-28 md:py-36 px-4 overflow-hidden relative">
-      <div className="max-w-3xl mx-auto text-center relative" style={{ perspective: '800px' }}>
-        {/* Floating devices in a subtle orbit */}
-        <div className="relative h-32 mb-8">
-          {devices.map((device, i) => (
-            <motion.div
-              key={i}
-              variants={deviceFloat}
-              custom={i}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
-              style={{
-                transform: `translate(calc(-50% + ${device.x}px), calc(-50% + ${device.y}px))`,
-              }}
-              animate={reduceMotion ? undefined : {
-                y: [device.y, device.y - 10, device.y],
-                x: [device.x, device.x + 5, device.x],
-              }}
-              transition={{ repeat: Infinity, duration: 4, delay: device.delay, ease: 'easeInOut' }}
-            >
-              <span className="text-3xl block">{device.emoji}</span>
-              <span className="text-[10px] font-mono text-stone/50 mt-1 block">{device.label}</span>
-            </motion.div>
-          ))}
-        </div>
-
+    <section ref={sectionRef} className="bg-carbon/15 py-14 md:py-20 px-4 overflow-hidden relative">
+      <div className="max-w-3xl mx-auto">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-80px' }}
+          className="text-center mb-10"
         >
-          <span className="text-[10px] font-mono tracking-widest text-gold uppercase mb-3 block text-center">
-            Bring Your Own Device
-          </span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-warm-white text-balance leading-tight mb-6">
+          <span className="text-xs font-mono uppercase tracking-widest text-gold/80">BYOD</span>
+
+          {/* Floating devices — flex layout, no overlap */}
+          <div className="flex items-center justify-center gap-8 sm:gap-12 md:gap-16 mt-6 mb-8">
+            {devices.map((device, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: device.delay, type: 'spring', stiffness: 200, damping: 20 }}
+                className="flex flex-col items-center"
+              >
+                <motion.div
+                  animate={{ y: [0, -10, 0] }}
+                  transition={{ repeat: Infinity, duration: 4, delay: device.delay, ease: 'easeInOut' }}
+                >
+                  <device.Icon className="w-10 h-[56px] md:w-12 md:h-[64px] text-warm-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.3)]" />
+                </motion.div>
+                <span className="text-[10px] font-mono text-stone/50 mt-2 whitespace-nowrap">{device.label}</span>
+              </motion.div>
+            ))}
+          </div>
+
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-warm-white text-balance leading-tight mb-4">
             {BYOD_CONTENT.headline}
           </h2>
-          <p className="text-stone text-sm sm:text-base leading-relaxed max-w-xl mx-auto mb-8">
+          <p className="text-stone text-sm sm:text-base leading-relaxed max-w-xl mx-auto">
             {BYOD_CONTENT.subtext}
           </p>
-          <motion.ul variants={staggerContainer} className="space-y-2 max-w-sm mx-auto text-left">
-            {BYOD_CONTENT.bullets.map((bullet, j) => (
-              <motion.li key={j} variants={fadeUp} className="flex items-start gap-2 text-stone/80 text-sm">
-                <span className="text-gold mt-0.5 flex-shrink-0">&#10003;</span>
-                {bullet}
-              </motion.li>
-            ))}
-          </motion.ul>
         </motion.div>
+
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-40px' }}
+          className="rounded-xl border border-wire overflow-hidden"
+        >
+          <div className="grid grid-cols-3 gap-0">
+            <div className="p-3 bg-midnight/50">
+              <span className="text-[10px] font-mono uppercase tracking-wider text-stone/40">Item</span>
+            </div>
+            <div className="p-3 bg-ember/[0.03]">
+              <span className="text-[10px] font-mono uppercase tracking-wider text-ember/50">Old Way (Cost)</span>
+            </div>
+            <div className="p-3 bg-teal/[0.03]">
+              <span className="text-[10px] font-mono uppercase tracking-wider text-teal/60">With RestOS</span>
+            </div>
+          </div>
+          {BYOD_CONTENT.comparisons.map((row, i) => (
+            <motion.div
+              key={i}
+              variants={fadeUp}
+              className={`grid grid-cols-3 gap-0 border-t border-wire/30 ${
+                i % 2 === 0 ? 'bg-midnight/20' : ''
+              }`}
+            >
+              <div className="p-3 flex items-center">
+                <span className="text-xs text-warm-white font-medium">{row.item}</span>
+              </div>
+              <div className="p-3 flex items-center bg-ember/[0.02]">
+                <span className="text-xs text-stone/60">{row.oldWay}</span>
+              </div>
+              <div className="p-3 flex items-center bg-teal/[0.02]">
+                <span className="text-xs text-teal font-medium">{row.newWay}</span>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        <motion.p
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="text-center text-stone/50 text-xs mt-6 font-mono"
+        >
+          No hardware lock-ins. No expensive setup costs. Easier staff training. Faster rollout.
+        </motion.p>
       </div>
     </section>
   )

@@ -9,19 +9,25 @@ import { ManagementFeature } from './ManagementFeature'
 import { AnalyticsFeature } from './AnalyticsFeature'
 import { BYODFeature } from './BYODFeature'
 import { FeaturesCTA } from './FeaturesCTA'
+import { CookieConsentBanner } from './CookieConsentBanner'
+import { FAQAccordion } from './FAQAccordion'
+import { GlobalDepthLayer } from './GlobalDepthLayer'
 
 export function FeaturesClient() {
   return (
     <>
+      <GlobalDepthLayer />
       <FeaturesHero />
       <TimelineOverview />
       <OrderingFeature />
       <KitchenFeature />
       <PaymentFeature />
       <ManagementFeature />
-      <AnalyticsFeature />
       <BYODFeature />
+      <AnalyticsFeature />
+      <FAQAccordion />
       <FeaturesCTA />
+      <CookieConsentBanner />
     </>
   )
 }
