@@ -5,7 +5,6 @@ import { motion, useSpring } from 'framer-motion'
 import { Button } from '@/components/ui/Button'
 import { TiltedDevice } from '@/components/ui/TiltedDevice'
 import { useRegion } from '@/lib/region-context'
-import { FOUNDING_SPOTS_TOTAL } from '@/lib/constants'
 import { normaliseMousePos, mapMouseToRotation, mapMouseToOffset, springs } from '@/lib/parallax'
 import { heroLetter, heroEntry } from '@/lib/animations'
 
@@ -116,7 +115,7 @@ export function Hero() {
               rotateY: contentRotateY,
               transformStyle: 'preserve-3d',
             }}
-            className="text-left"
+            className="text-center lg:text-left"
           >
             {/* Badge */}
             <motion.div
@@ -181,15 +180,17 @@ export function Hero() {
               </h1>
             </div>
 
-            {/* Tagline */}
+            {/* Sub-headline */}
             <motion.p
               variants={heroEntry}
               custom={0.9}
               initial="hidden"
               animate="visible"
-              className="text-lg sm:text-xl md:text-2xl font-display font-medium text-stone mb-6"
+              className="text-lg sm:text-xl md:text-2xl font-display font-medium text-warm-white mb-6"
             >
-              {region.tagline}
+              It&apos;s time to take back control with{' '}
+              <span className="font-bold">Rest</span>
+              <span className="text-ember font-light">OS</span>.
             </motion.p>
 
             {/* Description */}
@@ -198,9 +199,11 @@ export function Hero() {
               custom={1.0}
               initial="hidden"
               animate="visible"
-              className="text-stone text-base md:text-lg max-w-xl leading-relaxed mb-8"
+              className="text-stone text-base md:text-lg max-w-xl leading-relaxed mb-8 mx-auto lg:mx-0"
             >
-              {region.heroDescription}
+              Orders. Kitchen updates. Payments. Staff coordination.{' '}
+              Stop chasing every moving part of your business.{' '}
+              RestOS brings everything into one connected system&mdash;so your restaurant runs smoothly, your team stays aligned, and you spend less time managing chaos.
             </motion.p>
 
             {/* CTAs */}
@@ -209,7 +212,7 @@ export function Hero() {
               custom={1.1}
               initial="hidden"
               animate="visible"
-              className="flex flex-col sm:flex-row gap-3 mb-4"
+              className="flex flex-col sm:flex-row gap-3 mb-4 items-center sm:justify-center"
             >
               <Button href={`/${region.key}/demo/`} variant="primary" className="text-base px-8 py-4 min-h-[52px] justify-center">
                 Book a Free Demo
@@ -219,15 +222,15 @@ export function Hero() {
               </Button>
             </motion.div>
 
-            {/* Founding note */}
+            {/* Benefit line */}
             <motion.p
               variants={heroEntry}
               custom={1.15}
               initial="hidden"
               animate="visible"
-              className="text-stone/60 text-xs font-mono tracking-wide"
+              className="text-ember/70 text-xs font-mono tracking-wider"
             >
-              {FOUNDING_SPOTS_TOTAL} Founding Partner spots &middot; First 3 months completely free
+              Less Waiting. Less Confusion. More Revenue.
             </motion.p>
           </motion.div>
 
