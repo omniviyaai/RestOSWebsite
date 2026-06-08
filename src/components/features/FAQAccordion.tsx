@@ -2,7 +2,8 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { FAQ_CONTENT } from '@/lib/features-content'
+import { getFaqContent } from '@/lib/features-content'
+import { useRegion } from '@/lib/region-context'
 
 function AccordionItem({ q, a, isOpen, onClick }: {
   q: string
@@ -52,6 +53,8 @@ function AccordionItem({ q, a, isOpen, onClick }: {
 
 export function FAQAccordion() {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
+  const region = useRegion()
+  const faq = getFaqContent(region.key)
 
   return (
     <section aria-label="Frequently asked questions" className="relative py-14 sm:py-24 px-4 overflow-hidden bg-midnight">
@@ -65,7 +68,7 @@ export function FAQAccordion() {
           transition={{ duration: 0.5 }}
           className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-warm-white mb-2 text-balance"
         >
-          {FAQ_CONTENT.headline}
+          {faq.headline}
         </motion.h2>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -86,20 +89,23 @@ export function FAQAccordion() {
           itemScope
           itemType="https://schema.org/FAQPage"
         >
-          {FAQ_CONTENT.questions.map((item, index) => (
+          {faq.questions.map((item, index) => {
+            const answer = item.a
+            return (
             <div key={index} itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
               <div itemProp="name" className="hidden">{item.q}</div>
               <AccordionItem
                 q={item.q}
-                a={item.a}
+                a={answer}
                 isOpen={openIndex === index}
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
               />
               <div itemProp="acceptedAnswer" itemScope itemType="https://schema.org/Answer" className="hidden">
-                <div itemProp="text">{item.a}</div>
+                <div itemProp="text">{answer}</div>
               </div>
             </div>
-          ))}
+            )
+          })}
         </motion.div>
       </div>
     </section>

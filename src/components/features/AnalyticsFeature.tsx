@@ -3,11 +3,14 @@
 import { motion } from 'framer-motion'
 import { FeatureCard3D } from './FeatureCard3D'
 import { AnalyticsProblemIllus, AnalyticsSolutionIllus } from './FeatureIllustrations'
-import { FEATURE_SECTIONS } from '@/lib/features-content'
+import { getFeatureSections } from '@/lib/features-content'
 import { SequentialBulletHighlight } from './SequentialBulletHighlight'
+import { useRegion } from '@/lib/region-context'
 
 export function AnalyticsFeature() {
-  const feature = FEATURE_SECTIONS[3]
+  const region = useRegion()
+  const feature = getFeatureSections(region.key)[3]
+  const bullets = feature.solution.bullets
 
   return (
     <FeatureCard3D id="analytics" className="bg-carbon/10">
@@ -71,7 +74,7 @@ export function AnalyticsFeature() {
                 {feature.solution.description}
               </p>
               <SequentialBulletHighlight
-                bullets={feature.solution.bullets}
+                bullets={bullets}
                 intervalMs={1000}
                 className="space-y-2"
                 activeClassName="text-warm-white"

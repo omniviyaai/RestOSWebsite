@@ -73,7 +73,7 @@ export function BellIcon({ className }: { className?: string }) {
   )
 }
 
-export function RupeeIcon({ className }: { className?: string }) {
+export function CurrencyGlyphIcon({ className, symbol }: { className?: string; symbol: string }) {
   return (
     <svg viewBox="0 0 28 28" fill="none" className={className} aria-hidden="true">
       <motion.g
@@ -90,7 +90,7 @@ export function RupeeIcon({ className }: { className?: string }) {
       >
         <circle cx="14" cy="14" r="12" stroke="currentColor" strokeWidth="0.5" opacity="0.3" />
       </motion.g>
-      <text x="14" y="18" textAnchor="middle" fill="currentColor" fontSize="13" fontWeight="bold" fontFamily="sans-serif">₹</text>
+      <text x="14" y="18" textAnchor="middle" fill="currentColor" fontSize="13" fontWeight="bold" fontFamily="sans-serif">{symbol}</text>
     </svg>
   )
 }

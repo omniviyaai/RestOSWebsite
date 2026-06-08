@@ -3,11 +3,14 @@
 import { motion } from 'framer-motion'
 import { FeatureCard3D } from './FeatureCard3D'
 import { ManagementProblemIllus, ManagementSolutionIllus } from './FeatureIllustrations'
-import { FEATURE_SECTIONS } from '@/lib/features-content'
+import { getFeatureSections } from '@/lib/features-content'
 import { SequentialBulletHighlight } from './SequentialBulletHighlight'
+import { useRegion } from '@/lib/region-context'
 
 export function ManagementFeature() {
-  const feature = FEATURE_SECTIONS[4]
+  const region = useRegion()
+  const feature = getFeatureSections(region.key)[4]
+  const problemBullets = feature.problem.bullets
 
   return (
     <FeatureCard3D id="management" className="bg-midnight">
@@ -34,7 +37,7 @@ export function ManagementFeature() {
                 {feature.problem.headline}
               </h3>
               <ul className="space-y-2">
-                {feature.problem.bullets.map((bullet, j) => (
+                {problemBullets.map((bullet, j) => (
                   <li key={j} className="flex items-start gap-2 text-stone/70 text-xs sm:text-sm">
                     <span className="text-ember/30 mt-0.5 flex-shrink-0">&#10007;</span>
                     {bullet}

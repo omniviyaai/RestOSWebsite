@@ -3,46 +3,44 @@
 import { motion } from 'framer-motion'
 import { FeatureCard3D } from './FeatureCard3D'
 import { PaymentProblemIllus, PaymentSolutionIllus } from './FeatureIllustrations'
-import { FEATURE_SECTIONS } from '@/lib/features-content'
+import { getFeatureSections } from '@/lib/features-content'
 import { SequentialBulletHighlight } from './SequentialBulletHighlight'
+import { useRegion } from '@/lib/region-context'
 
-function UpiIcon() {
+const METHOD_GLYPH: Record<string, string> = {
+  UPI: 'UPI',
+  Card: 'CARD',
+  Contactless: '))) ',
+  'Apple Pay': 'Pay',
+  'Google Pay': 'GPay',
+  Cash: 'CASH',
+}
+
+/** Generic payment-method tile — label-driven so it works for any region's methods. */
+function MethodIcon({ label }: { label: string }) {
+  const glyph = (METHOD_GLYPH[label] ?? label.slice(0, 4)).trim()
   return (
-    <svg viewBox="0 0 40 40" fill="none" className="w-10 h-10">
+    <svg viewBox="0 0 40 40" fill="none" className="w-10 h-10" aria-hidden="true">
       <rect width="40" height="40" rx="8" fill="currentColor" opacity="0.1" />
-      <text x="20" y="25" textAnchor="middle" fill="currentColor" fontSize="8" fontFamily="monospace" fontWeight="bold">UPI</text>
+      <text
+        x="20"
+        y="24"
+        textAnchor="middle"
+        fill="currentColor"
+        fontSize={glyph.length > 3 ? 8 : 11}
+        fontFamily="monospace"
+        fontWeight="bold"
+      >
+        {glyph}
+      </text>
     </svg>
   )
 }
-
-function CardIcon() {
-  return (
-    <svg viewBox="0 0 40 40" fill="none" className="w-10 h-10">
-      <rect width="40" height="40" rx="8" fill="currentColor" opacity="0.1" />
-      <rect x="8" y="14" width="24" height="16" rx="2" stroke="currentColor" strokeWidth="1.5" fill="none" />
-      <line x1="8" y1="20" x2="32" y2="20" stroke="currentColor" strokeWidth="1.5" />
-    </svg>
-  )
-}
-
-function CashIcon() {
-  return (
-    <svg viewBox="0 0 40 40" fill="none" className="w-10 h-10">
-      <rect width="40" height="40" rx="8" fill="currentColor" opacity="0.1" />
-      <rect x="8" y="12" width="24" height="16" rx="2" stroke="currentColor" strokeWidth="1.5" fill="none" />
-      <circle cx="20" cy="20" r="4" stroke="currentColor" strokeWidth="1.5" fill="none" />
-    </svg>
-  )
-}
-
-const paymentMethods = [
-  { Icon: UpiIcon, label: 'UPI', description: 'GPay, PhonePe, Paytm' },
-  { Icon: CardIcon, label: 'Card', description: 'Credit & debit cards' },
-  { Icon: CashIcon, label: 'Cash', description: 'Tracked in system' },
-]
 
 export function PaymentFeature() {
-  const feature = FEATURE_SECTIONS[2]
+  const region = useRegion()
+  const feature = getFeatureSections(region.key)[2]
+  const methods = region.paymentMethods
 
   return (
     <FeatureCard3D id="payment" className="bg-midnight">
@@ -117,12 +115,12 @@ export function PaymentFeature() {
             </motion.div>
           </div>
 
-          <div className="grid grid-cols-3 gap-3 max-w-md mx-auto">
-            {paymentMethods.map((method, i) => (
-              <div key={i} className="flex flex-col items-center gap-2 p-4 rounded-xl border border-wire bg-carbon/50">
-                <method.Icon />
+          <div className={`grid gap-3 mx-auto ${methods.length > 3 ? 'grid-cols-3 sm:grid-cols-5 max-w-2xl' : 'grid-cols-3 max-w-md'}`}>
+            {methods.map((method) => (
+              <div key={method.label} className="flex flex-col items-center gap-2 p-4 rounded-xl border border-wire bg-carbon/50 text-center">
+                <MethodIcon label={method.label} />
                 <span className="text-xs font-medium text-warm-white">{method.label}</span>
-                <span className="text-[10px] text-stone/60">{method.description}</span>
+                <span className="text-[10px] text-stone/60">{method.sub}</span>
               </div>
             ))}
           </div>

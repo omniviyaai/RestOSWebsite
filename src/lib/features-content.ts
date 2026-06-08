@@ -1,3 +1,6 @@
+import type { Region } from './region-config'
+import { regionConfig } from './region-config'
+
 export interface FeatureProblem {
   icon: string
   headline: string
@@ -233,6 +236,77 @@ export const FAQ_CONTENT = {
       a: 'Traditional POS systems require expensive hardware, onsite installation, and long-term contracts. RestOS runs entirely on devices you already own. There is no hardware to buy, no software to install, and no lengthy training required. Updates and maintenance are handled automatically — nothing for you to manage.',
     },
   ],
+}
+
+/**
+ * Feature sections with region-correct payment, management, and analytics copy.
+ * Single source of truth — components MUST use this instead of patching FEATURE_SECTIONS inline.
+ */
+export function getFeatureSections(region: Region): FeatureSection[] {
+  const cfg = regionConfig[region]
+  const ecosystem = cfg.paymentEcosystemDesc.replace(/\s*—.*$/, '').toLowerCase()
+  return FEATURE_SECTIONS.map((section) => {
+    if (section.id === 'payment') {
+      return {
+        ...section,
+        solution: {
+          ...section.solution,
+          description: `Every bill is digital. Customers see their bill on their phone, split it with their group, and pay with any method — ${ecosystem}.`,
+          bullets: [
+            'Customers pay directly from their phone',
+            'No card machines need to reach their table',
+            'Split bills between friends, no mental math',
+            'Fast, secure settlements tracked in real time',
+            `Every ${cfg.paymentCurrencyTerm} is accounted for`,
+          ],
+        },
+      }
+    }
+    if (section.id === 'management') {
+      return {
+        ...section,
+        problem: {
+          ...section.problem,
+          bullets: [
+            `POS terminals cost ${cfg.byodComparisons[0].oldWay}`,
+            'Self-ordering kiosks cost a fortune to install',
+            'Vibrating pagers break and need replacing',
+            'Once you buy in, switching is impossible',
+          ],
+        },
+      }
+    }
+    if (section.id === 'analytics') {
+      return {
+        ...section,
+        solution: {
+          ...section.solution,
+          bullets: section.solution.bullets.map((b) => b.replace(/\bGST\b/g, cfg.taxTerm)),
+        },
+      }
+    }
+    return section
+  })
+}
+
+/** FAQ content with region-correct payment and tax answers. */
+export function getFaqContent(region: Region): typeof FAQ_CONTENT {
+  const cfg = regionConfig[region]
+  return {
+    ...FAQ_CONTENT,
+    questions: FAQ_CONTENT.questions.map((item) => {
+      if (item.q === 'Can customers pay from their phone?') {
+        return {
+          ...item,
+          a: `Yes. Customers can view their bill, split it with their group, and pay using ${cfg.paymentPhrase}. The payment is processed directly from their phone — no card machine needs to reach their table. Cash payments are also supported and tracked in the system.`,
+        }
+      }
+      if (item.q.startsWith('What analytics')) {
+        return { ...item, a: item.a.replace(/\bGST\b/g, cfg.taxTerm) }
+      }
+      return item
+    }),
+  }
 }
 
 

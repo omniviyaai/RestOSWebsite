@@ -6,7 +6,7 @@ import { staggerContainer, fadeUp } from '@/lib/animations'
 import { normaliseMousePos } from '@/lib/parallax'
 import { useRegion } from '@/lib/region-context'
 import { Button } from '@/components/ui/Button'
-import { PhoneIcon, KitchenIcon, BellIcon, RupeeIcon, ChartIcon, DevicesIcon } from './HighlightIcons'
+import { PhoneIcon, KitchenIcon, BellIcon, CurrencyGlyphIcon, ChartIcon, DevicesIcon } from './HighlightIcons'
 
 interface Card {
   icon: ReactNode
@@ -70,7 +70,7 @@ export function ProductHighlights() {
   const region = useRegion()
   const cards: Card[] = [
     ...BASE_CARDS.slice(0, 3),
-    { icon: <RupeeIcon className="w-7 h-7 text-ember" />, headline: region.paymentHighlightHeadline, subtext: region.paymentHighlightSubtext },
+    { icon: <CurrencyGlyphIcon symbol={region.currency} className="w-7 h-7 text-ember" />, headline: region.paymentHighlightHeadline, subtext: region.paymentHighlightSubtext },
     ...BASE_CARDS.slice(3),
   ]
   return (
