@@ -3,6 +3,7 @@
 import { useRef, useCallback } from 'react'
 import { motion, useSpring } from 'framer-motion'
 import { Button } from '@/components/ui/Button'
+import { WhatsAppButton } from '@/components/ui/WhatsAppButton'
 import { TiltedDevice } from '@/components/ui/TiltedDevice'
 import { useRegion } from '@/lib/region-context'
 import { normaliseMousePos, mapMouseToRotation, mapMouseToOffset, springs } from '@/lib/parallax'
@@ -217,9 +218,7 @@ export function Hero() {
               <Button href={`/${region.key}/demo/`} variant="primary" className="text-base px-8 py-4 min-h-[52px] justify-center">
                 Book a Free Demo
               </Button>
-              <Button href={`https://wa.me/${region.whatsappNumber}?text=${encodeURIComponent('Hi, I want to know more about RestOS')}`} variant="ghost" external className="text-base px-8 py-4 min-h-[52px] justify-center">
-                WhatsApp Us
-              </Button>
+              <WhatsAppButton className="text-base px-8 py-4 min-h-[52px] justify-center" />
             </motion.div>
 
             {/* Benefit line */}

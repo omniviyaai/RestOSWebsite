@@ -2,18 +2,20 @@
 
 import { useRegion } from '@/lib/region-context'
 import { Button } from './Button'
+import { WhatsAppIcon } from './WhatsAppIcon'
 
 interface WhatsAppButtonProps {
-  variant?: 'primary' | 'ghost'
+  variant?: 'whatsapp' | 'ghost'
   className?: string
   children?: React.ReactNode
 }
 
-export function WhatsAppButton({ variant = 'ghost', className, children }: WhatsAppButtonProps) {
+export function WhatsAppButton({ variant = 'whatsapp', className, children }: WhatsAppButtonProps) {
   const region = useRegion()
   const url = `https://wa.me/${region.whatsappNumber}?text=${encodeURIComponent('Hi, I want to know more about RestOS')}`
   return (
     <Button href={url} variant={variant} external className={className}>
+      <WhatsAppIcon className="w-5 h-5" />
       {children || 'WhatsApp Us'}
     </Button>
   )

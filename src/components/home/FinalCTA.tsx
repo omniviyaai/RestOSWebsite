@@ -3,6 +3,7 @@
 import { useRef, useCallback } from 'react'
 import { motion, useSpring } from 'framer-motion'
 import { Button } from '@/components/ui/Button'
+import { WhatsAppButton } from '@/components/ui/WhatsAppButton'
 import { useRegion } from '@/lib/region-context'
 import { ctaEntry } from '@/lib/animations'
 import { normaliseMousePos } from '@/lib/parallax'
@@ -97,9 +98,9 @@ export function FinalCTA() {
           <Button href={`/${region.key}/demo/`} variant="primary" className="w-full sm:w-auto text-base px-8 py-4 min-h-[52px] justify-center">
             Book a 20-Minute Demo
           </Button>
-          <Button href={`https://wa.me/${region.whatsappNumber}?text=${encodeURIComponent('Hi, I want to know more about RestOS')}`} variant="ghost" external className="w-full sm:w-auto text-base px-8 py-4 min-h-[52px] justify-center">
+          <WhatsAppButton className="w-full sm:w-auto text-base px-8 py-4 min-h-[52px] justify-center">
             WhatsApp Us Now
-          </Button>
+          </WhatsAppButton>
         </motion.div>
       </div>
     </section>

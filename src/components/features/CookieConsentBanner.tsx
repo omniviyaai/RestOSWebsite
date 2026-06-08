@@ -1,7 +1,13 @@
 'use client'
 
+// NOTE: This banner blocks non-essential cookies by *absence* — no analytics or marketing
+// script ships today. Any future analytics/marketing script MUST be gated behind
+// hasConsent('analytics' | 'marketing') and re-checked when the OPEN_EVENT fires, so
+// nothing non-essential runs before the visitor consents (UK PECR / India DPDP).
+
 import { useState, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useRegion } from '@/lib/region-context'
 
 type ConsentPreferences = {
   essential: boolean
@@ -10,6 +16,25 @@ type ConsentPreferences = {
 }
 
 const STORAGE_KEY = 'restos-cookie-consent'
+const OPEN_EVENT = 'restos:open-cookie-settings'
+
+/** Reopen the cookie preferences modal from anywhere (e.g. a footer "Cookie Settings" link). */
+export function openCookieSettings() {
+  if (typeof window !== 'undefined') window.dispatchEvent(new Event(OPEN_EVENT))
+}
+
+/** Read stored consent for a non-essential category. Gate any tracking script behind this. */
+export function hasConsent(category: 'analytics' | 'marketing'): boolean {
+  if (typeof window === 'undefined') return false
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY)
+    if (!raw) return false
+    const parsed = JSON.parse(raw) as { preferences?: ConsentPreferences }
+    return !!parsed.preferences?.[category]
+  } catch {
+    return false
+  }
+}
 
 const defaultPreferences: ConsentPreferences = {
   essential: true,
@@ -36,6 +61,7 @@ function saveConsent(state: { hasConsented: boolean; preferences: ConsentPrefere
 type BannerView = 'banner' | 'settings' | null
 
 export function CookieConsentBanner() {
+  const region = useRegion()
   const [view, setView] = useState<BannerView>(null)
   const [pendingPrefs, setPendingPrefs] = useState<ConsentPreferences>(defaultPreferences)
   const [mounted, setMounted] = useState(false)
@@ -48,6 +74,17 @@ export function CookieConsentBanner() {
     } else {
       setPendingPrefs(saved.preferences)
     }
+  }, [])
+
+  // Allow reopening the preferences modal at any time (consent withdrawal — UK GDPR).
+  useEffect(() => {
+    const open = () => {
+      const saved = loadConsent()
+      if (saved) setPendingPrefs(saved.preferences)
+      setView('settings')
+    }
+    window.addEventListener(OPEN_EVENT, open)
+    return () => window.removeEventListener(OPEN_EVENT, open)
   }, [])
 
   const acceptAll = useCallback(() => {
@@ -81,8 +118,11 @@ export function CookieConsentBanner() {
             className="fixed bottom-0 left-0 right-0 z-[9999] p-3 sm:p-4"
           >
             <div className="max-w-2xl mx-auto bg-carbon/95 backdrop-blur-xl border border-wire/40 rounded-2xl p-4 sm:p-5 shadow-2xl shadow-midnight/60">
-              <p className="text-warm-white/75 text-xs sm:text-sm leading-relaxed mb-3 sm:mb-4">
-                This site uses a region cookie to show you the right prices and features. We also use analytics cookies to understand how the site is used. You can choose what to accept.
+              <p className="text-warm-white/75 text-xs sm:text-sm leading-relaxed mb-2">
+                {region.consentIntro}
+              </p>
+              <p className="text-stone/50 text-[11px] leading-relaxed mb-3 sm:mb-4">
+                We handle your data in line with {region.legalFramework}.
               </p>
               <div className="flex flex-col sm:flex-row gap-2 justify-end">
                 <button

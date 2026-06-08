@@ -8,12 +8,14 @@ import { PaymentFeature } from './PaymentFeature'
 import { ManagementFeature } from './ManagementFeature'
 import { AnalyticsFeature } from './AnalyticsFeature'
 import { BYODFeature } from './BYODFeature'
+import { useEffect } from 'react'
 import { FeaturesCTA } from './FeaturesCTA'
-import { CookieConsentBanner } from './CookieConsentBanner'
 import { FAQAccordion } from './FAQAccordion'
 import { GlobalDepthLayer } from './GlobalDepthLayer'
 
 export function FeaturesClient() {
+  useEffect(() => { window.scrollTo(0, 0) }, [])
+
   return (
     <>
       <GlobalDepthLayer />
@@ -27,7 +29,6 @@ export function FeaturesClient() {
       <AnalyticsFeature />
       <FAQAccordion />
       <FeaturesCTA />
-      <CookieConsentBanner />
     </>
   )
 }

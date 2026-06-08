@@ -3,6 +3,8 @@
 import { motion } from 'framer-motion'
 import { staggerContainer, fadeUp } from '@/lib/animations'
 import { BYOD_CONTENT } from '@/lib/features-content'
+import { useRegion } from '@/lib/region-context'
+import { regionConfig } from '@/lib/region-config'
 import { useRef } from 'react'
 
 function PhoneDevice({ className }: { className?: string }) {
@@ -37,6 +39,8 @@ function MonitorDevice({ className }: { className?: string }) {
 
 export function BYODFeature() {
   const sectionRef = useRef<HTMLElement>(null)
+  const region = useRegion()
+  const comparisons = regionConfig[region.key].byodComparisons
 
   const devices = [
     { Icon: PhoneDevice, label: 'Phone', delay: 0 },
@@ -104,7 +108,7 @@ export function BYODFeature() {
               <span className="text-[10px] font-mono uppercase tracking-wider text-teal/60">With RestOS</span>
             </div>
           </div>
-          {BYOD_CONTENT.comparisons.map((row, i) => (
+          {comparisons.map((row, i) => (
             <motion.div
               key={i}
               variants={fadeUp}

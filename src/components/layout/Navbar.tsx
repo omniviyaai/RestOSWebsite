@@ -7,6 +7,7 @@ import { Menu, X } from 'lucide-react'
 import { NAV_SLUGS } from '@/lib/constants'
 import { useRegion } from '@/lib/region-context'
 import { Button } from '@/components/ui/Button'
+import { WhatsAppButton } from '@/components/ui/WhatsAppButton'
 import { Logo } from '@/components/ui/Logo'
 import { normaliseMousePos, mapMouseToRotation, springs } from '@/lib/parallax'
 
@@ -116,7 +117,7 @@ export function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ type: 'spring', stiffness: 200, damping: 25, delay: 0.4 }}
           >
-            <Button href={`https://wa.me/${region.whatsappNumber}?text=${encodeURIComponent('Hi, I want to know more about RestOS')}`} variant="ghost" external>WhatsApp Us</Button>
+            <WhatsAppButton />
             <Button href={`/${region.key}/demo/`} variant="primary">Book Demo</Button>
           </motion.div>
 
@@ -190,7 +191,7 @@ export function Navbar() {
               <a href="/uk/" className="text-stone text-sm hover:text-ember transition-colors">🇬🇧 UK</a>
             </div>
             <div className="p-6 flex flex-col gap-3 mt-auto">
-              <Button href={`https://wa.me/${region.whatsappNumber}?text=${encodeURIComponent('Hi, I want to know more about RestOS')}`} variant="ghost" external className="w-full justify-center text-base py-4">WhatsApp Us</Button>
+              <WhatsAppButton className="w-full justify-center text-base py-4" />
               <Button href={`/${region.key}/demo/`} variant="primary" className="w-full justify-center text-base py-4">Book Demo</Button>
             </div>
           </motion.div>
