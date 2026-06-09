@@ -12,14 +12,6 @@ export const NAV_SLUGS = [
   { label: 'About', slug: 'about' },
 ] as const
 
-export const PAIN_STATEMENTS = [
-  'A customer complained their order never reached the kitchen.',
-  'Your waiter wrote it down wrong. Again.',
-  'You found out at closing that 3 tables had billing errors.',
-  'You were at home and had no idea what was happening inside.',
-  'You lost a regular because the queue was too long.',
-] as const
-
 export const TRUST_SIGNALS = [
   {
     title: 'Your money, your account',

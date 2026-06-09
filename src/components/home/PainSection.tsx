@@ -2,13 +2,15 @@
 
 import { useRef } from 'react'
 import { motion, useScroll, useTransform, MotionValue } from 'framer-motion'
-import { PAIN_STATEMENTS } from '@/lib/constants'
+import { useRegion } from '@/lib/region-context'
 
 // Each statement gets a unique directional entry
 const rotations = [-1.5, 1.5, 0, -1, 1]
 
 export function PainSection() {
   const containerRef = useRef<HTMLDivElement>(null)
+  const region = useRegion()
+  const painStatements = region.painStatements
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ['start end', 'end start'],
@@ -39,8 +41,22 @@ export function PainSection() {
       />
 
       <div className="relative max-w-2xl mx-auto px-4 text-center" style={{ perspective: '1000px' }}>
-        {PAIN_STATEMENTS.map((statement, i) => {
-          const count = PAIN_STATEMENTS.length
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-80px' }}
+          transition={{ type: 'spring', stiffness: 200, damping: 25 }}
+          className="mb-12 md:mb-16"
+        >
+          <span className="text-[10px] sm:text-xs font-mono tracking-widest text-ember/70 uppercase block mb-4">
+            The Reality
+          </span>
+          <p className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-warm-white text-balance">
+            You know how this goes.
+          </p>
+        </motion.div>
+        {painStatements.map((statement, i) => {
+          const count = painStatements.length
           const start = i / (count + 1)
           const peak = start + 0.08
           const end = (i + 1) / (count + 1)
@@ -54,6 +70,7 @@ export function PainSection() {
               peak={peak}
               end={end}
               index={i}
+              count={painStatements.length}
               rotation={rotations[i]}
             />
           )
@@ -88,6 +105,7 @@ function PainStatement({
   peak,
   end,
   index,
+  count,
   rotation,
 }: {
   text: string
@@ -96,6 +114,7 @@ function PainStatement({
   peak: number
   end: number
   index: number
+  count: number
   rotation: number
 }) {
   const opacity = useTransform(
@@ -118,7 +137,7 @@ function PainStatement({
         &ldquo;{text}&rdquo;
       </motion.p>
       {/* Animated border line */}
-      {index < PAIN_STATEMENTS.length - 1 && (
+      {index < count - 1 && (
         <motion.div
           className="h-px bg-wire/40 mx-auto"
           style={{ width: borderWidth }}

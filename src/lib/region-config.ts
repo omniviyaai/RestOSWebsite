@@ -77,6 +77,8 @@ export interface RegionConfig {
   whatWeBuiltBody: string
   aboutCompanyText: string
   foundingMissionText: string
+  // Homepage pain section (moment → cost → emotional toll)
+  painStatements: readonly string[]
   // SEO
   seoKeywords: readonly string[]
   // Compliance
@@ -177,6 +179,13 @@ export const regionConfig: Record<Region, RegionConfig> = {
     whatWeBuiltBody: 'No expensive hardware. No complicated setup. No per-device fees. Software that works the way Indian restaurants actually work.',
     aboutCompanyText: 'Omniviya is a software company building technology for businesses underserved by existing tools. RestOS is our first product. We are based in India and building for India first.',
     foundingMissionText: 'We are building the operating system that Indian restaurants deserve.',
+    painStatements: [
+      "Friday rush. A paper KOT slips off the rail — and that table's order never reaches the kitchen.",
+      "A customer paid on UPI. You're three screenshots deep and still can't match it to the right bill.",
+      "At closing you spot it: two tables under-billed. Again. There goes tonight's profit, quietly.",
+      "You're finally home — still refreshing the staff WhatsApp group, because it's the only window into your own restaurant.",
+      "A regular walked out; the queue was too long. You found out a day too late to make it right.",
+    ],
     seoKeywords: [
       'restaurant management software India',
       'restaurant operating system India',
@@ -283,6 +292,13 @@ export const regionConfig: Record<Region, RegionConfig> = {
     whatWeBuiltBody: 'No expensive hardware. No complicated setup. No per-device fees. Software that works the way UK restaurants actually work.',
     aboutCompanyText: 'Omniviya is a software company building technology for businesses underserved by existing tools. RestOS is our first product. We are based in India, building for the UK and India.',
     foundingMissionText: 'We are building the operating system that UK restaurants deserve.',
+    painStatements: [
+      "Friday rush. A paper ticket goes missing — and that table's order never reaches the kitchen.",
+      "A card payment lands, but which table? You're scrolling the terminal instead of running the floor.",
+      "At closing you spot it: two tables under-charged. Again. There goes tonight's profit, quietly.",
+      "You're finally home — still glued to the team's group chat, because it's the only window into your own restaurant.",
+      "A regular walked out; the queue was too long. You found out a day too late to make it right.",
+    ],
     seoKeywords: [
       'restaurant management software UK',
       'restaurant operating system UK',

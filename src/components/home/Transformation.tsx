@@ -20,6 +20,16 @@ export function Transformation() {
   return (
     <section className="bg-midnight py-20 md:py-28 px-4 overflow-hidden" style={{ perspective: '1200px' }}>
       <div className="max-w-4xl mx-auto">
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ type: 'spring', stiffness: 200, damping: 25 }}
+          className="text-center text-xl sm:text-2xl md:text-3xl font-display font-bold text-warm-white text-balance mb-10"
+        >
+          Same floor. Fewer fires.
+        </motion.p>
+
         {/* Column headers */}
         <div className="grid grid-cols-2 gap-3 mb-4">
           <motion.p
