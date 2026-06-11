@@ -62,7 +62,7 @@ export function TimelineOverview() {
   }
 
   return (
-    <section aria-label="How RestOS connects your team" className="bg-carbon/15 py-14 md:py-20 px-4 overflow-hidden">
+    <section aria-label="How Omniviya connects your team" className="bg-carbon/15 py-14 md:py-20 px-4 overflow-hidden">
       <div className="max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

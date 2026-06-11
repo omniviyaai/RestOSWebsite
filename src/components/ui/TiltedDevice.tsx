@@ -9,7 +9,7 @@ interface TiltedDeviceProps {
   videoSrc?: string
 }
 
-export function TiltedDevice({ rotateX, rotateY, videoSrc = '/video/restos-flow.mp4' }: TiltedDeviceProps) {
+export function TiltedDevice({ rotateX, rotateY, videoSrc = '/video/omniviya-flow.mp4' }: TiltedDeviceProps) {
   const videoRef = useRef<HTMLVideoElement>(null)
   const [reducedMotion, setReducedMotion] = useState(false)
 

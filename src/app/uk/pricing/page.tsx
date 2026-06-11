@@ -7,11 +7,11 @@ export default function Page() {
 
 export const metadata: Metadata = {
   title: 'Pricing',
-  description: 'Simple, honest pricing for UK restaurants. Get started with RestOS today — no lock-in, no hidden fees.',
+  description: 'Simple, honest pricing for UK restaurants. Get started with Omniviya today — no lock-in, no hidden fees.',
   openGraph: {
-    title: 'RestOS Pricing — Simple, Honest, No Hidden Fees',
+    title: 'Omniviya Pricing — Simple, Honest, No Hidden Fees',
     description: 'Simple pricing for UK restaurants. No lock-in, no hidden fees.',
-    url: 'https://restos.in/uk/pricing',
+    url: 'https://omniviya.in/uk/pricing',
   },
-  alternates: { canonical: 'https://restos.in/uk/pricing' },
+  alternates: { canonical: 'https://omniviya.in/uk/pricing' },
 }

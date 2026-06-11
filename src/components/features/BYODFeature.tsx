@@ -105,7 +105,7 @@ export function BYODFeature() {
               <span className="text-[10px] font-mono uppercase tracking-wider text-ember/50">Old Way (Cost)</span>
             </div>
             <div className="p-3 bg-teal/[0.03]">
-              <span className="text-[10px] font-mono uppercase tracking-wider text-teal/60">With RestOS</span>
+              <span className="text-[10px] font-mono uppercase tracking-wider text-teal/60">With Omniviya</span>
             </div>
           </div>
           {comparisons.map((row, i) => (

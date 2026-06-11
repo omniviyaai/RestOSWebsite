@@ -189,9 +189,7 @@ export function Hero() {
               animate="visible"
               className="text-lg sm:text-xl md:text-2xl font-display font-medium text-warm-white mb-6"
             >
-              It&apos;s time to take back control with{' '}
-              <span className="font-bold">Rest</span>
-              <span className="text-ember font-light">OS</span>.
+              It&apos;s time to take back control with <span className="font-bold">Omniviya</span>.
             </motion.p>
 
             {/* Description */}
@@ -204,7 +202,7 @@ export function Hero() {
             >
               Orders. Kitchen updates. Payments. Staff coordination.{' '}
               Stop chasing every moving part of your business.{' '}
-              RestOS brings everything into one connected system&mdash;so your restaurant runs smoothly, your team stays aligned, and you spend less time managing chaos.
+               Omniviya brings everything into one connected system&mdash;so your restaurant runs smoothly, your team stays aligned, and you spend less time managing chaos.
             </motion.p>
 
             {/* CTAs */}

@@ -73,7 +73,7 @@ export function FinalCTA() {
           viewport={{ once: true }}
           className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-warm-white mb-4 text-balance"
         >
-          Ready to see RestOS in your restaurant?
+          Ready to see Omniviya in your restaurant?
         </motion.h2>
 
         <motion.p

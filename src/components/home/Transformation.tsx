@@ -48,7 +48,7 @@ export function Transformation() {
             transition={{ type: 'spring', stiffness: 200, damping: 25, delay: 0.1 }}
             className="text-center text-xs font-mono tracking-widest text-teal uppercase"
           >
-            After RestOS
+            After Omniviya
           </motion.p>
         </div>
 

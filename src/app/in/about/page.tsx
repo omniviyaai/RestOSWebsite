@@ -2,12 +2,12 @@ import type { Metadata } from 'next'
 export { default } from '@/app/_about/page'
 
 export const metadata: Metadata = {
-  title: 'About — RestOS by Omniviya',
-  description: 'RestOS is built by Omniviya — on a mission to give Indian restaurants the technology they deserve.',
+  title: 'About — Omniviya',
+  description: 'Omniviya is built by Omniviya — on a mission to give Indian restaurants the technology they deserve.',
   openGraph: {
-    title: 'About RestOS — Restaurant Operating System by Omniviya',
-    description: 'RestOS by Omniviya — built for Indian restaurants.',
-    url: 'https://restos.in/in/about',
+    title: 'About Omniviya — Restaurant Operating System',
+    description: 'Omniviya — built for Indian restaurants.',
+    url: 'https://omniviya.in/in/about',
   },
-  alternates: { canonical: 'https://restos.in/in/about' },
+  alternates: { canonical: 'https://omniviya.in/in/about' },
 }

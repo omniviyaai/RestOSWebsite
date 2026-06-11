@@ -15,8 +15,8 @@ type ConsentPreferences = {
   marketing: boolean
 }
 
-const STORAGE_KEY = 'restos-cookie-consent'
-const OPEN_EVENT = 'restos:open-cookie-settings'
+const STORAGE_KEY = 'omniviya-cookie-consent'
+const OPEN_EVENT = 'omniviya:open-cookie-settings'
 
 /** Reopen the cookie preferences modal from anywhere (e.g. a footer "Cookie Settings" link). */
 export function openCookieSettings() {

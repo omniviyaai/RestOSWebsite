@@ -76,7 +76,7 @@ export function PaymentFeature() {
               </ul>
             </div>
 
-            {/* NEW WAY with RestOS — animated */}
+            {/* NEW WAY with Omniviya — animated */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -86,7 +86,7 @@ export function PaymentFeature() {
             >
               <div className="flex items-center gap-2 mb-4">
                 <span className="inline-block w-5 h-5 rounded-full bg-gold text-midnight text-[11px] font-bold flex items-center justify-center flex-shrink-0">&#10003;</span>
-                <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-gold/70">New Way with RestOS</span>
+                <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-gold/70">New Way with Omniviya</span>
               </div>
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}

@@ -7,7 +7,7 @@ import { staggerContainer, fadeUp } from '@/lib/animations'
 import { useRegion } from '@/lib/region-context'
 
 const perks = [
-  'RestOS completely free for 90 days',
+  'Omniviya completely free for 90 days',
   'Direct WhatsApp line to the founding team',
   'Your feedback shapes the product roadmap',
   'Founding Partner badge on your restaurant profile',
@@ -55,7 +55,7 @@ export function FoundingBanner() {
           </motion.h2>
 
           <motion.p variants={fadeUp} className="text-stone text-sm sm:text-base mb-8 leading-relaxed max-w-md mx-auto">
-            Not customers. Partners. The restaurants that shape how RestOS works
+            Not customers. Partners. The restaurants that shape how Omniviya works
             get 3 months free — and direct access to the founders.
           </motion.p>
 

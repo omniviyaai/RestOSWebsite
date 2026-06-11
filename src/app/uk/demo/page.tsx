@@ -2,12 +2,12 @@ import type { Metadata } from 'next'
 export { default } from '@/app/_demo/page'
 
 export const metadata: Metadata = {
-  title: 'Book a Free Demo — RestOS',
-  description: 'See RestOS running in your UK restaurant. Book a free 20-minute demo with the founding team.',
+  title: 'Book a Free Demo — Omniviya',
+  description: 'See Omniviya running in your UK restaurant. Book a free 20-minute demo with the founding team.',
   openGraph: {
-    title: 'Book a Free Demo — RestOS Restaurant Operating System',
-    description: 'Free 20-minute demo with the founding team. See RestOS live.',
-    url: 'https://restos.in/uk/demo',
+    title: 'Book a Free Demo — Omniviya Restaurant Operating System',
+    description: 'Free 20-minute demo with the founding team. See Omniviya live.',
+    url: 'https://omniviya.in/uk/demo',
   },
-  alternates: { canonical: 'https://restos.in/uk/demo' },
+  alternates: { canonical: 'https://omniviya.in/uk/demo' },
 }

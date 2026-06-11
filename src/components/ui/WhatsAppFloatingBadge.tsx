@@ -6,7 +6,7 @@ import { WhatsAppIcon } from './WhatsAppIcon'
 
 export function WhatsAppFloatingBadge() {
   const region = useRegion()
-  const url = `https://wa.me/${region.whatsappNumber}?text=${encodeURIComponent('Hi, I want to know more about RestOS')}`
+  const url = `https://wa.me/${region.whatsappNumber}?text=${encodeURIComponent('Hi, I want to know more about Omniviya')}`
 
   return (
     <motion.a

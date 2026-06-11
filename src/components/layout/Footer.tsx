@@ -9,7 +9,7 @@ import { openCookieSettings } from '@/components/features/CookieConsentBanner'
 export function Footer() {
   const region = useRegion()
   const year = new Date().getFullYear()
-  const whatsappUrl = `https://wa.me/${region.whatsappNumber}?text=${encodeURIComponent('Hi, I want to know more about RestOS')}`
+  const whatsappUrl = `https://wa.me/${region.whatsappNumber}?text=${encodeURIComponent('Hi, I want to know more about Omniviya')}`
 
   return (
     <footer className="border-t border-wire bg-carbon">
@@ -83,7 +83,7 @@ export function Footer() {
 
         <div className="mt-12 pt-6 border-t border-wire flex flex-col sm:flex-row justify-between gap-3">
           <p className="text-stone text-xs">&copy; {year} Omniviya. All rights reserved.</p>
-          <p className="text-stone text-xs">RestOS is a product of Omniviya · Operating under {region.legalFramework}.</p>
+          <p className="text-stone text-xs">Omniviya is a restaurant operating system · Operating under {region.legalFramework}.</p>
         </div>
       </div>
     </footer>

@@ -34,7 +34,7 @@ export function FeaturesCTA() {
           viewport={{ once: true }}
           className="text-stone/70 text-sm sm:text-base mb-8"
         >
-          Zero hardware. Zero hassle. See what RestOS can do for your restaurant.
+          Zero hardware. Zero hassle. See what Omniviya can do for your restaurant.
         </motion.p>
         <motion.div
           variants={ctaEntry}

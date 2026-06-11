@@ -77,7 +77,7 @@ export function FAQAccordion() {
           transition={{ duration: 0.5, delay: 0.1 }}
           className="text-stone/50 text-sm sm:text-base mb-8 sm:mb-10"
         >
-          Clear answers about how RestOS works, what it costs, and what you need to get started.
+          Clear answers about how Omniviya works, what it costs, and what you need to get started.
         </motion.p>
 
         <motion.div

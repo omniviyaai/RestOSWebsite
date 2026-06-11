@@ -12,7 +12,7 @@ interface WhatsAppButtonProps {
 
 export function WhatsAppButton({ variant = 'whatsapp', className, children }: WhatsAppButtonProps) {
   const region = useRegion()
-  const url = `https://wa.me/${region.whatsappNumber}?text=${encodeURIComponent('Hi, I want to know more about RestOS')}`
+  const url = `https://wa.me/${region.whatsappNumber}?text=${encodeURIComponent('Hi, I want to know more about Omniviya')}`
   return (
     <Button href={url} variant={variant} external className={className}>
       <WhatsAppIcon className="w-5 h-5" />

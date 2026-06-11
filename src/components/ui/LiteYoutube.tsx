@@ -9,7 +9,7 @@ interface LiteYoutubeProps {
 
 export function LiteYoutube({
   videoId,
-  title = 'RestOS Product Demo',
+  title = 'Omniviya Product Demo',
 }: LiteYoutubeProps) {
   const [activated, setActivated] = useState(false)
   const thumbnail = `https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`

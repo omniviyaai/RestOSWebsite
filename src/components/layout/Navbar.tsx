@@ -54,14 +54,14 @@ export function Navbar() {
         <div className="max-w-7xl mx-auto px-4 md:px-8 h-16 flex items-center justify-between">
           <Link
             href="/"
-            aria-label="RestOS — Home"
+            aria-label="Omniviya — Home"
             onMouseMove={handleLogoMouseMove}
             onMouseLeave={handleLogoMouseLeave}
             style={{ display: 'inline-block', perspective: '400px' }}
           >
-            {/* layoutId="restos-logo" — FLIP target: loader logo animates here on exit */}
+            {/* layoutId="omniviya-logo" — FLIP target: loader logo animates here on exit */}
             <motion.div
-              layoutId="restos-logo"
+              layoutId="omniviya-logo"
               data-nav-logo
               transition={{ type: 'spring', stiffness: 120, damping: 20, mass: 1.2 }}
               style={{ rotateX: logoRotateX, rotateY: logoRotateY }}
