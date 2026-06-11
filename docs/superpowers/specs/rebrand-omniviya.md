@@ -93,9 +93,12 @@ Rebrand edits are partly done already (by the user, in parallel):
 
 ### Bucket 5 — Marketing → app handoff
 
-- Add `appUrl: 'https://app.omniviya.in'` to region-config (same for both regions; single source of truth for easy change).
-- Add a primary product CTA that points at the app — e.g. a navbar **"Log in"** link and/or a **"Get Started"** button — using `region.appUrl`. Keep existing WhatsApp + `/demo` CTAs.
-- App subdomain content is out of this repo; only the outbound links are in scope.
+The SaaS app is the separate `restaurant-os` monorepo (admin/staff/menu/api), hosted at
+`app.omniviya.in`, with real `/login`, `/register`, `/onboarding` routes in its admin surface.
+
+- Add `appUrl: 'https://app.omniviya.in'` to region-config (same for both regions; single source of truth).
+- **"Get Started"** primary CTA → `${appUrl}/register`; **"Log in"** → `${appUrl}/login`. Keep existing WhatsApp + `/demo` CTAs as secondary.
+- Only the outbound links live in this repo; the app's own content/rebrand is out of scope (separate effort).
 
 **Files:** `src/lib/region-config.ts` (+ `RegionConfig` interface), `src/components/layout/Navbar.tsx`, optionally `src/components/home/Hero.tsx` / `FinalCTA.tsx`.
 
@@ -111,7 +114,7 @@ Rebrand edits are partly done already (by the user, in parallel):
 
 ## Out of scope (this repo)
 - Netlify custom-domain + DNS records (dashboard).
-- The SaaS app's own rebrand/hosting (separate repo).
+- **The SaaS app's own rebrand** — the `restaurant-os` monorepo (admin/staff/menu/api + Capacitor mobile + PWA manifests + icons, ~185 "RestOS" refs) is a **separate brainstorm → spec → plan**, run inside that repo. Deferred per user.
 - The apex agency site (separate property) — though it should ideally link to / acknowledge the product so the shared "Omniviya" name isn't confusing.
 - Re-rendering product videos / OG artwork.
 
