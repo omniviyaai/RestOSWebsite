@@ -205,9 +205,9 @@ export const regionConfig: Record<Region, RegionConfig> = {
       title: 'Privacy Policy',
       updated: 'June 2026',
       intro:
-        'This Privacy Policy explains how Omniviya handles personal data collected through the RestOS marketing website for visitors in India, in line with the Digital Personal Data Protection Act, 2023 (DPDP Act). This is placeholder copy pending legal review.',
+         'This Privacy Policy explains how Omniviya handles personal data collected through the Omniviya website for visitors in India, in line with the Digital Personal Data Protection Act, 2023 (DPDP Act). This is placeholder copy pending legal review.',
       sections: [
-        { heading: 'Who we are', body: 'RestOS is a product of Omniviya, based in India. For privacy queries, contact hello@omniviya.in.' },
+        { heading: 'Who we are', body: 'Omniviya is a restaurant operating system based in India. For privacy queries, contact hello@omniviya.in.' },
         { heading: 'What we collect', body: 'On this marketing site we collect only what you choose to share — for example, the message you send us on WhatsApp or by email — plus, with your consent, anonymised analytics about how the site is used.' },
         { heading: 'How we use it', body: 'We use your details solely to respond to your enquiry and to improve the website. We do not sell personal data.' },
         { heading: 'Your rights under the DPDP Act', body: 'You have the right to access, correct, and erase your personal data, to withdraw consent, and to nominate another person to exercise your rights. To make a request, contact hello@omniviya.in.' },
@@ -219,7 +219,7 @@ export const regionConfig: Record<Region, RegionConfig> = {
       title: 'Cookie Policy',
       updated: 'June 2026',
       intro:
-        'This Cookie Policy explains the cookies used on the RestOS website. Non-essential cookies are only set after you give consent. This is placeholder copy pending legal review.',
+         'This Cookie Policy explains the cookies used on the Omniviya website. Non-essential cookies are only set after you give consent. This is placeholder copy pending legal review.',
       sections: sharedCookieSections,
     },
   },
@@ -318,9 +318,9 @@ export const regionConfig: Record<Region, RegionConfig> = {
       title: 'Privacy Policy',
       updated: 'June 2026',
       intro:
-        'This Privacy Policy explains how Omniviya handles personal data collected through the RestOS marketing website for visitors in the United Kingdom, in line with the UK GDPR and the Data Protection Act 2018. This is placeholder copy pending legal review.',
+         'This Privacy Policy explains how Omniviya handles personal data collected through the Omniviya website for visitors in the United Kingdom, in line with the UK GDPR and the Data Protection Act 2018. This is placeholder copy pending legal review.',
       sections: [
-        { heading: 'Who we are (the data controller)', body: 'RestOS is a product of Omniviya. For privacy queries, contact hello@omniviya.in. [Placeholder — add UK registered address / representative before launch.]' },
+        { heading: 'Who we are (the data controller)', body: 'Omniviya is a restaurant operating system. For privacy queries, contact hello@omniviya.in. [Placeholder — add UK registered address / representative before launch.]' },
         { heading: 'What we collect', body: 'On this marketing site we collect only what you choose to share — for example, the message you send us on WhatsApp or by email — plus, with your consent, anonymised analytics about how the site is used.' },
         { heading: 'Lawful basis', body: 'We rely on your consent for analytics and marketing cookies, and on legitimate interests for responding to enquiries you initiate.' },
         { heading: 'How we use it', body: 'We use your details solely to respond to your enquiry and to improve the website. We do not sell personal data.' },
@@ -332,7 +332,7 @@ export const regionConfig: Record<Region, RegionConfig> = {
       title: 'Cookie Policy',
       updated: 'June 2026',
       intro:
-        'This Cookie Policy explains the cookies used on the RestOS website, in line with PECR and the UK GDPR. Non-essential cookies are only set after you give consent. This is placeholder copy pending legal review.',
+         'This Cookie Policy explains the cookies used on the Omniviya website, in line with PECR and the UK GDPR. Non-essential cookies are only set after you give consent. This is placeholder copy pending legal review.',
       sections: sharedCookieSections,
     },
   },
