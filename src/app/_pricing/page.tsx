@@ -91,7 +91,7 @@ export function PricingPageContent({ region }: { region: Region }) {
                 </p>
               </div>
               <a
-                href="mailto:hello@omniviya.in?subject=RestOS Waitlist"
+                href="mailto:hello@omniviya.in?subject=Omniviya Waitlist"
                 className="flex w-full items-center justify-center px-6 py-3.5 rounded-lg border border-wire text-warm-white text-sm font-display font-semibold hover:border-ember/50 hover:text-ember transition-colors duration-150 min-h-[44px]"
               >
                 Join Waitlist

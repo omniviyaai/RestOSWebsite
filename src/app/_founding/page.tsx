@@ -7,7 +7,7 @@ import type { Region } from '@/lib/region-config'
 import { regionConfig } from '@/lib/region-config'
 
 const perks = [
-  { title: 'RestOS completely free for 90 days', desc: 'Every feature. No restrictions. No credit card required.' },
+  { title: 'Omniviya completely free for 90 days', desc: 'Every feature. No restrictions. No credit card required.' },
   { title: 'Direct WhatsApp line to the founders', desc: 'Real humans. Real responses. Not a support ticket.' },
   { title: 'Shape the product roadmap', desc: 'Your feedback gets acted on — not filed away.' },
   { title: 'Founding Partner badge', desc: 'Permanent recognition as one of the first 10.' },
