@@ -53,7 +53,7 @@ export function RegionAboutMission() {
       <div className="mb-14">
         <h2 className="font-display font-bold text-warm-white text-lg sm:text-xl mb-4">What We Built</h2>
         <p className="text-stone text-sm sm:text-base leading-relaxed mb-4">
-          RestOS is a complete restaurant operating system — QR ordering, kitchen display,
+          Omniviya is a complete restaurant operating system — QR ordering, kitchen display,
           waiter app, payments, reservations, analytics — all connected, all in real time,
           all on devices you already own.
         </p>

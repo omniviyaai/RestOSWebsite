@@ -157,7 +157,7 @@ export const FEATURE_SECTIONS: FeatureSection[] = [
 export const HERO_CONTENT = {
   headline: 'Everything Your Restaurant Needs. In One System.',
   tagline: 'Less Waiting. Less Confusion. Less Hardware. More Revenue.',
-  description: 'RestOS connects customers, waiters, kitchen staff, and management on a single platform. From the moment a guest walks in to the moment they leave, every step is faster, clearer, and more profitable.',
+  description: 'Omniviya connects customers, waiters, kitchen staff, and management on a single platform. From the moment a guest walks in to the moment they leave, every step is faster, clearer, and more profitable.',
 }
 
 export const TIMELINE_CONTENT = {
@@ -173,7 +173,7 @@ export const TIMELINE_CONTENT = {
 
 export const BYOD_CONTENT = {
   headline: 'No hardware to buy. No installation fees. No lock-in.',
-  subtext: 'RestOS works on devices you already own — phones, tablets, laptops, and TVs. Everything a POS system does, without the POS system cost.',
+  subtext: 'Omniviya works on devices you already own — phones, tablets, laptops, and TVs. Everything a POS system does, without the POS system cost.',
   comparisons: [
     { item: 'POS terminals', oldWay: '₹30,000 – ₹1,00,000 each', newWay: 'Not needed' },
     { item: 'Self-ordering kiosks', oldWay: '₹1,50,000 – ₹5,00,000 each', newWay: 'Not needed' },
@@ -196,12 +196,12 @@ export const FAQ_CONTENT = {
   headline: 'Restaurant tech questions, answered in plain English',
   questions: [
     {
-      q: 'What is RestOS?',
-      a: 'RestOS is restaurant management software that runs in a browser. It replaces traditional POS hardware with QR code ordering, a kitchen display system, digital payments, and real-time analytics. Everything works on devices your restaurant already owns — phones, tablets, laptops, and TVs. There is no hardware to buy, no complex installation, and no long-term contract.',
+      q: 'What is Omniviya?',
+      a: 'Omniviya is restaurant management software that runs in a browser. It replaces traditional POS hardware with QR code ordering, a kitchen display system, digital payments, and real-time analytics. Everything works on devices your restaurant already owns — phones, tablets, laptops, and TVs. There is no hardware to buy, no complex installation, and no long-term contract.',
     },
     {
       q: 'Do I need to buy any hardware?',
-      a: 'No. RestOS works on any device with a browser — your existing smartphones, tablets, laptops, and TVs. There are no POS terminals to buy, no self-ordering kiosks to install, and no kitchen printers to maintain. Restaurants typically already have everything they need to get started.',
+      a: 'No. Omniviya works on any device with a browser — your existing smartphones, tablets, laptops, and TVs. There are no POS terminals to buy, no self-ordering kiosks to install, and no kitchen printers to maintain. Restaurants typically already have everything they need to get started.',
     },
     {
       q: 'How does QR code ordering actually work?',
@@ -212,28 +212,28 @@ export const FAQ_CONTENT = {
       a: 'Yes. Customers can view their bill, split it with their group, and pay using UPI, credit or debit card. The payment is processed directly from their phone — no card machine needs to reach their table. Cash payments are also supported and tracked in the system.',
     },
     {
-      q: 'Is RestOS suitable for small restaurants?',
-      a: 'Yes. RestOS works for restaurants of any size — from a 10-table cafe to a 100-table fine dining restaurant. There are no minimum commitments, and you only pay for what you use. Small restaurants benefit the most because RestOS eliminates the hardware costs that make traditional POS systems unaffordable.',
+      q: 'Is Omniviya suitable for small restaurants?',
+      a: 'Yes. Omniviya works for restaurants of any size — from a 10-table cafe to a 100-table fine dining restaurant. There are no minimum commitments, and you only pay for what you use. Small restaurants benefit the most because Omniviya eliminates the hardware costs that make traditional POS systems unaffordable.',
     },
     {
       q: 'How long does setup take?',
       a: 'Most restaurants go live within 48 hours. Upload your menu (or we can do it for you), print QR codes for your tables, connect a display in the kitchen — and you are ready to take orders. No onsite installation or training sessions are required.',
     },
     {
-      q: 'What analytics does RestOS provide?',
-      a: 'RestOS tracks everything that matters: real-time revenue, best-selling dishes, profit per dish, peak hour patterns, dine-in vs takeaway split, and staffing needs. All data updates live and can be exported for accounting and GST filing. You get reports you can act on, not just charts to look at.',
+      q: 'What analytics does Omniviya provide?',
+      a: 'Omniviya tracks everything that matters: real-time revenue, best-selling dishes, profit per dish, peak hour patterns, dine-in vs takeaway split, and staffing needs. All data updates live and can be exported for accounting and GST filing. You get reports you can act on, not just charts to look at.',
     },
     {
       q: 'How do I update my menu?',
-      a: 'Menu changes are made from the RestOS dashboard. Add, remove, or change prices on any item, and the update goes live instantly across all QR codes — every table sees the new menu immediately. No reprinting of physical menus required.',
+      a: 'Menu changes are made from the Omniviya dashboard. Add, remove, or change prices on any item, and the update goes live instantly across all QR codes — every table sees the new menu immediately. No reprinting of physical menus required.',
     },
     {
-      q: 'Does RestOS support table management?',
-      a: 'Yes. RestOS tracks every table in your restaurant — open, occupied, or reserved. You can see table status at a glance from the dashboard, open and close sessions, and manage floor layout. The waiter app shows real-time table status so staff always knows which tables need attention.',
+      q: 'Does Omniviya support table management?',
+      a: 'Yes. Omniviya tracks every table in your restaurant — open, occupied, or reserved. You can see table status at a glance from the dashboard, open and close sessions, and manage floor layout. The waiter app shows real-time table status so staff always knows which tables need attention.',
     },
     {
-      q: 'How is RestOS different from a traditional POS system?',
-      a: 'Traditional POS systems require expensive hardware, onsite installation, and long-term contracts. RestOS runs entirely on devices you already own. There is no hardware to buy, no software to install, and no lengthy training required. Updates and maintenance are handled automatically — nothing for you to manage.',
+      q: 'How is Omniviya different from a traditional POS system?',
+      a: 'Traditional POS systems require expensive hardware, onsite installation, and long-term contracts. Omniviya runs entirely on devices you already own. There is no hardware to buy, no software to install, and no lengthy training required. Updates and maintenance are handled automatically — nothing for you to manage.',
     },
   ],
 }
