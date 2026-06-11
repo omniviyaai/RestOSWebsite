@@ -44,10 +44,10 @@ export function MotionLogo({ onComplete, width = 240 }: MotionLogoProps) {
 
   // Motion values for continuous animations
   const pestleRotation = useMotionValue(35)
-  const restOpacity = useMotionValue(0)
-  const osOpacity = useMotionValue(0)
-  const osGlow = useMotionValue(0)
-  const osScale = useMotionValue(1)
+  const omniOpacity = useMotionValue(0)
+  const viyaOpacity = useMotionValue(0)
+  const viyaGlow = useMotionValue(0)
+  const viyaScale = useMotionValue(1)
   const taglineOpacity = useMotionValue(0)
   const highlightX = useMotionValue(-100)
 
@@ -124,14 +124,14 @@ export function MotionLogo({ onComplete, width = 240 }: MotionLogoProps) {
       pestleRotation.set(finalRotation)
 
       // --- Text reveals ---
-      // "Rest" fade: 2.7s → 3.5s
-      restOpacity.set(interpolate(elapsed, [s4, s4 + 0.5], [0, 1]))
-      // "OS" fade: slightly after Rest
-      osOpacity.set(interpolate(elapsed, [s4 + 0.17, s4 + 0.67], [0, 1]))
-      // OS glow: 3.5s → 4.0s
-      osGlow.set(interpolate(elapsed, [s5, s5 + 0.33, s6], [0, 1, 0.4]))
-      // OS scale: 3.5s → 4.0s
-      osScale.set(interpolate(elapsed, [s5, s5 + 0.27, s5 + 0.53], [1, 1.08, 1]))
+      // "OMNI" fade: 2.7s → 3.5s
+      omniOpacity.set(interpolate(elapsed, [s4, s4 + 0.5], [0, 1]))
+      // "VIYA" fade: slightly after OMNI
+      viyaOpacity.set(interpolate(elapsed, [s4 + 0.17, s4 + 0.67], [0, 1]))
+      // VIYA glow: 3.5s → 4.2s (held slightly longer for a wider word)
+      viyaGlow.set(interpolate(elapsed, [s5, s5 + 0.5, s6], [0, 1, 0.4]))
+      // VIYA scale: 3.5s → 4.2s
+      viyaScale.set(interpolate(elapsed, [s5, s5 + 0.4, s5 + 0.7], [1, 1.08, 1]))
       // Tagline: 4.0s → 4.5s
       taglineOpacity.set(interpolate(elapsed, [s6, s6 + 0.4], [0, 1]))
       // Highlight sweep: 4.17s → 4.5s
@@ -152,10 +152,10 @@ export function MotionLogo({ onComplete, width = 240 }: MotionLogoProps) {
           let x = 90 + Math.cos(p.angle + swirl) * swirlRadius
           let y = 105 + riseY + Math.sin(p.angle + swirl) * swirlRadius * 0.5
 
-          // Flow toward OS (scene 5)
+          // Flow toward VIYA (scene 5)
           if (elapsed >= s4) {
             const flowEased = interpolate(elapsed, [s4, s5], [0, 1])
-            const finalX = 370 + seededRandom(p.id * 7) * 25
+            const finalX = 420 + seededRandom(p.id * 7) * 25
             const finalY = -8 + seededRandom(p.id * 8) * 15 - 7
             x = x + (finalX - x) * flowEased
             y = y + (finalY - y) * flowEased
@@ -186,7 +186,7 @@ export function MotionLogo({ onComplete, width = 240 }: MotionLogoProps) {
     requestAnimationFrame(tick)
     return () => { cancelled = true }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pestleRotation, restOpacity, osOpacity, osGlow, osScale, taglineOpacity, highlightX, particles])
+  }, [pestleRotation, omniOpacity, viyaOpacity, viyaGlow, viyaScale, taglineOpacity, highlightX, particles])
 
   // Scale factor for responsive sizing
   const scale = width / 500 // 500 is the full composition width
@@ -246,7 +246,7 @@ export function MotionLogo({ onComplete, width = 240 }: MotionLogoProps) {
         <div style={{ position: 'relative', display: 'flex', flexDirection: 'column' }}>
           {/* Main wordmark */}
           <div style={{ display: 'flex', alignItems: 'baseline', position: 'relative' }}>
-            {/* "Rest" */}
+            {/* "OMNI" */}
             <motion.span
               style={{
                 fontFamily: "'Space Grotesk', sans-serif",
@@ -254,35 +254,35 @@ export function MotionLogo({ onComplete, width = 240 }: MotionLogoProps) {
                 fontWeight: 700,
                 color: '#F3EFE7',
                 letterSpacing: -2,
-                opacity: restOpacity,
+                opacity: omniOpacity,
               }}
             >
-              Rest
+              OMNI
             </motion.span>
 
-            {/* "OS" */}
+            {/* "VIYA" */}
             <motion.span
               style={{
                 fontFamily: "'Space Grotesk', sans-serif",
                 fontSize: 72,
-                fontWeight: 300,
+                fontWeight: 700,
                 color: '#E8742A',
                 letterSpacing: -2,
-                scale: osScale,
+                scale: viyaScale,
                 transformOrigin: 'left bottom',
                 position: 'relative',
                 display: 'inline-block',
-                opacity: osOpacity,
+                opacity: viyaOpacity,
               }}
             >
-              OS
+              VIYA
               {/* Glow effect */}
               <motion.span
                 style={{
                   position: 'absolute',
                   inset: -8,
                   background: 'radial-gradient(circle, rgba(232,116,42,0.4) 0%, transparent 70%)',
-                  opacity: osGlow,
+                  opacity: viyaGlow,
                   pointerEvents: 'none',
                   filter: 'blur(8px)',
                 }}
