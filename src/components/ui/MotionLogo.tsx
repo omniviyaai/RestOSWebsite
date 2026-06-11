@@ -125,11 +125,11 @@ export function MotionLogo({ onComplete, width = 240 }: MotionLogoProps) {
 
       // --- Text reveals ---
       // "OMNI" fade: 2.7s → 3.5s
-      omniOpacity.set(interpolate(elapsed, [s4, s4 + 0.5], [0, 1]))
+      omniOpacity.set(interpolate(elapsed, [s4, s5], [0, 1]))
       // "VIYA" fade: slightly after OMNI
       viyaOpacity.set(interpolate(elapsed, [s4 + 0.17, s4 + 0.67], [0, 1]))
       // VIYA glow: 3.5s → 4.2s (held slightly longer for a wider word)
-      viyaGlow.set(interpolate(elapsed, [s5, s5 + 0.5, s6], [0, 1, 0.4]))
+      viyaGlow.set(interpolate(elapsed, [s5, s5 + 0.5, s5 + 0.7], [0, 1, 0.4]))
       // VIYA scale: 3.5s → 4.2s
       viyaScale.set(interpolate(elapsed, [s5, s5 + 0.4, s5 + 0.7], [1, 1.08, 1]))
       // Tagline: 4.0s → 4.5s
