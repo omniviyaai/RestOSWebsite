@@ -4,8 +4,8 @@ interface LogoProps {
   width?: number
 }
 
-// full  → mortar + pestle + "RestOS" wordmark + "RESTAURANT OPERATING SYSTEM" tagline
-// compact → mortar + pestle + "RestOS" wordmark only (navbar use)
+// full  → mortar + pestle + "OMNI/VIYA" wordmark + "RESTAURANT OPERATING SYSTEM" tagline
+// compact → mortar + pestle + "OMNI/VIYA" wordmark only (navbar use)
 export function Logo({ variant = 'full', className = '', width }: LogoProps) {
   if (variant === 'compact') {
     return (
@@ -83,17 +83,17 @@ export function Logo({ variant = 'full', className = '', width }: LogoProps) {
           <tspan fill="#E8742A" fontWeight="700">VIYA</tspan>
         </text>
 
-      {/* TAGLINE */}
-      <text
-        x="119"
-        y="88"
-        fontFamily="Space Mono, monospace"
-        fontSize="9.5"
-        fill="#9CA3AF"
-        letterSpacing="2.5"
-      >
-        RESTAURANT OPERATING SYSTEM
-      </text>
+        {/* TAGLINE */}
+        <text
+          x="119"
+          y="88"
+          fontFamily="Space Mono, monospace"
+          fontSize="9.5"
+          fill="#9CA3AF"
+          letterSpacing="2.5"
+        >
+          RESTAURANT OPERATING SYSTEM
+        </text>
     </svg>
   )
 }
