@@ -7,31 +7,31 @@ import { RegionWhatsAppLink } from '@/components/ui/RegionWhatsAppLink'
 import { RegionAboutMission } from '@/components/ui/RegionContent'
 
 export const metadata: Metadata = {
-  title: 'About — RestOS by Omniviya',
+  title: 'About — Omniviya',
   description:
-    'RestOS is built by Omniviya — on a mission to give Indian restaurants the technology they deserve. QR ordering, KDS, payments, and analytics for Indian restaurants.',
+    'Omniviya is a complete restaurant operating system for Indian restaurants. QR ordering, KDS, payments, and analytics.',
   openGraph: {
-    title: 'About RestOS — Restaurant Operating System by Omniviya',
+    title: 'About Omniviya — Restaurant Operating System',
     description:
-      'RestOS is built by Omniviya to give Indian restaurants the technology they deserve — QR ordering, kitchen display, payments, and analytics.',
-    url: 'https://restos.in/about',
-    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'RestOS — About' }],
+      'Omniviya is a complete restaurant operating system — QR ordering, kitchen display, payments, and analytics.',
+    url: 'https://omniviya.in/about',
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Omniviya — About' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'About RestOS — Restaurant Operating System by Omniviya',
-    description: 'RestOS by Omniviya — built for Indian restaurants.',
+    title: 'About Omniviya — Restaurant Operating System',
+    description: 'Omniviya — built for Indian restaurants.',
     images: ['/og-image.png'],
   },
-  alternates: { canonical: 'https://restos.in/about' },
+  alternates: { canonical: 'https://omniviya.in/about' },
 }
 
 const breadcrumbAbout = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://restos.in/' },
-    { '@type': 'ListItem', position: 2, name: 'About', item: 'https://restos.in/about' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://omniviya.in/' },
+    { '@type': 'ListItem', position: 2, name: 'About', item: 'https://omniviya.in/about' },
   ],
 }
 

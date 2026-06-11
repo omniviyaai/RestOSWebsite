@@ -12,7 +12,7 @@ import { regionConfig } from '@/lib/region-config'
  */
 export function FeaturesPageContent({ region }: { region: Region }) {
   const cfg = regionConfig[region]
-  const base = `https://restos.in/${region}`
+  const base = `https://omniviya.in/${region}`
   const faq = getFaqContent(region)
   return (
     <>
@@ -36,7 +36,7 @@ export function FeaturesPageContent({ region }: { region: Region }) {
           __html: JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'SoftwareApplication',
-            name: 'RestOS',
+            name: 'Omniviya',
             applicationCategory: 'BusinessApplication',
             operatingSystem: 'Web',
             description: 'Cloud-based restaurant management platform with QR code ordering, kitchen display system, digital payments, real-time analytics, and table management.',

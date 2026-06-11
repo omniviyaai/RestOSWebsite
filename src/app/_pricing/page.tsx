@@ -8,7 +8,7 @@ import { regionConfig } from '@/lib/region-config'
 
 const faqs = [
   { q: 'Is there a contract?', a: 'No. No lock-in, no minimum term. Stop at any time.' },
-  { q: 'Do I need to buy new hardware?', a: 'No. RestOS works on phones, tablets, and laptops you already own. Customers use their own phones.' },
+  { q: 'Do I need to buy new hardware?', a: 'No. Omniviya works on phones, tablets, and laptops you already own. Customers use their own phones.' },
   { q: 'What happens after the 90 days?', a: 'You move to regular pricing, or you leave. No tricks. We tell you well in advance.' },
   { q: 'Is my data safe?', a: 'Yes. Your restaurant gets its own isolated database. No other restaurant can see your data. Everything is encrypted.' },
   { q: 'Does it work for takeaway-only restaurants?', a: 'Yes. Dine-in, takeaway, and cloud kitchen flows are all built in.' },
@@ -18,7 +18,7 @@ const faqs = [
 /** Shared pricing content rendered by /in and /uk wrappers with region-correct schema. */
 export function PricingPageContent({ region }: { region: Region }) {
   const cfg = regionConfig[region]
-  const base = `https://restos.in/${region}`
+  const base = `https://omniviya.in/${region}`
 
   const faqSchema = {
     '@context': 'https://schema.org',

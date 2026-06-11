@@ -4,31 +4,31 @@ import { Footer } from '@/components/layout/Footer'
 import { WhatsAppButton } from '@/components/ui/WhatsAppButton'
 
 export const metadata: Metadata = {
-  title: 'Book a Free Demo — RestOS',
+  title: 'Book a Free Demo — Omniviya',
   description:
-    'See RestOS running in your restaurant. Book a free 20-minute demo with the founding team. QR ordering, kitchen display, payments, and analytics — live walkthrough.',
+    'See Omniviya running in your restaurant. Book a free 20-minute demo with the founding team. QR ordering, kitchen display, payments, and analytics — live walkthrough.',
   openGraph: {
-    title: 'Book a Free Demo — RestOS Restaurant Operating System',
+    title: 'Book a Free Demo — Omniviya Restaurant Operating System',
     description:
-      'Free 20-minute demo with the founding team. See QR ordering, kitchen display, payments, and analytics live.',
-    url: 'https://restos.in/demo',
-    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'RestOS Demo' }],
+      'Free 20-minute demo with the founding team. See Omniviya — QR ordering, kitchen display, payments, and analytics live.',
+    url: 'https://omniviya.in/demo',
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Omniviya Demo' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Book a Free Demo — RestOS Restaurant Operating System',
-    description: 'Free 20-minute demo. See RestOS live in your restaurant.',
+    title: 'Book a Free Demo — Omniviya Restaurant Operating System',
+    description: 'Free 20-minute demo. See Omniviya live in your restaurant.',
     images: ['/og-image.png'],
   },
-  alternates: { canonical: 'https://restos.in/demo' },
+  alternates: { canonical: 'https://omniviya.in/demo' },
 }
 
 const breadcrumbDemo = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://restos.in/' },
-    { '@type': 'ListItem', position: 2, name: 'Book a Demo', item: 'https://restos.in/demo' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://omniviya.in/' },
+    { '@type': 'ListItem', position: 2, name: 'Book a Demo', item: 'https://omniviya.in/demo' },
   ],
 }
 
@@ -42,7 +42,7 @@ export default function DemoPage() {
           <div className="text-center mb-12">
             <span className="text-xs font-mono tracking-widest text-teal uppercase block mb-4">Free · 20 Minutes</span>
             <h1 className="text-3xl sm:text-4xl font-display font-bold text-warm-white mb-3 text-balance">
-              Let&apos;s show you RestOS in your restaurant.
+              Let&apos;s show you Omniviya in your restaurant.
             </h1>
             <p className="text-stone text-base leading-relaxed">
               Pick a time. We&apos;ll walk you through everything live — ordering, kitchen display, payments, analytics.

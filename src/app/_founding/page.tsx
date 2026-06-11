@@ -23,7 +23,7 @@ const asks = [
 /** Shared founding-partner content rendered by /in and /uk wrappers with region-correct schema. */
 export function FoundingPageContent({ region }: { region: Region }) {
   const cfg = regionConfig[region]
-  const base = `https://restos.in/${region}`
+  const base = `https://omniviya.in/${region}`
 
   const breadcrumbFounding = {
     '@context': 'https://schema.org',
@@ -37,7 +37,7 @@ export function FoundingPageContent({ region }: { region: Region }) {
   const productSchema = {
     '@context': 'https://schema.org',
     '@type': 'Product',
-    name: 'RestOS Founding Partner Program',
+    name: 'Omniviya Founding Partner Program',
     description: 'First 90 days completely free. Direct WhatsApp line to founders. Shape the product roadmap. Permanent Founding Partner badge.',
     brand: { '@type': 'Brand', name: cfg.siteName },
     offers: {
