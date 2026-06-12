@@ -96,7 +96,7 @@ export function Footer() {
             aria-label="Developed by Omniviya"
           >
             <span className="text-stone text-[11px] tracking-wide">Developed by</span>
-            <svg width="22" height="22" viewBox="0 0 260 260" aria-hidden="true" className="flex-shrink-0">
+            <svg width="22" height="22" viewBox="0 0 260 260" aria-hidden="true" className="flex-shrink-0 animate-spin" style={{ animationDuration: '8s', animationTimingFunction: 'linear' }}>
               <polygon points="130,14 136,78 130,90 124,78" fill="#E8732A"/>
               <polygon points="130,14 136,78 130,90 124,78" fill="#0A8A7C" transform="rotate(45 130 130)"/>
               <polygon points="130,14 136,78 130,90 124,78" fill="#C8A84B" transform="rotate(90 130 130)"/>
