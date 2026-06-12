@@ -67,6 +67,12 @@ export interface RegionConfig {
   paymentFaqAnswer: string
   /** Short inline phrase listing accepted payment methods, used in body copy/FAQ */
   paymentPhrase: string
+  /** SaaS app base URL for sign-up / trial CTAs */
+  appUrl: string
+  /** Pricing comparison "payments" row label */
+  paymentRowLabel: string
+  /** Pricing comparison "tax" row label */
+  taxExportLine: string
   /** Structured payment methods rendered as icon cards on the features page */
   paymentMethods: readonly PaymentMethod[]
   /** Sample dashboard figures shown in the revenue showcase */
@@ -156,6 +162,9 @@ export const regionConfig: Record<Region, RegionConfig> = {
     analyticsDescription: 'Omniviya tracks every order, every rupee, every item sold. See your best sellers, peak hours, and revenue by source — automatically, in real time.',
     paymentFaqAnswer: 'UPI, credit/debit cards, netbanking, and wallets via Razorpay and Cashfree. Cash (pay at counter) also supported.',
     paymentPhrase: 'UPI, credit or debit card',
+    appUrl: 'https://app.omniviya.in',
+    paymentRowLabel: 'UPI, Razorpay, Cashfree',
+    taxExportLine: 'GST billing + GSTR-1 export',
     paymentMethods: [
       { label: 'UPI', sub: 'GPay, PhonePe, Paytm' },
       { label: 'Card', sub: 'Credit & debit cards' },
@@ -267,6 +276,9 @@ export const regionConfig: Record<Region, RegionConfig> = {
     analyticsDescription: 'Omniviya tracks every order, every pound, every item sold. See your best sellers, peak hours, and revenue by source — automatically, in real time.',
     paymentFaqAnswer: 'Debit/credit cards, contactless, Apple Pay, and Google Pay via Stripe. Cash (pay at counter) also supported.',
     paymentPhrase: 'card, contactless, or Apple Pay',
+    appUrl: 'https://app.omniviya.in',
+    paymentRowLabel: 'Card, contactless, Apple Pay, Stripe',
+    taxExportLine: 'VAT billing + MTD-ready export',
     paymentMethods: [
       { label: 'Card', sub: 'Debit, credit & chip + PIN' },
       { label: 'Contactless', sub: 'Tap to pay' },
