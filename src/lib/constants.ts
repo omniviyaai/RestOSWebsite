@@ -1,7 +1,7 @@
 // src/lib/constants.ts
 
 export const FOUNDING_SPOTS_TOTAL = 10
-export const FOUNDING_SPOTS_TAKEN = 0
+export const FOUNDING_SPOTS_TAKEN = 5
 
 export const YOUTUBE_VIDEO_ID = 'REPLACE_WITH_YOUR_VIDEO_ID'
 
