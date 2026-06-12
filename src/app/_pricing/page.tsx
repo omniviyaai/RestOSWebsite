@@ -54,7 +54,7 @@ export function PricingPageContent({ region }: { region: Region }) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(offersSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
-      <main className="bg-midnight min-h-screen">
+      <main className="bg-midnight min-h-screen pt-16">
         <FoundingStrip />
         <PricingClient />
       </main>

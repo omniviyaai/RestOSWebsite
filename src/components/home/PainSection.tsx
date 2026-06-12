@@ -57,9 +57,12 @@ export function PainSection() {
         </motion.div>
         {painStatements.map((statement, i) => {
           const count = painStatements.length
-          const start = i / (count + 1)
+          // Shift the highlight windows into a mid-scroll band (leading + trailing margin)
+          // so the FIRST statement peaks while it's actually in the reading zone, not while
+          // still entering at the bottom edge of the viewport.
+          const start = (i + 1) / (count + 2)
           const peak = start + 0.08
-          const end = (i + 1) / (count + 1)
+          const end = (i + 2) / (count + 2)
 
           return (
             <PainStatement
