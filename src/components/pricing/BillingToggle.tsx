@@ -5,9 +5,15 @@ import { BILLING_CYCLES, CYCLE_DISCOUNT } from '@/lib/pricing-content'
 export function BillingToggle({ cycle, onChange }: { cycle: BillingCycle; onChange: (c: BillingCycle) => void }) {
   return (
     <div className="flex flex-col items-center gap-3 mb-12">
-      <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-gold/10 border border-gold/30">
-        <span className="text-gold text-[10px]" aria-hidden="true">✦</span>
-        <span className="text-gold text-xs font-medium tracking-wide">Save more with our long-term plans</span>
+      <div className="flex flex-col items-center gap-2 text-center">
+        <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-gold/10 border border-gold/30">
+          <span className="text-gold text-[10px]" aria-hidden="true">✦</span>
+          <span className="text-gold text-xs font-medium tracking-wide">Save more with our long-term plans</span>
+        </div>
+        <p className="text-stone text-xs sm:text-sm leading-relaxed max-w-sm">
+          14-day free trial. No credit card. Apply, get verified, and start using — drop off any time.{' '}
+          <span className="text-warm-white font-medium">Easy. No strings attached.</span>
+        </p>
       </div>
       <div className="flex items-center justify-center gap-3 flex-wrap">
         <div role="radiogroup" aria-label="Billing cycle" className="flex bg-carbon border border-wire rounded-xl p-1 gap-1">
