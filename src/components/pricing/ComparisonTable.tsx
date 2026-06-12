@@ -4,7 +4,12 @@ import { Check, Cross } from './icons'
 import { COMPARISON, resolveRowLabel } from '@/lib/pricing-content'
 
 function Cell({ on }: { on: boolean }) {
-  return <span className="inline-flex justify-center">{on ? <Check /> : <Cross />}</span>
+  return (
+    <span className="inline-flex justify-center">
+      {on ? <Check /> : <Cross />}
+      <span className="sr-only">{on ? 'Included' : 'Not included'}</span>
+    </span>
+  )
 }
 
 export function ComparisonTable() {
@@ -19,10 +24,10 @@ export function ComparisonTable() {
         <table className="w-full text-[13px] border-collapse">
           <thead>
             <tr>
-              <th className="text-left p-3.5 min-w-[200px] bg-carbon border-b border-wire text-stone font-medium text-xs">Feature</th>
-              <th className="p-3.5 bg-carbon border-b border-wire text-stone font-medium text-xs">Free</th>
-              <th className="p-3.5 bg-carbon border-b border-wire text-ember font-medium text-xs">Premium</th>
-              <th className="p-3.5 bg-carbon border-b border-wire text-ember font-medium text-xs">Elite</th>
+              <th scope="col" className="text-left p-3.5 min-w-[200px] bg-carbon border-b border-wire text-stone font-medium text-xs">Feature</th>
+              <th scope="col" className="p-3.5 bg-carbon border-b border-wire text-stone font-medium text-xs">Free</th>
+              <th scope="col" className="p-3.5 bg-carbon border-b border-wire text-ember font-medium text-xs">Premium</th>
+              <th scope="col" className="p-3.5 bg-carbon border-b border-wire text-ember font-medium text-xs">Elite</th>
             </tr>
           </thead>
           <tbody>
@@ -40,10 +45,10 @@ function FragmentSection({ section, rows, region }: { section: string; rows: typ
   return (
     <>
       <tr>
-        <td colSpan={4} className="bg-white/[0.025] border-b border-wire px-4 py-2 font-mono text-[10px] uppercase tracking-widest text-stone/60">{section}</td>
+        <th colSpan={4} scope="colgroup" className="bg-white/[0.025] border-b border-wire px-4 py-2 font-mono text-[10px] uppercase tracking-widest text-stone/60 text-left">{section}</th>
       </tr>
-      {rows.map((row, i) => (
-        <tr key={i}>
+      {rows.map((row) => (
+        <tr key={row.feature}>
           <td className="text-left p-3 border-b border-white/[0.04] text-warm-white">{resolveRowLabel(region, row)}</td>
           <td className="text-center p-3 border-b border-white/[0.04]"><Cell on={row.free} /></td>
           <td className="text-center p-3 border-b border-white/[0.04] bg-ember/[0.04]"><Cell on={row.premium} /></td>

@@ -70,8 +70,8 @@ export function PlanCard({ plan, cycle }: { plan: Plan; cycle: BillingCycle }) {
       {plan.groups.map((g) => (
         <div key={g.label} className="mb-2">
           <p className="text-[10px] font-mono uppercase tracking-widest text-stone/60 mb-2 mt-3 first:mt-0">{g.label}</p>
-          {g.features.map((feat, i) => (
-            <div key={i} className={`flex items-start gap-2 text-[13px] py-1 leading-snug ${feat.included ? 'text-stone' : 'text-stone/40'}`}>
+          {g.features.map((feat) => (
+            <div key={feat.text} className={`flex items-start gap-2 text-[13px] py-1 leading-snug ${feat.included ? 'text-stone' : 'text-stone/40'}`}>
               <span className="flex-shrink-0 mt-0.5">{feat.included ? <Check className="w-3.5 h-3.5 text-teal" /> : <Cross className="w-3.5 h-3.5 text-wire" />}</span>
               <span>
                 <span className={feat.bold ? 'text-warm-white font-medium' : ''}>{resolveFeatureText(region, feat)}</span>

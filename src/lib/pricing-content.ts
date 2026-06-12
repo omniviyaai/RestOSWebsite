@@ -2,10 +2,10 @@ import type { Region, RegionConfig } from './region-config'
 
 export type BillingCycle = 'monthly' | 'sixmo' | 'annual'
 
-export const BILLING_CYCLES: { id: BillingCycle; label: string; billed: string }[] = [
-  { id: 'monthly', label: 'Monthly', billed: 'billed monthly' },
-  { id: 'sixmo', label: '6 months', billed: 'billed every 6 months' },
-  { id: 'annual', label: '12 months', billed: 'billed yearly' },
+export const BILLING_CYCLES: { id: BillingCycle; label: string }[] = [
+  { id: 'monthly', label: 'Monthly' },
+  { id: 'sixmo', label: '6 months' },
+  { id: 'annual', label: '12 months' },
 ]
 
 /** Same discounts in both regions. */
