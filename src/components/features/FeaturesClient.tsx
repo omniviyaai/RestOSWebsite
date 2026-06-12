@@ -25,10 +25,10 @@ export function FeaturesClient() {
       <OrderingFeature />
       <KitchenFeature />
       <PaymentFeature />
-      <FeaturesPricingCTA />
       <ManagementFeature />
       <BYODFeature />
       <AnalyticsFeature />
+      <FeaturesPricingCTA />
       <FAQAccordion />
       <FeaturesCTA />
     </>
