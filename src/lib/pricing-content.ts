@@ -15,15 +15,20 @@ export const CYCLE_DISCOUNT: Record<BillingCycle, number> = {
   annual: 0.17,
 }
 
-/** Base MONTHLY price per region, in major currency units. Free is always 0. */
-export const PLAN_PRICES: Record<Region, { premium: number; elite: number }> = {
-  in: { premium: 1199, elite: 2499 },
+/** Base MONTHLY price per region. Free is always 0.
+ *  annualOverride sets explicit 12-month monthly-equivalent prices instead of deriving from CYCLE_DISCOUNT. */
+export const PLAN_PRICES: Record<Region, {
+  premium: number; elite: number;
+  annualOverride?: { premium: number; elite: number };
+}> = {
+  in: { premium: 1199, elite: 2499, annualOverride: { premium: 999, elite: 2099 } },
   uk: { premium: 39, elite: 79 },
 }
 
 export function priceFor(region: Region, plan: 'premium' | 'elite', cycle: BillingCycle) {
   const base = PLAN_PRICES[region][plan]
-  const effectiveMonthly = Math.round(base * (1 - CYCLE_DISCOUNT[cycle]))
+  const override = cycle === 'annual' ? PLAN_PRICES[region].annualOverride?.[plan] : undefined
+  const effectiveMonthly = override ?? Math.round(base * (1 - CYCLE_DISCOUNT[cycle]))
   const savingsPerYear = (base - effectiveMonthly) * 12
   return { base, effectiveMonthly, savingsPerYear }
 }
