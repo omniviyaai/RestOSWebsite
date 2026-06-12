@@ -10,6 +10,7 @@ import { AnalyticsFeature } from './AnalyticsFeature'
 import { BYODFeature } from './BYODFeature'
 import { useEffect } from 'react'
 import { FeaturesCTA } from './FeaturesCTA'
+import { FeaturesPricingCTA } from './FeaturesPricingCTA'
 import { FAQAccordion } from './FAQAccordion'
 import { GlobalDepthLayer } from './GlobalDepthLayer'
 
@@ -24,6 +25,7 @@ export function FeaturesClient() {
       <OrderingFeature />
       <KitchenFeature />
       <PaymentFeature />
+      <FeaturesPricingCTA />
       <ManagementFeature />
       <BYODFeature />
       <AnalyticsFeature />
