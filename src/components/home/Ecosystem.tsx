@@ -19,9 +19,9 @@ const BASE_NODES = [
 export function Ecosystem() {
   const region = useRegion()
   const nodes = [
-    ...BASE_NODES.slice(0, 5),
+    ...BASE_NODES.slice(0, 2),
     { id: 'payment', label: 'Payment', desc: region.paymentEcosystemDesc, accent: 'border-gold/40 bg-gold/5', labelColor: 'text-gold', zDepth: 3 },
-    ...BASE_NODES.slice(5),
+    ...BASE_NODES.slice(2),
   ]
   const sectionRef = useRef<HTMLElement>(null)
   const rotateX = useSpring(0, springs.ecosystem)
