@@ -6,12 +6,13 @@ export default function Page() {
 }
 
 export const metadata: Metadata = {
-  title: 'Pricing',
+  title: 'Pricing — Simple, Honest, No Hidden Fees',
   description: 'Simple, honest pricing for UK restaurants. Get started with Omniviya today — no lock-in, no hidden fees.',
   openGraph: {
     title: 'Omniviya Pricing — Simple, Honest, No Hidden Fees',
     description: 'Simple pricing for UK restaurants. No lock-in, no hidden fees.',
     url: 'https://omniviya.in/uk/pricing',
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Omniviya — Restaurant Operating System' }],
   },
   alternates: { canonical: 'https://omniviya.in/uk/pricing' },
 }

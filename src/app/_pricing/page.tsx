@@ -54,6 +54,22 @@ export function PricingPageContent({ region }: { region: Region }) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(offersSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'HowTo',
+            name: 'How to get started with Omniviya',
+            description: 'Sign up free with no lock-in. No hardware to buy. Start with any plan and upgrade anytime.',
+            step: [
+              { '@type': 'HowToStep', position: 1, name: 'Choose a plan', text: 'Free, Premium, or Elite. No lock-in, no minimum term. Switch plans anytime.' },
+              { '@type': 'HowToStep', position: 2, name: 'Set up your restaurant', text: 'Upload your menu, print QR codes, and connect a kitchen display. Most restaurants go live within 48 hours.' },
+              { '@type': 'HowToStep', position: 3, name: 'Start serving', text: 'Customers scan QR codes, order from their phones, and pay directly. Your team stays aligned on one system.' },
+            ],
+          }),
+        }}
+      />
       <main className="bg-midnight min-h-screen pt-16">
         <FoundingStrip />
         <PricingClient />

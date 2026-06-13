@@ -25,6 +25,21 @@ const jsonLd = {
       },
       sameAs: ['https://omniviya.in'],
     },
+    {
+      '@type': 'WebSite',
+      '@id': 'https://omniviya.in/#website',
+      url: 'https://omniviya.in',
+      name: 'Omniviya',
+      description: 'Omniviya is a complete restaurant operating system — QR ordering, kitchen display, payments, analytics, and table management.',
+      publisher: { '@id': 'https://omniviya.in/#organization' },
+      inLanguage: ['en-IN', 'hi'],
+    },
+    {
+      '@type': 'Person',
+      name: 'Sri Chakra',
+      affiliation: { '@id': 'https://omniviya.in/#organization' },
+      knowsAbout: ['Restaurant technology', 'Restaurant management systems', 'QR ordering', 'Kitchen display systems'],
+    },
   ],
 }
 

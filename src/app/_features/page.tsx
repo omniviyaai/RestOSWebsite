@@ -77,6 +77,33 @@ export function FeaturesPageContent({ region }: { region: Region }) {
           }),
         }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'HowTo',
+            name: 'How to set up Omniviya in your restaurant',
+            description: 'Most restaurants go live within 48 hours. Upload your menu, print QR codes, connect a kitchen display, and start taking orders.',
+            step: [
+              { '@type': 'HowToStep', position: 1, name: 'Upload your menu', text: 'Upload your menu to Omniviya or let our team do it for you. Menu changes go live instantly across all QR codes.' },
+              { '@type': 'HowToStep', position: 2, name: 'Print QR codes', text: 'Print unique QR codes for each table in your restaurant. Customers scan to browse, order, and pay from their own phone.' },
+              { '@type': 'HowToStep', position: 3, name: 'Connect a kitchen display', text: 'Connect any screen in your kitchen — a tablet, TV, or laptop. Orders appear instantly, timestamped and color-coded.' },
+              { '@type': 'HowToStep', position: 4, name: 'Start taking orders', text: 'Your restaurant is live. Customers order from their phones. Kitchen sees every order on screen. Revenue tracks in real time.' },
+            ],
+          }),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'WebPage',
+            speakable: { '@type': 'SpeakableSpecification', cssSelector: ['h2', '.faq-question'] },
+          }),
+        }}
+      />
 
       <main className="bg-midnight min-h-screen">
         <FeaturesClient />
