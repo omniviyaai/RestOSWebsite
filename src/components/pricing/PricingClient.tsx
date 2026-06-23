@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { PLANS, type BillingCycle } from '@/lib/pricing-content'
 import { BillingToggle } from './BillingToggle'
 import { PlanCard } from './PlanCard'
+import { EnterpriseCard } from './EnterpriseCard'
 import { HonestBar } from './HonestBar'
 import { ComparisonTable } from './ComparisonTable'
 import { PricingFAQ } from './PricingFAQ'
@@ -22,9 +23,10 @@ export function PricingClient() {
 
       <BillingToggle cycle={cycle} onChange={setCycle} />
 
-      <div className="max-w-5xl mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="max-w-6xl mx-auto px-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {PLANS.map((plan) => <PlanCard key={plan.id} plan={plan} cycle={cycle} />)}
+          <EnterpriseCard />
         </div>
       </div>
 
