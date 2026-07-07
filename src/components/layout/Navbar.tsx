@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import Link from 'next/link'
 import { motion, AnimatePresence, useSpring } from 'framer-motion'
-import { Menu, X, User, Lock } from 'lucide-react'
+import { Menu, X, User, Lock, UserPlus } from 'lucide-react'
 import { NAV_SLUGS } from '@/lib/constants'
 import { useRegion } from '@/lib/region-context'
 import { WhatsAppButton } from '@/components/ui/WhatsAppButton'
@@ -116,7 +116,7 @@ export function Navbar() {
           >
             <WhatsAppButton />
 
-            <div className="flex items-stretch border border-wire/40 rounded-lg overflow-hidden bg-carbon" role="group" aria-label="Login">
+            <div className="flex items-stretch border border-wire/40 rounded-lg overflow-hidden bg-carbon" role="group" aria-label="Account">
               <a
                 href={STAFF_LOGIN}
                 target="_blank"
@@ -130,10 +130,19 @@ export function Navbar() {
                 href={ADMIN_LOGIN}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1.5 px-4 py-2 text-sm font-display font-semibold text-ember hover:text-ember/80 hover:bg-ember/5 transition-colors"
+                className="flex items-center gap-1.5 px-4 py-2 text-sm font-display font-semibold text-ember hover:text-ember/80 hover:bg-ember/5 transition-colors border-r border-wire/40"
               >
                 <Lock size={13} strokeWidth={2} />
                 Admin
+              </a>
+              <a
+                href={ADMIN_REGISTER}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 px-4 py-2 text-sm font-display font-semibold text-teal hover:text-teal/80 hover:bg-teal/5 transition-colors"
+              >
+                <UserPlus size={13} strokeWidth={2} />
+                Register
               </a>
             </div>
           </motion.div>
@@ -247,9 +256,13 @@ export function Navbar() {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setMobileOpen(false)}
-                  className="text-xs text-stone/60 hover:text-ember transition-colors pt-1 pl-1"
+                  className="flex items-center justify-between px-4 py-3 rounded-lg border border-teal/30 bg-teal/5 text-teal font-display font-semibold hover:bg-teal/10 transition-colors"
                 >
-                  New restaurant? Register →
+                  <span className="flex items-center gap-2 text-sm">
+                    <UserPlus size={15} strokeWidth={2} />
+                    Register Restaurant
+                  </span>
+                  <span className="text-xs">→</span>
                 </a>
               </div>
             </div>
