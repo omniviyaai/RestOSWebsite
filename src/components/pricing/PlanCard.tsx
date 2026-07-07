@@ -10,17 +10,42 @@ export function PlanCard({ plan, cycle }: { plan: Plan; cycle: BillingCycle }) {
   const price = plan.priced ? priceFor(region.key, plan.id as 'premium' | 'elite', cycle) : null
   const discounted = !!price && cycle !== 'monthly'
 
+  const accentMap: Record<string, { border: string; glow: string; topBar: string }> = {
+    free:    { border: 'border-wire/60',   glow: 'rgba(156,163,175,0.06)', topBar: '#9CA3AF' },
+    premium: { border: 'border-ember/50',  glow: 'rgba(232,116,42,0.10)',  topBar: '#E8742A' },
+    elite:   { border: 'border-gold/40',   glow: 'rgba(198,163,91,0.08)',  topBar: '#C6A35B' },
+  }
+  const accent = accentMap[plan.id as string] ?? accentMap['free']
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ type: 'spring', stiffness: 200, damping: 24 }}
-      className={`relative flex flex-col rounded-2xl p-6 sm:p-7 border ${
-        plan.featured ? 'border-ember bg-gradient-to-b from-[#1C1A12] to-carbon' : 'border-wire bg-carbon'
-      }`}
+      whileHover={{ y: -6, transition: { type: 'spring', stiffness: 300, damping: 25 } }}
+      className={`relative flex flex-col rounded-2xl p-6 sm:p-7 border ${accent.border} overflow-hidden cursor-default`}
+      style={{
+        background: `linear-gradient(160deg, rgba(21,27,46,0.95) 0%, rgba(11,16,32,0.9) 100%)`,
+        backdropFilter: 'blur(20px)',
+        boxShadow: `0 8px 32px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05)`,
+      }}
     >
-      {plan.featured && <span className="absolute top-0 left-0 right-0 h-0.5 bg-ember rounded-t-2xl" />}
+      {/* Per-plan ambient glow */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{ background: `radial-gradient(ellipse 80% 60% at 50% 0%, ${accent.glow}, transparent)` }}
+      />
+
+      {/* Top accent bar */}
+      <div
+        className="absolute top-0 left-0 right-0 h-0.5 rounded-t-2xl"
+        style={{ background: accent.topBar }}
+      />
+
+      {/* Inner highlight */}
+      <div className="absolute inset-x-0 top-0.5 h-px bg-gradient-to-r from-transparent via-white/8 to-transparent pointer-events-none" />
+
       {plan.featured && (
         <span className="absolute top-4 right-4 text-[10px] uppercase tracking-wider px-2.5 py-1 rounded-full bg-ember/15 text-ember border border-ember/30">
           Most popular

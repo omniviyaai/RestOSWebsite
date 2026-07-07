@@ -45,23 +45,40 @@ function SpotlightCard({ card }: { card: Card }) {
       variants={fadeUp}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      style={{ rotateX, rotateY, transformStyle: 'preserve-3d' }}
-      whileHover={{ y: -8, transition: { type: 'spring', stiffness: 400, damping: 30 } }}
-      className="group relative rounded-xl bg-carbon border border-wire hover:border-ember/40 p-5 sm:p-6 cursor-default overflow-hidden"
+      style={{
+        rotateX,
+        rotateY,
+        transformStyle: 'preserve-3d',
+        background: 'linear-gradient(135deg, rgba(21,27,46,0.9) 0%, rgba(11,16,32,0.7) 100%)',
+        backdropFilter: 'blur(16px)',
+      }}
+      whileHover={{ y: -8, boxShadow: '0 20px 40px rgba(0,0,0,0.5)', transition: { type: 'spring', stiffness: 400, damping: 30 } }}
+      className="group relative rounded-2xl border border-wire/60 hover:border-ember/30 p-5 sm:p-6 cursor-default overflow-hidden"
     >
+      {/* Hover gradient spotlight */}
       <div
         className="absolute inset-0 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-500"
-        style={{ background: 'radial-gradient(120px circle at 50% 40%, rgba(232,116,42,0.07), transparent 70%)' }}
+        style={{ background: 'radial-gradient(120px circle at 30% 40%, rgba(232,116,42,0.08), transparent 70%)' }}
       />
+
+      {/* Top highlight edge */}
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/8 to-transparent" />
+
       <div className="relative">
-        <div className="mb-3 group-hover:scale-110 transition-transform duration-200 origin-left">
-          {card.icon}
+        {/* Icon with glow on hover */}
+        <div className="mb-4 relative inline-flex">
+          <div className="group-hover:scale-110 group-hover:drop-shadow-[0_0_8px_currentColor] transition-all duration-300 origin-left">
+            {card.icon}
+          </div>
         </div>
-        <h3 className="font-display font-semibold text-warm-white text-sm sm:text-base mb-1.5">
+        <h3 className="font-display font-semibold text-warm-white text-sm sm:text-base mb-2">
           {card.headline}
         </h3>
-        <p className="text-stone text-xs sm:text-sm leading-relaxed">{card.subtext}</p>
+        <p className="text-stone/80 text-xs sm:text-sm leading-relaxed">{card.subtext}</p>
       </div>
+
+      {/* Bottom accent line on hover */}
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-ember/0 group-hover:bg-ember/20 transition-colors duration-500" />
     </motion.div>
   )
 }
