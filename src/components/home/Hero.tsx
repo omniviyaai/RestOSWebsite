@@ -187,7 +187,7 @@ export function Hero() {
 
       {/* ── Main content grid ─────────────────────────────────── */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 md:px-8 pt-24 pb-16">
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-12 xl:gap-16 items-center min-h-[calc(100dvh-6rem)]">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_460px] gap-12 xl:gap-16 items-center min-h-[calc(100dvh-6rem)]">
 
           {/* ── LEFT: Text content ──────────────────────────── */}
           <motion.div
@@ -221,7 +221,7 @@ export function Hero() {
                 {/* Line 1: Your Restaurant */}
                 <span className="block text-5xl sm:text-6xl md:text-7xl lg:text-[5rem] xl:text-[5.5rem]">
                   {LINE1.map((word, wi) => (
-                    <span key={wi}>
+                    <span key={wi} className="inline-block whitespace-nowrap">
                       {word.text.split('').map((char, ci) => (
                         <motion.span
                           key={`l1-${wi}-${ci}`}
@@ -235,7 +235,7 @@ export function Hero() {
                           {char}
                         </motion.span>
                       ))}
-                      {wi < LINE1.length - 1 && <span>&nbsp;</span>}
+                      {wi < LINE1.length - 1 && <span className="inline-block">&nbsp;</span>}
                     </span>
                   ))}
                 </span>
@@ -243,7 +243,7 @@ export function Hero() {
                 {/* Line 2: Is Running You. — ember, slightly larger */}
                 <span className="block text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] xl:text-[6rem]">
                   {LINE2.map((word, wi) => (
-                    <span key={wi}>
+                    <span key={wi} className="inline-block whitespace-nowrap">
                       {word.text.split('').map((char, ci) => (
                         <motion.span
                           key={`l2-${wi}-${ci}`}
@@ -257,7 +257,7 @@ export function Hero() {
                           {char}
                         </motion.span>
                       ))}
-                      {wi < LINE2.length - 1 && <span>&nbsp;</span>}
+                      {wi < LINE2.length - 1 && <span className="inline-block">&nbsp;</span>}
                     </span>
                   ))}
                 </span>
@@ -338,7 +338,7 @@ export function Hero() {
             variants={heroEntry} custom={0.6} initial="hidden" animate="visible"
             className="relative flex items-center justify-center lg:justify-end"
           >
-            <div className="relative">
+            <div className="relative w-[300px] sm:w-[360px] lg:w-[420px] xl:w-[460px] flex-shrink-0">
               {/* Floating notification pills */}
               {pillsVisible && PILLS_IN.map((pill) => (
                 <div
