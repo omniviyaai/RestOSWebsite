@@ -1,38 +1,23 @@
 'use client'
 
-import { useState, useEffect, useCallback, useRef } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import Link from 'next/link'
 import { motion, AnimatePresence, useSpring } from 'framer-motion'
-import { Menu, X } from 'lucide-react'
+import { Menu, X, User, Lock } from 'lucide-react'
 import { NAV_SLUGS } from '@/lib/constants'
 import { useRegion } from '@/lib/region-context'
-import { Button } from '@/components/ui/Button'
 import { WhatsAppButton } from '@/components/ui/WhatsAppButton'
 import { Logo } from '@/components/ui/Logo'
 import { normaliseMousePos, mapMouseToRotation, springs } from '@/lib/parallax'
 
-const LOGIN_LINKS = [
-  { label: 'Admin', href: 'https://restos.omniviya.in/admin/login' },
-  { label: 'Staff', href: 'https://restos.omniviya.in/staff/login' },
-]
+const ADMIN_LOGIN  = 'https://restos.omniviya.in/admin/login'
+const STAFF_LOGIN  = 'https://restos.omniviya.in/staff/login'
+const ADMIN_REGISTER = 'https://restos.omniviya.in/admin/register'
 
 export function Navbar() {
   const region = useRegion()
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
-  const [loginOpen, setLoginOpen] = useState(false)
-  const loginRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    if (!loginOpen) return
-    const handler = (e: MouseEvent) => {
-      if (loginRef.current && !loginRef.current.contains(e.target as Node)) setLoginOpen(false)
-    }
-    const keyHandler = (e: KeyboardEvent) => { if (e.key === 'Escape') setLoginOpen(false) }
-    document.addEventListener('mousedown', handler)
-    document.addEventListener('keydown', keyHandler)
-    return () => { document.removeEventListener('mousedown', handler); document.removeEventListener('keydown', keyHandler) }
-  }, [loginOpen])
 
   const logoRotateX = useSpring(0, springs.magnetic)
   const logoRotateY = useSpring(0, springs.magnetic)
@@ -70,6 +55,8 @@ export function Navbar() {
         transition={{ type: 'spring', stiffness: 200, damping: 28 }}
       >
         <div className="max-w-7xl mx-auto px-4 md:px-8 h-16 flex items-center justify-between">
+
+          {/* Logo */}
           <Link
             href="/"
             aria-label="Omniviya — Home"
@@ -77,7 +64,6 @@ export function Navbar() {
             onMouseLeave={handleLogoMouseLeave}
             style={{ display: 'inline-block', perspective: '400px' }}
           >
-            {/* layoutId="omniviya-logo" — FLIP target: loader logo animates here on exit */}
             <motion.div
               layoutId="omniviya-logo"
               data-nav-logo
@@ -88,6 +74,7 @@ export function Navbar() {
             </motion.div>
           </Link>
 
+          {/* Desktop nav links */}
           <nav className="hidden md:flex items-center gap-8" aria-label="Main navigation">
             <Link
               href={`/${region.key}/`}
@@ -114,21 +101,13 @@ export function Navbar() {
             ))}
           </nav>
 
+          {/* Region switcher */}
           <div className="hidden md:flex items-center gap-1 mr-2 border-r border-wire/30 pr-3">
-            <a
-              href="/in/"
-              className="px-2 py-1 text-[11px] font-mono rounded transition-colors text-stone hover:text-ember"
-            >
-              🇮🇳 IN
-            </a>
-            <a
-              href="/uk/"
-              className="px-2 py-1 text-[11px] font-mono rounded transition-colors text-stone hover:text-ember"
-            >
-              🇬🇧 UK
-            </a>
+            <a href="/in/" className="px-2 py-1 text-[11px] font-mono rounded transition-colors text-stone hover:text-ember">🇮🇳 IN</a>
+            <a href="/uk/" className="px-2 py-1 text-[11px] font-mono rounded transition-colors text-stone hover:text-ember">🇬🇧 UK</a>
           </div>
 
+          {/* Desktop right — WhatsApp + segmented login pill */}
           <motion.div
             className="hidden md:flex items-center gap-3"
             initial={{ opacity: 0, y: -10 }}
@@ -136,60 +115,30 @@ export function Navbar() {
             transition={{ type: 'spring', stiffness: 200, damping: 25, delay: 0.4 }}
           >
             <WhatsAppButton />
-            <div ref={loginRef} className="relative">
-              <button
-                onClick={() => setLoginOpen((o) => !o)}
-                className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-display font-medium text-stone hover:text-warm-white border border-wire/40 hover:border-wire/80 transition-colors"
+
+            <div className="flex items-stretch border border-wire/40 rounded-lg overflow-hidden bg-carbon" role="group" aria-label="Login">
+              <a
+                href={STAFF_LOGIN}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 px-4 py-2 text-sm font-display font-medium text-stone hover:text-warm-white hover:bg-wire/20 transition-colors border-r border-wire/40"
               >
-                Login
-                <motion.svg
-                  animate={{ rotate: loginOpen ? 180 : 0 }}
-                  transition={{ duration: 0.2 }}
-                  width="12" height="12" viewBox="0 0 12 12" fill="none"
-                >
-                  <path d="M2 4l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                </motion.svg>
-              </button>
-              <AnimatePresence>
-                {loginOpen && (
-                  <motion.div
-                    initial={{ opacity: 0, y: -6, scale: 0.97 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: -6, scale: 0.97 }}
-                    transition={{ type: 'spring', stiffness: 400, damping: 30 }}
-                    className="absolute right-0 top-full mt-2 w-44 bg-carbon border border-wire/30 rounded-xl shadow-2xl shadow-black/40 overflow-hidden z-50"
-                  >
-                    {LOGIN_LINKS.map(({ label, href }) => (
-                      <a
-                        key={label}
-                        href={href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={() => setLoginOpen(false)}
-                        className="flex items-center justify-between px-4 py-3 text-sm text-stone hover:text-warm-white hover:bg-wire/10 transition-colors group"
-                      >
-                        <span>{label}</span>
-                        <span className="text-wire group-hover:text-ember text-xs">→</span>
-                      </a>
-                    ))}
-                    <div className="border-t border-wire/20 px-4 py-3">
-                      <a
-                        href="https://restos.omniviya.in/admin/register"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={() => setLoginOpen(false)}
-                        className="text-xs text-ember hover:text-ember/80 transition-colors"
-                      >
-                        New restaurant? Register →
-                      </a>
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+                <User size={13} strokeWidth={2} />
+                Staff
+              </a>
+              <a
+                href={ADMIN_LOGIN}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 px-4 py-2 text-sm font-display font-semibold text-ember hover:text-ember/80 hover:bg-ember/5 transition-colors"
+              >
+                <Lock size={13} strokeWidth={2} />
+                Admin
+              </a>
             </div>
-            <Button href={`/${region.key}/demo/`} variant="primary">Book Demo</Button>
           </motion.div>
 
+          {/* Mobile hamburger */}
           <motion.button
             className="md:hidden text-warm-white p-2 min-w-[44px] min-h-[44px] flex items-center justify-center"
             onClick={() => setMobileOpen(!mobileOpen)}
@@ -214,6 +163,7 @@ export function Navbar() {
         </div>
       </motion.header>
 
+      {/* Mobile menu */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
@@ -254,39 +204,59 @@ export function Navbar() {
                 </motion.div>
               ))}
             </nav>
+
+            {/* Region switcher */}
             <div className="flex gap-2 py-4 px-6 border-b border-wire/40">
               <a href="/in/" className="text-stone text-sm hover:text-ember transition-colors">🇮🇳 India</a>
               <span className="text-wire">|</span>
               <a href="/uk/" className="text-stone text-sm hover:text-ember transition-colors">🇬🇧 UK</a>
             </div>
-            <div className="px-6 py-4 border-b border-wire/40 flex flex-col gap-1">
-              <p className="text-[10px] font-mono uppercase tracking-widest text-stone/50 mb-2">Login</p>
-              {LOGIN_LINKS.map(({ label, href }) => (
+
+            {/* Mobile login section */}
+            <div className="px-6 py-5 border-b border-wire/40">
+              <p className="text-[10px] font-mono uppercase tracking-widest text-stone/50 mb-3">Login</p>
+              <div className="flex flex-col gap-2">
                 <a
-                  key={label}
-                  href={href}
+                  href={STAFF_LOGIN}
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setMobileOpen(false)}
-                  className="text-warm-white text-lg font-display font-medium py-2 hover:text-ember transition-colors flex items-center justify-between"
+                  className="flex items-center justify-between px-4 py-3 rounded-lg border border-wire/40 bg-carbon text-warm-white font-display font-medium hover:border-wire/80 transition-colors"
                 >
-                  {label}
-                  <span className="text-wire text-sm">→</span>
+                  <span className="flex items-center gap-2 text-sm">
+                    <User size={15} strokeWidth={2} className="text-stone" />
+                    Staff Login
+                  </span>
+                  <span className="text-stone text-xs">→</span>
                 </a>
-              ))}
-              <a
-                href="https://restos.omniviya.in/admin/register"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => setMobileOpen(false)}
-                className="text-ember text-sm py-2 hover:text-ember/80 transition-colors"
-              >
-                New restaurant? Register →
-              </a>
+                <a
+                  href={ADMIN_LOGIN}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setMobileOpen(false)}
+                  className="flex items-center justify-between px-4 py-3 rounded-lg bg-ember/10 border border-ember/30 text-ember font-display font-semibold hover:bg-ember/15 transition-colors"
+                >
+                  <span className="flex items-center gap-2 text-sm">
+                    <Lock size={15} strokeWidth={2} />
+                    Admin Login
+                  </span>
+                  <span className="text-xs">→</span>
+                </a>
+                <a
+                  href={ADMIN_REGISTER}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setMobileOpen(false)}
+                  className="text-xs text-stone/60 hover:text-ember transition-colors pt-1 pl-1"
+                >
+                  New restaurant? Register →
+                </a>
+              </div>
             </div>
-            <div className="p-6 flex flex-col gap-3 mt-auto">
+
+            {/* WhatsApp */}
+            <div className="p-6 mt-auto">
               <WhatsAppButton className="w-full justify-center text-base py-4" />
-              <Button href={`/${region.key}/demo/`} variant="primary" className="w-full justify-center text-base py-4">Book Demo</Button>
             </div>
           </motion.div>
         )}
