@@ -11,7 +11,7 @@ export function PricingCTA() {
       </h2>
       <p className="text-stone text-base mb-8">14-day free trial. No card required. Cancel anytime.</p>
       <div className="flex justify-center gap-3 flex-wrap">
-        <Button href={`${region.appUrl}/register`} variant="primary" external>Start free trial</Button>
+        <Button href="https://restos.omniviya.in/admin/register" variant="primary" external>Start free trial</Button>
         <Button href={`/${region.key}/demo/`} variant="ghost">Book a demo</Button>
       </div>
     </section>

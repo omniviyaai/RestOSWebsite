@@ -58,7 +58,7 @@ export function PlanCard({ plan, cycle }: { plan: Plan; cycle: BillingCycle }) {
       )}
 
       <a
-        href={`${region.appUrl}/register`}
+        href="https://restos.omniviya.in/admin/register"
         target="_blank"
         rel="noopener noreferrer"
         className={`block text-center py-3 rounded-lg text-sm font-display font-medium mb-6 transition ${plan.ctaClass}`}
