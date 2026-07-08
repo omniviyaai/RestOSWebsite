@@ -146,7 +146,7 @@ export function Footer() {
               <circle cx="130" cy="130" r="7" fill="#F8F5F0"/>
             </svg>
             <span
-              style={{ fontFamily: "'Cinzel', serif", fontWeight: 900, fontSize: '13px', letterSpacing: '4px' }}
+              style={{ fontFamily: "var(--font-cinzel), serif", fontWeight: 900, fontSize: '13px', letterSpacing: '4px' }}
               className="text-[#F0EDE8] group-hover:text-white transition-colors duration-200"
             >
               <span style={{ color: '#E8732A' }}>OMNI</span>VIYA

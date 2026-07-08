@@ -66,7 +66,7 @@ export function PricingFAQ() {
 
   return (
     <section className="max-w-2xl mx-auto px-4 mt-20">
-      <h2 className="text-xl sm:text-2xl font-display font-bold text-warm-white text-center mb-10">Questions</h2>
+      <h2 className="text-xl sm:text-2xl font-display font-bold text-warm-white text-center mb-10">Frequently asked questions about Omniviya pricing</h2>
       <div className="bg-carbon/50 border border-wire/20 rounded-2xl p-1 sm:p-2">
         {faqs.map((faq, i) => (
           <AccordionItem

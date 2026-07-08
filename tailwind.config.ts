@@ -15,9 +15,9 @@ const config: Config = {
         wire:     '#1E2640',
       },
       fontFamily: {
-        sans:    ['DM Sans', 'sans-serif'],
-        display: ['Space Grotesk', 'sans-serif'],
-        mono:    ['Space Mono', 'monospace'],
+        sans:    ['var(--font-dm-sans)', 'sans-serif'],
+        display: ['var(--font-space-grotesk)', 'sans-serif'],
+        mono:    ['var(--font-space-mono)', 'monospace'],
       },
       fontSize: {
         '2xs': ['0.65rem', { lineHeight: '1rem' }],

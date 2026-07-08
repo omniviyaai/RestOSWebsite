@@ -219,7 +219,7 @@ export function Hero() {
             <div className="mb-4" style={{ perspective: '800px' }}>
               <h1 className="font-display font-bold leading-[1.04] text-balance">
                 {/* Line 1: Your Restaurant */}
-                <span className="block text-5xl sm:text-6xl md:text-7xl lg:text-[5rem] xl:text-[5.5rem]">
+                <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-[5rem] xl:text-[5.5rem]">
                   {LINE1.map((word, wi) => (
                     <span key={wi} className="inline-block whitespace-nowrap">
                       {word.text.split('').map((char, ci) => (
@@ -241,7 +241,7 @@ export function Hero() {
                 </span>
 
                 {/* Line 2: Is Running You. — ember, slightly larger */}
-                <span className="block text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] xl:text-[6rem]">
+                <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-[5.5rem] xl:text-[6rem]">
                   {LINE2.map((word, wi) => (
                     <span key={wi} className="inline-block whitespace-nowrap">
                       {word.text.split('').map((char, ci) => (
@@ -264,7 +264,7 @@ export function Hero() {
 
                 {/* Line 3: Not anymore. — teal, appears last */}
                 <motion.span
-                  className="block text-3xl sm:text-4xl md:text-5xl lg:text-[3.5rem] text-teal mt-1"
+                  className="block text-2xl sm:text-3xl md:text-4xl lg:text-[3.5rem] text-teal mt-1"
                   initial={{ opacity: 0, y: 16 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ type: 'spring', stiffness: 120, damping: 20, delay: 1.2 }}
@@ -279,8 +279,8 @@ export function Hero() {
               variants={heroEntry} custom={1.0} initial="hidden" animate="visible"
               className="text-stone text-base md:text-lg leading-relaxed max-w-lg mb-8 mx-auto lg:mx-0 text-pretty"
             >
-              Orders, kitchen updates, payments, and staff — all in one connected system.
-              Stop managing chaos. Start running your restaurant.
+              Restaurant management software that connects QR ordering, kitchen display,
+              UPI payments, and your team — all in real time, on devices you already own.
             </motion.p>
 
             {/* CTAs */}
@@ -339,11 +339,11 @@ export function Hero() {
             className="relative flex items-center justify-center lg:justify-end"
           >
             <div className="relative w-[300px] sm:w-[360px] lg:w-[420px] xl:w-[460px] flex-shrink-0">
-              {/* Floating notification pills */}
+              {/* Floating notification pills — hidden on mobile to avoid overlap */}
               {pillsVisible && PILLS_IN.map((pill) => (
                 <div
                   key={pill.id}
-                  className={`absolute z-20 ${pill.animClass} opacity-0`}
+                  className={`hidden sm:block absolute z-20 ${pill.animClass} opacity-0`}
                   style={{
                     ...pill.position,
                     animationDelay: pill.delay,

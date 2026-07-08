@@ -63,9 +63,9 @@ export function PainSection() {
           transition={{ type: 'spring', stiffness: 200, damping: 25 }}
           className="mb-12 md:mb-16"
         >
-          <p className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-warm-white text-balance">
-            You know how this goes.
-          </p>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-warm-white text-balance">
+            Why restaurants switch to Omniviya
+          </h2>
           <p className="text-stone/60 text-sm font-mono mt-3 tracking-wider">
             EVERY NIGHT. EVERY SERVICE.
           </p>
