@@ -20,13 +20,20 @@ type Pill = {
   delay: string
 }
 
-function makePills(currency: string): Pill[] {
+/* Pill values are region-specific to show realistic local numbers */
+const PILL_VALUES: Record<string, { order: string; payment: string; revenue: string }> = {
+  in: { order: '₹640',    payment: '₹520',    revenue: '₹31,480' },
+  uk: { order: '£38',     payment: '£27',     revenue: '£2,840'  },
+}
+
+function makePills(regionKey: string): Pill[] {
+  const v = PILL_VALUES[regionKey] ?? PILL_VALUES.in
   return [
     {
       id: 1,
       Icon: BellIcon,
       label: 'Table 4 · Order placed',
-      value: `${currency}850`,
+      value: v.order,
       color: 'ember',
       position: { top: '22%', right: '-2%' },
       animClass: 'animate-order-in',
@@ -46,7 +53,7 @@ function makePills(currency: string): Pill[] {
       id: 3,
       Icon: CardIcon,
       label: 'Payment confirmed',
-      value: `${currency}1,240`,
+      value: v.payment,
       color: 'green',
       position: { bottom: '28%', right: '0%' },
       animClass: 'animate-order-in',
@@ -56,7 +63,7 @@ function makePills(currency: string): Pill[] {
       id: 4,
       Icon: BarChartIcon,
       label: 'Revenue today',
-      value: `${currency}18,470`,
+      value: v.revenue,
       color: 'gold',
       position: { bottom: '18%', left: '4%' },
       animClass: 'animate-fade-up',
@@ -91,7 +98,7 @@ const ORDER_COUNTS = [43, 47, 52, 58, 61, 67, 71]
 
 export function Hero() {
   const region    = useRegion()
-  const pills     = makePills(region.currency)
+  const pills     = makePills(region.key)
   const containerRef = useRef<HTMLElement>(null)
   const [orderCount, setOrderCount] = useState(ORDER_COUNTS[0])
   const [pillsVisible, setPillsVisible] = useState(false)
