@@ -3,6 +3,7 @@
 import { useRef, useCallback, useEffect, useState } from 'react'
 import { motion, useSpring, AnimatePresence } from 'framer-motion'
 import { TiltedDevice } from '@/components/ui/TiltedDevice'
+import { BellIcon, FlameIcon, CardIcon, BarChartIcon, CheckCircleIcon, CheckMark } from '@/components/ui/Icons'
 import { useRegion } from '@/lib/region-context'
 import { normaliseMousePos, mapMouseToRotation, mapMouseToOffset, springs } from '@/lib/parallax'
 import { heroLetter, heroEntry } from '@/lib/animations'
@@ -10,7 +11,7 @@ import { heroLetter, heroEntry } from '@/lib/animations'
 /* ─── Floating restaurant notification pills ──────────────────── */
 type Pill = {
   id: number
-  icon: string
+  Icon: React.ComponentType<{ className?: string; size?: number }>
   label: string
   value: string
   color: 'ember' | 'teal' | 'gold' | 'green'
@@ -19,58 +20,60 @@ type Pill = {
   delay: string
 }
 
-const PILLS_IN: Pill[] = [
-  {
-    id: 1,
-    icon: '🔔',
-    label: 'Table 4 · Order placed',
-    value: '₹850',
-    color: 'ember',
-    position: { top: '22%', right: '-2%' },
-    animClass: 'animate-order-in',
-    delay: '1.8s',
-  },
-  {
-    id: 2,
-    icon: '🍳',
-    label: 'KOT #47 · Kitchen',
-    value: 'Sent',
-    color: 'teal',
-    position: { top: '10%', left: '8%' },
-    animClass: 'animate-ticket-drop',
-    delay: '2.4s',
-  },
-  {
-    id: 3,
-    icon: '💳',
-    label: 'Payment confirmed',
-    value: '₹1,240',
-    color: 'green',
-    position: { bottom: '28%', right: '0%' },
-    animClass: 'animate-order-in',
-    delay: '3.0s',
-  },
-  {
-    id: 4,
-    icon: '📊',
-    label: 'Revenue today',
-    value: '₹18,470',
-    color: 'gold',
-    position: { bottom: '18%', left: '4%' },
-    animClass: 'animate-fade-up',
-    delay: '3.6s',
-  },
-  {
-    id: 5,
-    icon: '✅',
-    label: 'Table 7 cleared',
-    value: '2 min ago',
-    color: 'teal',
-    position: { top: '55%', right: '-4%' },
-    animClass: 'animate-order-in',
-    delay: '4.2s',
-  },
-]
+function makePills(currency: string): Pill[] {
+  return [
+    {
+      id: 1,
+      Icon: BellIcon,
+      label: 'Table 4 · Order placed',
+      value: `${currency}850`,
+      color: 'ember',
+      position: { top: '22%', right: '-2%' },
+      animClass: 'animate-order-in',
+      delay: '1.8s',
+    },
+    {
+      id: 2,
+      Icon: FlameIcon,
+      label: 'KOT #47 · Kitchen',
+      value: 'Sent',
+      color: 'teal',
+      position: { top: '10%', left: '8%' },
+      animClass: 'animate-ticket-drop',
+      delay: '2.4s',
+    },
+    {
+      id: 3,
+      Icon: CardIcon,
+      label: 'Payment confirmed',
+      value: `${currency}1,240`,
+      color: 'green',
+      position: { bottom: '28%', right: '0%' },
+      animClass: 'animate-order-in',
+      delay: '3.0s',
+    },
+    {
+      id: 4,
+      Icon: BarChartIcon,
+      label: 'Revenue today',
+      value: `${currency}18,470`,
+      color: 'gold',
+      position: { bottom: '18%', left: '4%' },
+      animClass: 'animate-fade-up',
+      delay: '3.6s',
+    },
+    {
+      id: 5,
+      Icon: CheckCircleIcon,
+      label: 'Table 7 cleared',
+      value: '2 min ago',
+      color: 'teal',
+      position: { top: '55%', right: '-4%' },
+      animClass: 'animate-order-in',
+      delay: '4.2s',
+    },
+  ]
+}
 
 const PILL_COLOR_MAP = {
   ember: 'glass-ember border-ember/30 text-ember',
@@ -88,6 +91,7 @@ const ORDER_COUNTS = [43, 47, 52, 58, 61, 67, 71]
 
 export function Hero() {
   const region    = useRegion()
+  const pills     = makePills(region.currency)
   const containerRef = useRef<HTMLElement>(null)
   const [orderCount, setOrderCount] = useState(ORDER_COUNTS[0])
   const [pillsVisible, setPillsVisible] = useState(false)
@@ -279,8 +283,9 @@ export function Hero() {
               variants={heroEntry} custom={1.0} initial="hidden" animate="visible"
               className="text-stone text-base md:text-lg leading-relaxed max-w-lg mb-8 mx-auto lg:mx-0 text-pretty"
             >
-              Restaurant management software that connects QR ordering, kitchen display,
-              UPI payments, and your team — all in real time, on devices you already own.
+              Restaurant management software that connects QR ordering, kitchen display,{' '}
+              {region.key === 'uk' ? 'card payments' : 'UPI payments'}, and your team —{' '}
+              all in real time, on devices you already own.
             </motion.p>
 
             {/* CTAs */}
@@ -326,7 +331,7 @@ export function Hero() {
             >
               {['No setup fee', '14-day free trial', 'Cancel anytime', '0% platform fee'].map((item, i) => (
                 <span key={i} className="flex items-center gap-1.5 text-stone/70 text-xs font-mono">
-                  <span className="text-teal text-[10px]">✓</span>
+                  <CheckMark className="text-teal flex-shrink-0" />
                   {item}
                 </span>
               ))}
@@ -340,7 +345,7 @@ export function Hero() {
           >
             <div className="relative w-[300px] sm:w-[360px] lg:w-[420px] xl:w-[460px] flex-shrink-0">
               {/* Floating notification pills — hidden on mobile to avoid overlap */}
-              {pillsVisible && PILLS_IN.map((pill) => (
+              {pillsVisible && pills.map((pill) => (
                 <div
                   key={pill.id}
                   className={`hidden sm:block absolute z-20 ${pill.animClass} opacity-0`}
@@ -355,7 +360,7 @@ export function Hero() {
                     animate={{ y: [0, -4, 0] }}
                     transition={{ duration: 3 + pill.id * 0.4, repeat: Infinity, ease: 'easeInOut', delay: parseFloat(pill.delay) }}
                   >
-                    <span className="text-sm">{pill.icon}</span>
+                    <pill.Icon size={14} />
                     <div className="flex flex-col leading-tight">
                       <span className="opacity-80 text-[10px]">{pill.label}</span>
                       <span className="font-semibold text-[11px]">{pill.value}</span>

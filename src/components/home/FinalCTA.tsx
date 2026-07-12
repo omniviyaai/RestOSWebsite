@@ -6,6 +6,7 @@ import { WhatsAppButton } from '@/components/ui/WhatsAppButton'
 import { useRegion } from '@/lib/region-context'
 import { ctaEntry } from '@/lib/animations'
 import { normaliseMousePos } from '@/lib/parallax'
+import { CheckMark } from '@/components/ui/Icons'
 
 const particles = Array.from({ length: 10 }, (_, i) => ({
   id: i,
@@ -147,9 +148,9 @@ export function FinalCTA() {
           viewport={{ once: true }}
           className="flex flex-wrap justify-center gap-x-5 gap-y-1.5 mt-8"
         >
-          {['No setup fee', 'Cancel anytime', '0% platform fee', 'Cancel anytime'].map((item, i) => (
+          {['No setup fee', 'Cancel anytime', '0% platform fee', '14-day free trial'].map((item, i) => (
             <span key={i} className="flex items-center gap-1.5 text-stone/50 text-xs font-mono">
-              <span className="text-teal text-[10px]">✓</span>
+              <CheckMark className="text-teal flex-shrink-0" />
               {item}
             </span>
           ))}

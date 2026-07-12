@@ -3,16 +3,17 @@
 import { useRef } from 'react'
 import { motion, useScroll, useTransform, MotionValue } from 'framer-motion'
 import { useRegion } from '@/lib/region-context'
+import { TicketIcon, CardIcon, TrendDownIcon, MessageIcon, ExitPersonIcon } from '@/components/ui/Icons'
 
 const rotations = [-1.5, 1.5, 0, -1, 1]
 
-/* Per-statement accent: color of the ambient glow and accent word */
+/* Per-statement accent: color of the ambient glow and SVG icon */
 const ACCENTS = [
-  { glow: 'rgba(232,116,42,0.14)', icon: '📋', iconLabel: 'Paper KOT' },
-  { glow: 'rgba(198,163,91,0.14)', icon: '💳', iconLabel: 'Payment' },
-  { glow: 'rgba(232,116,42,0.12)', icon: '📉', iconLabel: 'Under-billed' },
-  { glow: 'rgba(14,140,132,0.12)', icon: '💬', iconLabel: 'WhatsApp' },
-  { glow: 'rgba(156,163,175,0.12)', icon: '🚪', iconLabel: 'Walked out' },
+  { glow: 'rgba(232,116,42,0.14)', Icon: TicketIcon,      iconLabel: 'Paper KOT' },
+  { glow: 'rgba(198,163,91,0.14)', Icon: CardIcon,        iconLabel: 'Payment' },
+  { glow: 'rgba(232,116,42,0.12)', Icon: TrendDownIcon,   iconLabel: 'Under-billed' },
+  { glow: 'rgba(14,140,132,0.12)', Icon: MessageIcon,     iconLabel: 'Group chat' },
+  { glow: 'rgba(156,163,175,0.12)', Icon: ExitPersonIcon, iconLabel: 'Walked out' },
 ]
 
 export function PainSection() {
@@ -90,7 +91,7 @@ export function PainSection() {
               count={count}
               rotation={rotations[i]}
               accent={ACCENTS[i] ?? ACCENTS[0]}
-            />
+              />
           )
         })}
 
@@ -134,7 +135,7 @@ function PainStatement({
   index: number
   count: number
   rotation: number
-  accent: { glow: string; icon: string; iconLabel: string }
+  accent: { glow: string; Icon: React.ComponentType<{ className?: string; size?: number }>; iconLabel: string }
 }) {
   const opacity   = useTransform(scrollProgress, [start, peak, end - 0.04, end], [0, 1, 1, 0.12])
   const y         = useTransform(scrollProgress, [start, peak], [28, 0])
@@ -159,14 +160,9 @@ function PainStatement({
         <motion.div
           className="flex items-center justify-center mb-3"
           style={{ opacity: glowOp }}
+          aria-label={accent.iconLabel}
         >
-          <span
-            className="text-2xl filter"
-            role="img"
-            aria-label={accent.iconLabel}
-          >
-            {accent.icon}
-          </span>
+          <accent.Icon size={28} className="text-warm-white/50" />
         </motion.div>
 
         <p className="text-lg sm:text-xl md:text-2xl text-warm-white font-display font-medium leading-relaxed py-8 text-balance">
