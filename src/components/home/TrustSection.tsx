@@ -1,36 +1,12 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { TRUST_SIGNALS } from '@/lib/constants'
 import { useRegion } from '@/lib/region-context'
 import { BankIcon, LockIcon, DevicesIcon, QrScanIcon } from '@/components/ui/Icons'
 
 function getTrustDelay(index: number): number {
   return (Math.floor(index / 2) + (index % 2)) * 0.1
-}
-
-/* Animated restaurant counter */
-function RestaurantCounter() {
-  const ref    = useRef<HTMLSpanElement>(null)
-  const inView = useInView(ref, { once: true })
-  const [count, setCount] = useState(0)
-  const target = 127
-
-  useEffect(() => {
-    if (!inView) return
-    const start = performance.now()
-    const duration = 1200
-    const tick = (now: number) => {
-      const p = Math.min((now - start) / duration, 1)
-      const eased = 1 - Math.pow(1 - p, 3)
-      setCount(Math.round(target * eased))
-      if (p < 1) requestAnimationFrame(tick)
-    }
-    requestAnimationFrame(tick)
-  }, [inView])
-
-  return <span ref={ref}>{count}</span>
 }
 
 const TRUST_ICON_COMPONENTS = [BankIcon, LockIcon, DevicesIcon, QrScanIcon]
@@ -65,11 +41,11 @@ export function TrustSection() {
           <h2 className="text-xl sm:text-2xl md:text-3xl font-display font-bold text-warm-white mb-4">
             {region.tagline}
           </h2>
-          {/* Live counter pill */}
+          {/* Live pill */}
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border-teal/20">
             <span className="status-dot-live" />
             <span className="text-sm font-display font-medium text-teal">
-              <RestaurantCounter /> restaurants live on Omniviya
+              Restaurants live on Omniviya right now
             </span>
           </div>
         </motion.div>
