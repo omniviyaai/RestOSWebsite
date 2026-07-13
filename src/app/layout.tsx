@@ -1,5 +1,6 @@
 import type { Viewport } from 'next'
 import { Space_Grotesk, DM_Sans, Space_Mono, Cinzel } from 'next/font/google'
+import Script from 'next/script'
 import './globals.css'
 import { LenisProvider } from '@/components/ui/LenisProvider'
 import { ScrollProgressBar } from '@/components/ui/ScrollProgress'
@@ -57,6 +58,14 @@ export default function RootLayout({
             traffic to /in or /uk, whose layouts supply the correct region provider and
             render the cookie banner + WhatsApp badge inside it. */}
         <RegionProvider region="in">{children}</RegionProvider>
+        <Script
+          src="https://restos.omniviya.in/assistant/widget.js"
+          data-tenant-id="restos"
+          data-api-url="https://restos.omniviya.in/assistant"
+          data-primary-color="#E8742A"
+          data-position="right"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   )
