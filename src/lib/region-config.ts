@@ -42,7 +42,6 @@ export interface RegionConfig {
   tagline: string
   description: string
   heroVideo: string
-  whatsappNumber: string
   geoRegion: string
   geoPlaceName: string
   ogLocale: string
@@ -131,7 +130,6 @@ export const regionConfig: Record<Region, RegionConfig> = {
     tagline: 'Built For India. Built To Last.',
     description: 'Built for India. The complete operating system for restaurants of every size.',
     heroVideo: '/video/omniviya-vertical-inr.mp4',
-    whatsappNumber: '919XXXXXXXXX',
     geoRegion: 'IN',
     geoPlaceName: 'India',
     ogLocale: 'en_IN',
@@ -217,7 +215,7 @@ export const regionConfig: Record<Region, RegionConfig> = {
          'This Privacy Policy explains how Omniviya handles personal data collected through the Omniviya website for visitors in India, in line with the Digital Personal Data Protection Act, 2023 (DPDP Act). This is placeholder copy pending legal review.',
       sections: [
         { heading: 'Who we are', body: 'Omniviya is a restaurant operating system based in India. For privacy queries, contact hello@omniviya.in.' },
-        { heading: 'What we collect', body: 'On this marketing site we collect only what you choose to share — for example, the message you send us on WhatsApp or by email — plus, with your consent, anonymised analytics about how the site is used.' },
+        { heading: 'What we collect', body: 'On this marketing site we collect only what you choose to share — for example, the message you send us via chat or by email — plus, with your consent, anonymised analytics about how the site is used.' },
         { heading: 'How we use it', body: 'We use your details solely to respond to your enquiry and to improve the website. We do not sell personal data.' },
         { heading: 'Your rights under the DPDP Act', body: 'You have the right to access, correct, and erase your personal data, to withdraw consent, and to nominate another person to exercise your rights. To make a request, contact hello@omniviya.in.' },
         { heading: 'Grievance officer', body: 'For complaints about how your data is handled, write to hello@omniviya.in marked “Grievance Officer”. [Placeholder — appoint a named officer before launch.]' },
@@ -245,7 +243,6 @@ export const regionConfig: Record<Region, RegionConfig> = {
     tagline: 'Built For UK Restaurants.',
     description: 'Built for the UK. The complete operating system for restaurants of every size.',
     heroVideo: '/video/omniviya-vertical-gbp.mp4',
-    whatsappNumber: '447XXXXXXXXX',
     geoRegion: 'GB',
     geoPlaceName: 'United Kingdom',
     ogLocale: 'en_GB',
@@ -333,7 +330,7 @@ export const regionConfig: Record<Region, RegionConfig> = {
          'This Privacy Policy explains how Omniviya handles personal data collected through the Omniviya website for visitors in the United Kingdom, in line with the UK GDPR and the Data Protection Act 2018. This is placeholder copy pending legal review.',
       sections: [
         { heading: 'Who we are (the data controller)', body: 'Omniviya is a restaurant operating system. For privacy queries, contact hello@omniviya.in. [Placeholder — add UK registered address / representative before launch.]' },
-        { heading: 'What we collect', body: 'On this marketing site we collect only what you choose to share — for example, the message you send us on WhatsApp or by email — plus, with your consent, anonymised analytics about how the site is used.' },
+        { heading: 'What we collect', body: 'On this marketing site we collect only what you choose to share — for example, the message you send us via chat or by email — plus, with your consent, anonymised analytics about how the site is used.' },
         { heading: 'Lawful basis', body: 'We rely on your consent for analytics and marketing cookies, and on legitimate interests for responding to enquiries you initiate.' },
         { heading: 'How we use it', body: 'We use your details solely to respond to your enquiry and to improve the website. We do not sell personal data.' },
         { heading: 'Your rights under UK GDPR', body: 'You have the right to access, rectify, erase, restrict, and port your personal data, to object to processing, and to withdraw consent at any time. You may also complain to the Information Commissioner’s Office (ICO) at ico.org.uk.' },

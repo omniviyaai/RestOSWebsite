@@ -6,6 +6,12 @@ import { Logo } from '@/components/ui/Logo'
 import { useRegion } from '@/lib/region-context'
 import { openCookieSettings } from '@/components/features/CookieConsentBanner'
 
+declare global {
+  interface Window {
+    MIVI?: { open: () => void; close: () => void; toggle: () => void }
+  }
+}
+
 const STAFF_LOGIN    = 'https://restos.omniviya.in/staff/login'
 const ADMIN_LOGIN    = 'https://restos.omniviya.in/admin/login'
 const ADMIN_REGISTER = 'https://restos.omniviya.in/admin/register'
@@ -13,7 +19,6 @@ const ADMIN_REGISTER = 'https://restos.omniviya.in/admin/register'
 export function Footer() {
   const region = useRegion()
   const year   = new Date().getFullYear()
-  const whatsappUrl = `https://wa.me/${region.whatsappNumber}?text=${encodeURIComponent('Hi, I want to know more about Omniviya')}`
 
   return (
     <footer className="relative bg-carbon overflow-hidden">
@@ -80,10 +85,10 @@ export function Footer() {
           <div className="flex flex-col gap-6">
             <div className="flex flex-col gap-3">
               <p className="text-warm-white text-sm font-semibold font-display mb-1">Contact</p>
-              <a href={whatsappUrl} target="_blank" rel="noopener noreferrer"
-                 className="text-stone/70 text-sm hover:text-warm-white transition-colors duration-150 w-fit">
-                WhatsApp Us
-              </a>
+              <button type="button" onClick={() => window.MIVI?.open?.()}
+                 className="text-stone/70 text-sm hover:text-warm-white transition-colors duration-150 w-fit text-left">
+                Talk to MIVI
+              </button>
               <a href="mailto:hello@omniviya.in"
                  className="text-stone/70 text-sm hover:text-warm-white transition-colors duration-150 w-fit">
                 hello@omniviya.in

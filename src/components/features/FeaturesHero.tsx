@@ -3,7 +3,7 @@
 import { useRef, useCallback } from 'react'
 import { motion, useSpring, useReducedMotion } from 'framer-motion'
 import { Button } from '@/components/ui/Button'
-import { WhatsAppButton } from '@/components/ui/WhatsAppButton'
+import { TalkToMiviButton } from '@/components/ui/TalkToMiviButton'
 import { useRegion } from '@/lib/region-context'
 import { normaliseMousePos, mapMouseToRotation, mapMouseToOffset, springs } from '@/lib/parallax'
 import { heroLetter, heroEntry } from '@/lib/animations'
@@ -155,7 +155,7 @@ export function FeaturesHero() {
           <Button href={`/${region.key}/demo/`} variant="primary" className="text-base px-8 py-4 min-h-[52px] justify-center">
             Book a Free Demo
           </Button>
-          <WhatsAppButton className="text-base px-8 py-4 min-h-[52px] justify-center" />
+          <TalkToMiviButton className="text-base px-8 py-4 min-h-[52px] justify-center" />
         </motion.div>
 
         <motion.p

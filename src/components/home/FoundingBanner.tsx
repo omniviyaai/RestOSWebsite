@@ -8,7 +8,7 @@ import { useRegion } from '@/lib/region-context'
 
 const perks = [
   'Omniviya completely free for 90 days',
-  'Direct WhatsApp line to the founding team',
+  'Direct line to the founding team',
   'Your feedback shapes the product roadmap',
   'Founding Partner badge on your restaurant profile',
   'First access to every new feature',

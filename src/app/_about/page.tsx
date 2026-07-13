@@ -1,9 +1,8 @@
 import type { Metadata } from 'next'
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
-import { WhatsAppButton } from '@/components/ui/WhatsAppButton'
+import { TalkToMiviButton } from '@/components/ui/TalkToMiviButton'
 import { RegionLinkButton } from '@/components/ui/RegionLinkButton'
-import { RegionWhatsAppLink } from '@/components/ui/RegionWhatsAppLink'
 import { RegionAboutMission } from '@/components/ui/RegionContent'
 
 export const metadata: Metadata = {
@@ -64,10 +63,6 @@ export default function AboutPage() {
                   </a>
                 </div>
               ))}
-              <div className="flex items-center gap-4">
-                <span className="text-stone text-sm w-16 flex-shrink-0">WhatsApp</span>
-                <RegionWhatsAppLink className="text-teal text-sm hover:text-teal/70 transition-colors duration-150" />
-              </div>
             </div>
           </div>
 
@@ -76,7 +71,7 @@ export default function AboutPage() {
             <RegionLinkButton slug="demo" className="w-full sm:w-auto justify-center py-4">
               Book a Demo
             </RegionLinkButton>
-            <WhatsAppButton className="w-full sm:w-auto justify-center py-4" />
+            <TalkToMiviButton className="w-full sm:w-auto justify-center py-4" />
           </div>
         </div>
       </main>

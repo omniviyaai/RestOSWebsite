@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
-import { WhatsAppButton } from '@/components/ui/WhatsAppButton'
+import { TalkToMiviButton } from '@/components/ui/TalkToMiviButton'
 
 export const metadata: Metadata = {
   title: 'Book a Free Demo — Omniviya',
@@ -58,15 +58,15 @@ export default function DemoPage() {
               Calendar booking coming soon
             </p>
             <p className="text-stone text-sm leading-relaxed">
-              In the meantime, WhatsApp us directly and we&apos;ll schedule a demo within 24 hours.
+              In the meantime, talk to MIVI and we&apos;ll schedule a demo within 24 hours.
             </p>
           </div>
 
-          {/* Primary CTA — WhatsApp */}
+          {/* Primary CTA — MIVI */}
           <div className="flex flex-col items-center gap-4">
-            <WhatsAppButton className="flex items-center justify-center gap-3 w-full px-8 py-4 rounded-xl bg-[#25D366] text-white font-display font-semibold text-base hover:bg-[#22c55e] active:scale-[0.98] transition-all duration-150 min-h-[52px] border-0">
-              WhatsApp Us to Book a Demo
-            </WhatsAppButton>
+            <TalkToMiviButton className="flex items-center justify-center gap-3 w-full px-8 py-4 rounded-xl text-base min-h-[52px] border-0">
+              Talk to MIVI to Book a Demo
+            </TalkToMiviButton>
             <p className="text-stone/60 text-xs">
               Typically respond within 30 minutes during business hours.
             </p>

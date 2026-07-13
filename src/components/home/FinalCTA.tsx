@@ -2,7 +2,7 @@
 
 import { useRef, useCallback } from 'react'
 import { motion, useSpring } from 'framer-motion'
-import { WhatsAppButton } from '@/components/ui/WhatsAppButton'
+import { TalkToMiviButton } from '@/components/ui/TalkToMiviButton'
 import { useRegion } from '@/lib/region-context'
 import { ctaEntry } from '@/lib/animations'
 import { normaliseMousePos } from '@/lib/parallax'
@@ -134,9 +134,9 @@ export function FinalCTA() {
             </motion.span>
           </motion.a>
 
-          <WhatsAppButton className="w-full sm:w-auto text-base px-8 py-4 min-h-[52px] justify-center">
-            WhatsApp Us Now
-          </WhatsAppButton>
+          <TalkToMiviButton className="w-full sm:w-auto text-base px-8 py-4 min-h-[52px] justify-center">
+            Talk to MIVI Now
+          </TalkToMiviButton>
         </motion.div>
 
         {/* Secondary trust strip */}

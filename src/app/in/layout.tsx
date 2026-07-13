@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import { RegionProvider } from '@/lib/region-context'
 import { RegionCookieSetter } from '@/components/ui/RegionCookieSetter'
 import { CookieConsentBanner } from '@/components/features/CookieConsentBanner'
-import { WhatsAppFloatingBadge } from '@/components/ui/WhatsAppFloatingBadge'
 import { regionConfig } from '@/lib/region-config'
 
 const jsonLd = {
@@ -101,7 +100,6 @@ export default function InLayout({ children }: { children: React.ReactNode }) {
       <RegionProvider region="in">
         {children}
         <CookieConsentBanner />
-        <WhatsAppFloatingBadge />
       </RegionProvider>
     </>
   )

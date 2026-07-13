@@ -6,7 +6,7 @@ import { motion, AnimatePresence, useSpring } from 'framer-motion'
 import { Menu, X, User, Lock, UserPlus } from 'lucide-react'
 import { NAV_SLUGS } from '@/lib/constants'
 import { useRegion } from '@/lib/region-context'
-import { WhatsAppButton } from '@/components/ui/WhatsAppButton'
+import { TalkToMiviButton } from '@/components/ui/TalkToMiviButton'
 import { Logo } from '@/components/ui/Logo'
 import { normaliseMousePos, mapMouseToRotation, springs } from '@/lib/parallax'
 
@@ -107,14 +107,14 @@ export function Navbar() {
             <a href="/uk/" className="px-2 py-1 text-[11px] font-mono rounded transition-colors text-stone hover:text-ember">🇬🇧 UK</a>
           </div>
 
-          {/* Desktop right — WhatsApp + segmented login pill */}
+          {/* Desktop right — Talk to MIVI + segmented login pill */}
           <motion.div
             className="hidden md:flex items-center gap-3"
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ type: 'spring', stiffness: 200, damping: 25, delay: 0.4 }}
           >
-            <WhatsAppButton />
+            <TalkToMiviButton />
 
             <div className="flex items-stretch border border-wire/40 rounded-lg overflow-hidden bg-carbon" role="group" aria-label="Account">
               <a
@@ -267,9 +267,9 @@ export function Navbar() {
               </div>
             </div>
 
-            {/* WhatsApp */}
+            {/* Talk to MIVI */}
             <div className="p-6 mt-auto">
-              <WhatsAppButton className="w-full justify-center text-base py-4" />
+              <TalkToMiviButton className="w-full justify-center text-base py-4" />
             </div>
           </motion.div>
         )}

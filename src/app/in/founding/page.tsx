@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   description: 'Be one of the 10 Indian restaurants that shape how Omniviya works. First 90 days completely free.',
   openGraph: {
     title: 'Omniviya Founding Partner Program — 10 Spots Only',
-    description: 'First 90 days free. Direct WhatsApp line to the founders. Shape the product roadmap.',
+    description: 'First 90 days free. Direct line to the founders. Shape the product roadmap.',
     url: 'https://omniviya.in/in/founding',
     images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Omniviya — Restaurant Operating System' }],
   },

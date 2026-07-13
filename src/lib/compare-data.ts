@@ -33,7 +33,7 @@ export const COMPARISONS: CompareData[] = [
       { feature: 'Multi-branch support', us: 'All paid plans', them: 'Yes, with enterprise pricing', winner: 'tie' },
       { feature: 'Cloud kitchen support', us: 'Yes — built-in', them: 'Yes', winner: 'tie' },
       { feature: 'Analytics', us: 'Real-time, browser-based', them: 'Available, report-based', winner: 'us' },
-      { feature: 'Support', us: 'Chat + WhatsApp', them: 'Phone, email, field technician', winner: 'tie' },
+      { feature: 'Support', us: 'Chat', them: 'Phone, email, field technician', winner: 'tie' },
       { feature: 'Software updates', us: 'Automatic (cloud-based)', them: 'Manual or version-dependent', winner: 'us' },
     ],
     verdict:
@@ -60,7 +60,7 @@ export const COMPARISONS: CompareData[] = [
       { feature: 'Depth of integrations', us: 'Growing — delivery aggregators, accounting', them: 'Mature ecosystem with many integrations', winner: 'them' },
       { feature: 'Remote access', us: 'Full — any browser, any device', them: 'Limited — typically on-site only', winner: 'us' },
       { feature: 'Multi-branch consolidation', us: 'Real-time, cloud dashboard', them: 'Varies — often requires server setup', winner: 'us' },
-      { feature: 'Support model', us: 'Chat/WhatsApp', them: 'Field technician (2–5 day SLA)', winner: 'us' },
+      { feature: 'Support model', us: 'Chat', them: 'Field technician (2–5 day SLA)', winner: 'us' },
       { feature: 'Staff training time', us: '1–2 hours', them: '1–3 days', winner: 'us' },
     ],
     verdict:

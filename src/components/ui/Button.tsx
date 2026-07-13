@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 
-type ButtonVariant = 'primary' | 'ghost' | 'whatsapp'
+type ButtonVariant = 'primary' | 'ghost'
 
 interface ButtonProps {
   children: React.ReactNode
@@ -28,8 +28,6 @@ export function Button({
       'bg-ember text-white shadow-lg shadow-ember/20 min-h-[44px]',
     ghost:
       'border border-wire text-warm-white min-h-[44px]',
-    whatsapp:
-      'bg-[#25D366] text-white shadow-lg shadow-[#25D366]/20 min-h-[44px]',
   }
 
   const springTap = {

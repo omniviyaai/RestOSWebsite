@@ -1,14 +1,14 @@
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
 import { SpotCounter } from '@/components/ui/SpotCounter'
-import { WhatsAppButton } from '@/components/ui/WhatsAppButton'
+import { TalkToMiviButton } from '@/components/ui/TalkToMiviButton'
 import { RegionFoundingMission } from '@/components/ui/RegionContent'
 import type { Region } from '@/lib/region-config'
 import { regionConfig } from '@/lib/region-config'
 
 const perks = [
   { title: 'Omniviya completely free for 90 days', desc: 'Every feature. No restrictions. No credit card required.' },
-  { title: 'Direct WhatsApp line to the founders', desc: 'Real humans. Real responses. Not a support ticket.' },
+  { title: 'Direct line to the founders', desc: 'Real humans. Real responses. Not a support ticket.' },
   { title: 'Shape the product roadmap', desc: 'Your feedback gets acted on — not filed away.' },
   { title: 'Founding Partner badge', desc: 'Permanent recognition as one of the first 10.' },
   { title: 'First access to every new feature', desc: 'Before anyone else, always.' },
@@ -38,7 +38,7 @@ export function FoundingPageContent({ region }: { region: Region }) {
     '@context': 'https://schema.org',
     '@type': 'Product',
     name: 'Omniviya Founding Partner Program',
-    description: 'First 90 days completely free. Direct WhatsApp line to founders. Shape the product roadmap. Permanent Founding Partner badge.',
+    description: 'First 90 days completely free. Direct line to founders. Shape the product roadmap. Permanent Founding Partner badge.',
     brand: { '@type': 'Brand', name: cfg.siteName },
     offers: {
       '@type': 'Offer',
@@ -81,7 +81,7 @@ export function FoundingPageContent({ region }: { region: Region }) {
             </p>
             <p className="text-stone text-sm sm:text-base leading-relaxed">
               We are doing this differently. The first 10 restaurants that join us get a direct line
-              to our team. Not a support ticket — a WhatsApp conversation. When something is broken,
+              to our team. Not a support ticket — a real conversation. When something is broken,
               you call us. When you want a feature, we listen.
             </p>
             <p className="text-warm-white text-sm sm:text-base leading-relaxed font-medium">
@@ -127,14 +127,14 @@ export function FoundingPageContent({ region }: { region: Region }) {
             <SpotCounter />
           </div>
 
-          {/* Apply via WhatsApp */}
+          {/* Apply via MIVI */}
           <div className="text-center">
             <p className="text-stone text-sm leading-relaxed mb-6 max-w-sm mx-auto">
-              Send us a WhatsApp message with your restaurant name, city, and type — takeaway, dine-in, cafe, or cloud kitchen. We respond within 24 hours.
+              Tell MIVI your restaurant name, city, and type — takeaway, dine-in, cafe, or cloud kitchen. We respond within 24 hours.
             </p>
-            <WhatsAppButton className="flex items-center justify-center gap-3 w-full sm:w-auto sm:inline-flex px-8 py-4 rounded-xl bg-[#25D366] text-white font-display font-semibold text-base hover:bg-[#22c55e] active:scale-[0.98] transition-all duration-150 min-h-[52px] border-0">
-              Apply via WhatsApp
-            </WhatsAppButton>
+            <TalkToMiviButton className="flex items-center justify-center gap-3 w-full sm:w-auto sm:inline-flex px-8 py-4 rounded-xl text-base min-h-[52px] border-0">
+              Apply via MIVI
+            </TalkToMiviButton>
             <p className="text-stone/50 text-xs mt-4">
               Or email us at hello@omniviya.in — subject: &quot;Founding Partner&quot;
             </p>

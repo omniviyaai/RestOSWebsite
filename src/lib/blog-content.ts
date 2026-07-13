@@ -316,7 +316,7 @@ export const ARTICLE_CONTENT: Record<string, string> = {
 
 <p>Traditional POS vendors will often argue that their system is more reliable. What they do not tell you is the cost of when it is not: the technician visit that takes 2–3 days to schedule, the restaurant that runs on paper during that time, and the data that does not sync correctly when the system comes back up.</p>
 
-<p>Modern restaurant management software updates automatically. Support is via chat or WhatsApp, not a field technician. And when a tablet breaks, you can replace it the same day.</p>
+<p>Modern restaurant management software updates automatically. Support is via chat, not a field technician. And when a tablet breaks, you can replace it the same day.</p>
 
 <h2>How to transition away from a traditional POS</h2>
 

@@ -56,7 +56,7 @@ export default function RootLayout({
         <ScrollProgressBar />
         {/* Default provider for the rare bare "/" hit; the edge function rewrites real
             traffic to /in or /uk, whose layouts supply the correct region provider and
-            render the cookie banner + WhatsApp badge inside it. */}
+            render the cookie banner inside it. */}
         <RegionProvider region="in">{children}</RegionProvider>
         <Script
           src="https://restos.omniviya.in/assistant/widget.js"

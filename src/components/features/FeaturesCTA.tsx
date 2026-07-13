@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import { useRegion } from '@/lib/region-context'
 import { RegionLinkButton } from '@/components/ui/RegionLinkButton'
-import { WhatsAppButton } from '@/components/ui/WhatsAppButton'
+import { TalkToMiviButton } from '@/components/ui/TalkToMiviButton'
 import { ctaEntry } from '@/lib/animations'
 import { CTA_CONTENT } from '@/lib/features-content'
 
@@ -47,7 +47,7 @@ export function FeaturesCTA() {
           <RegionLinkButton slug="demo" className="w-full sm:w-auto justify-center py-4 text-base">
             Book a Free Demo
           </RegionLinkButton>
-          <WhatsAppButton className="w-full sm:w-auto justify-center py-4" />
+          <TalkToMiviButton className="w-full sm:w-auto justify-center py-4" />
         </motion.div>
       </div>
     </section>
